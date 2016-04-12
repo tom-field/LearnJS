@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 3D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #B3C04C;
+		}
+		.wallet {
+			width: 300px;
+			height: 300px;
+			margin:0 auto;
+			border-radius:50%;
+			transform-style: preserve-3d;
+			transition: all 1s;
+		}
+		.wallet::before,.wallet::after {
+			content: '';
+			width: 300px;
+			height: 300px;
+			position: absolute;
+		}
+		.wallet::before{
+			background:url("images/bg.png") no-repeat right top;
+			transform: rotateY(-180deg);
+		}
+		.wallet::after{
+			background:url("images/bg.png") no-repeat left top;
+			backface-visibility: hidden;
+		}
+		.wallet:hover {
+			transform:rotateY(180deg)
+		}
+	</style>
+</head>
+<body>
+	<div class="wallet"></div>
+</body>
+</html>
