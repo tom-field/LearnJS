@@ -1,0 +1,91 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/*分类大盒子  需要占满剩余的内容*/
+.jd_category{
+    width: 100%;
+    height: 100%;
+    padding-top: 45px;
+}
+/*一级分类*/
+.jd_category_left{
+    width: 90px;
+    height: 100%;
+    overflow: hidden;
+    float: left;
+}
+.jd_category_left .jd_category_left_con{
+
+}
+.jd_category_left .jd_category_left_con li{
+    height: 50px;
+    width: 90px;
+    border-right: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+    line-height: 50px;
+    background: #f3f4f6;
+}
+.jd_category_left .jd_category_left_con li.now{
+    background: #fff;
+    border-right: none;
+}
+.jd_category_left .jd_category_left_con li.now a{
+    color: #F15353;
+}
+.jd_category_left .jd_category_left_con li a{
+    font-size: 12px;
+    font-family: sans-serif;
+    display: block;
+}
+
+/*当盒子定义了 overflow: hidden 认作一个绝缘的盒子 */
+.jd_category_right{
+    overflow: hidden;
+    height: 100%;
+    padding: 10px 12px;
+}
+
+.jd_category_right .jd_category_right_con{
+    width: 100%;
+}
+
+.jd_category_right .jd_category_right_con .category_banner{
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+.jd_category_right .jd_category_right_con .category_banner img{
+    width: 100%;
+    display: block;
+}
+.jd_category_right .jd_category_right_con .category_box{
+
+}
+.jd_category_right .jd_category_right_con .category_box h3{
+    font-size: 12px;
+    color: #666;
+    line-height: 30px;
+}
+.jd_category_right .jd_category_right_con .category_box ul{
+
+}
+.jd_category_right .jd_category_right_con .category_box ul li{
+    width: 33.33%;
+    float: left;
+}
+.jd_category_right .jd_category_right_con .category_box ul li a{
+    width: 100%;
+}
+.jd_category_right .jd_category_right_con .category_box ul li a img{
+    width: 62px;
+    height: 62px;
+    margin: 0 auto;
+    display: block;
+}
+.jd_category_right .jd_category_right_con .category_box ul li a p{
+    text-align: center;
+    font-size: 12px;
+    margin: 5px 0;
+}
