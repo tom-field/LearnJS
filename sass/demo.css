@@ -1,0 +1,18 @@
+.parent-1 {
+  color: #f00; }
+  .parent-1 .child {
+    width: 100px; }
+
+body {
+  background: pink;
+  color: red;
+  line-height: 10px;
+  font-size: 20px/1; }
+
+div {
+  font-size: 15px/1; }
+
+p {
+  font-size: 20px; }
+
+/*# sourceMappingURL=demo.css.map */
