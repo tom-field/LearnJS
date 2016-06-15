@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script src="app.js"></script>
+<body ng-app="app">
+    <div mydir ng-controller="app1">
+        <div ng-transclude ngHello="{{load1()}}">我是transclude进来的</div>
+    </div>
+    <div mydir ng-controller="app2" ngHello="{{load2()}}">
+        <div ng-transclude>我是transclude进来的</div>
+    </div>
+</body>
+</html>

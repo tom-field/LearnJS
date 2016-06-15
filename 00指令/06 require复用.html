@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app">
+	<div ng-controller="first">
+    <lay loader="first()">第一个控制器</lay>
+</div>
+<br/>
+<div ng-controller="second">
+    <lay loader="second()">第二个控制器</lay>
+</div>
+</body>
+</html>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module('app', []);
+
+    app.controller("first",["$scope",function($scope){
+        $scope.first = function(){
+            alert("第一个控制器函数");
+        }
+    }])
+
+    app.controller("second",["$scope",function($scope){
+        $scope.second = function(){
+            alert("第二个控制器函数");
+        }
+    }])
+    app.directive('lay', function(){
+        return{
+              restrict:"AE",
+              link:function(scope,element,attr){
+                  element.on("click",function(){
+                      scope.$apply(attr.loader);
+                  })
+              }
+        };
+    });
+</script>

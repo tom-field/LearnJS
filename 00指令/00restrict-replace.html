@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+	<title>directive</title>
+</head>
+<body >
+<a href="www">fsda</a>
+<div ng-app="myApp">
+	<div ng-include="'templateId.html'" scope="" onload=""></div>
+	<a href="www">fdas</a>
+</div>
+	
+</body>
+</html>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript">
+var myApp = angular.module('myApp', []);
+myApp.run(function($templateCache) {
+  $templateCache.put('templateId.html', 'This is the content of the template');
+});
+myApp.directive('hello', ['$templateCache', function($templateCache){
+	// Runs during compile
+	return {
+		// name: '',
+		// priority: 1,
+		// terminal: true,
+		// scope: {}, // {} = isolate, true = child, false/undefined = no change
+		// controller: function($scope, $element, $attrs, $transclude) {},
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		// restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+		template:$templateCache.get("templateId.html"),
+		// templateUrl: '',
+		// replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+				
+		}
+	};
+}]);
+</script>

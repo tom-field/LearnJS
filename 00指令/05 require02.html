@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app">
+	<customdirective>
+    <div>次数：{{count}} </div> 
+    <br/>
+    <childirective></childirective>
+</customdirective>
+</body>
+</html>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module('app', []);
+    app.directive('customdirective', function(){
+        return {    
+            controller: function($scope, $element, $attrs, $transclude) {
+                var self = this;
+                $scope.count = 0;
+                //$scope监视不到时间监听的$apply更新视图
+                self.add = function(){
+                    $scope.count++
+                    $scope.$apply();
+                }
+                console.log(self)
+            },        
+            restrict: 'E',
+        };
+    })
+    .directive('childirective', function(){
+        return {
+            require: '^customdirective', 
+            restrict: 'E',
+            template: '<button id="add">点击增加1</button>',
+            replace: true,
+            link: function($scope, iElm, iAttrs, controller) {        
+                angular.element(document.getElementById("add")).on("click",controller.add);                
+            }
+        };
+    })
+</script>

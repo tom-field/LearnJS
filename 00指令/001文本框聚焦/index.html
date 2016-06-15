@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body ng-app="app">
+    <form  ng-controller="ctrl" novalidate angular-validator >  
+        <div class="gloabl-form-content">  
+              
+            <div class="row">  
+                <div class="col yellow-divider">  
+                    <div class="col-first">  
+                        <label><span  style="color:red;">*</span>姓名</label>  
+                    </div>  
+                    <div class="col-second">  
+                        <input name="name"  
+                            type="text"  
+                            ng-model="profile.name"  
+                            validate-on="blur"  
+                            ng-pattern="/^[ a-zA-Z]*$/"  
+                            required  
+                            required-message="'请输入姓名.'"  
+                            ng-message="'不能输入数字'"  
+                            maxlength="100" />  
+                    </div>  
+
+                    <div class="col-third">  
+                        <label>住址</label>  
+                    </div>  
+                    <div class="col-four">  
+                        <input name="addr" type="text" ng-model="profile.addr"  
+                            validate-on="blur"  
+                            ng-pattern="/^[ a-zA-Z]*$/"  
+                            invalid-message="'不能输入数字'"  
+                            maxlength="100" />  
+                    </div>  
+                </div>  
+            </div>  
+            <div class="row">  
+                <div class="col yellow-divider">  
+                    <div class="col-third">  
+                        <label><span  style="color: red;">*</span>手机号码</label>  
+                    </div>  
+                    <div class="col-four">  
+                        <input type="text"  
+                            ng-model="customer.number"  
+                            validate-on="blur"  
+                            ng-pattern="/^[ 0-9.]*$/"  
+                            required  
+                            required-message="'请输入手机号码'"  
+                            invalid-message="'只能输入数字'" />  
+                    </div>  
+                </div>  
+            </div>  
+  
+        </div>  
+    </form>
+</body>
+</html>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
