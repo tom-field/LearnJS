@@ -2,40 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="076c2bac-143e-40fc-91cc-6657293b47c8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/03最贱单的指令/05templateUrl/customer-address.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/03最贱单的指令/05templateUrl/customer-name.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Accordion/example.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Modal/example.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Modal0/example.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Modal/firstModal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/000基本指令/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/03最贱单的指令/05templateUrl/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/04绑定策略/01=/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/05link函数/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/05指令操作DOM/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/06angularjs指令中的compile与link函数详解/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/07指令包裹其他元素/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/08指令绑定自定义行为/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Accordion/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Modal/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Modal0/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/04绑定策略/01=/my-customer-iso.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/08指令绑定自定义行为/my-dialog-close.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/07指令包裹其他元素/my-dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/000基本指令/ngoption.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/03最贱单的指令/05templateUrl/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/04绑定策略/01=/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/05link函数/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/05指令操作DOM/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/06angularjs指令中的compile与link函数详解/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/07指令包裹其他元素/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/00指令/08指令绑定自定义行为/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Modal/secondModal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-bootstrap/Modal/threeModal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/00指令/03最贱单的指令/0303超级简单link/app.html" afterPath="$PROJECT_DIR$/00指令/03最贱单的指令/0303超级简单link/app.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/00指令/001文本框聚焦/index.html" afterPath="$PROJECT_DIR$/00指令/001文本框聚焦/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/00指令/002ngClass/style.css" afterPath="$PROJECT_DIR$/00指令/002ngClass/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="angular学习.iws" />
@@ -70,8 +36,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/00指令/08指令绑定自定义行为/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48212227">
-              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.25374857">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -336,6 +302,13 @@
       <option name="number" value="Default" />
       <updated>1463804284379</updated>
     </task>
+    <task id="LOCAL-00001" summary="指令学习">
+      <created>1466947865184</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1466947865184</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -344,6 +317,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12750264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -353,7 +327,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -374,7 +347,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="指令学习" />
+    <option name="LAST_COMMIT_MESSAGE" value="指令学习" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -760,8 +736,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/00指令/08指令绑定自定义行为/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48212227">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.25374857">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
