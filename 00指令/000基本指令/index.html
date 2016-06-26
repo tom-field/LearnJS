@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  
+
+  
+</head>
+<body ng-app="">
+
+<div ng-init="number=[1,2,2,3]">
+  <ul>
+    <li ng-repeat="x in number track by $index">
+      {{$index==0?x=111:x}}
+      <span ng-bind="$odd?'偶数':'基数'"></span>
+      <span ng-bind="$first?'我是老大':'我不是老大'"></span>
+      <span ng-bind="$middle?'我再中间':'我不在中间'"></span>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

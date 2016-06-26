@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+        angular.module('mymodule', [])
+                .controller("ngSelect",function ($scope) {
+                    $scope.selected = '';
+                    $scope.optData = [{
+                        id: 10001,
+                        MainCategory: '男',
+                        ProductName: '水洗T恤',
+                        ProductColor: '白'
+                    },{
+                        id: 10002,
+                        MainCategory: '女',
+                        ProductName: '圓領短袖',
+                        ProductColor: '黃'
+                    },{
+                        id: 10003,
+                        MainCategory: '女',
+                        ProductName: '圓領短袖',
+                        ProductColor: '黃'
+                    }]
+                })
+
+    </script>
+
+</head>
+<body ng-app="mymodule">
+    <div ng-controller="ngSelect">
+        <!--基本下拉效果-->
+        <select ng-model="selected" ng-options="o.id for o in optData">
+            <option value="">-- 请选择 --</option>
+        </select>
+        <!--自定义下拉显示名称-->
+        <select ng-model="selected" ng-options="(o.id+'-'+o.MainCategory+'*'+o.ProductName) group by o.MainCategory for o in optData">
+            <option value="">-- 请选择 --</option>
+        </select>
+        <!--ng-options 自定义ngModel的绑定-->
+        <select id="thr" ng-model="selected" ng-options="o.ProductColor as o.ProductName for o in optData">
+            <option value="">-- 请选择 --</option>
+        </select>
+    </div>
+    <script>
+        $(function () {
+            $("#thr").on("change", function () {
+                alert($(this).val());
+            })
+        })
+    </script>
+
+</body>
+</html>
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
