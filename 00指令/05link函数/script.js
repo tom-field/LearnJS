@@ -6,6 +6,7 @@ angular.module('docsTimeDirective', [])
   }])
     .directive('myCurrentTime', ['$interval', 'dateFilter', function($interval, dateFilter) {
       function mylink(scope, element, attrs) {
+        console.log(element);
         var format,
             timeoutId;
 
