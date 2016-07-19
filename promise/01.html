@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="javascript:;" onclick="get()">点击获取手机号信息</a>
+</body>
+</html>
+<script>
+    var getJSON = function(url,data) {
+        var promise = new Promise(function(resolve, reject){
+            var client = new XMLHttpRequest();
+            client.open("GET", url);
+            client.send(data)
+            client.onreadystatechange = handler;
+            client.responseType = "json";
+            client.setRequestHeader("Accept", "application/json");
+            client.send();
+
+            function handler() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status === 200) {
+                    resolve(this.response);
+                } else {
+                    reject(new Error(this.statusText));
+                }
+            };
+        });
+
+        return promise;
+    };
+
+    function getTel(){
+        return getJSON("www.baidu.com","{}")
+    }
+
+    getTel().then(function (value) {
+
+    }, function (err) {
+        
+    })
+</script>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*reject方法的作用，等同于抛出错误。*/
+    var promise = new Promise(function (resolve, reject) {
+        /*resolve("成功")*/
+        try{
+            throw new Error("test")
+        }catch(e){
+            reject(e)
+        }
+    });
+    promise.then(function (value) {
+        console.log(value)
+    }, function (err) {
+        console.log(err);
+    });
+    /*promise抛出一个错误，就被catch方法指定的回调函数捕获*/
+    promise.catch(function (err) {
+        console.log(err);
+    });
+
+    /*reject方法的作用，等同于抛出错误。*/
+    var promise = new Promise(function (resolve, reject) {
+        reject(new Error("test2"))
+    });
+    promise.catch(function (err) {
+        console.log(err);
+    });
+
+    /*Promise在resolve语句后面，再抛出错误，不会被捕获，等于没有抛出。*/
+    var promise = new Promise(function (resolve, reject) {
+        resolve("success");
+        reject(new Error("fail"))
+    });
+    /*建议不要使用这种形式*/
+    promise.then(function (val) {
+        console.log(val);
+    }, function (err) {
+        console.log(err);
+    });
+    /*而是这种*/
+    /*promise.then(function (val) {
+        /!**!/
+    }).catch(function (err) {
+        /!**!/
+    })*/
+    var someAsyncThing= function () {
+        return new Promise(function (res, rej) {
+            res(x+2)
+        })
+    };
+    someAsyncThing().then(function (data) {
+        console.log(data);
+    });
+
+    var promise = new Promise(function (resolve, reject) {
+        /*resolve("成功");
+        setTimeout(function () {
+            throw new Error("test")
+        },0)*/
+        reject(new Error("test"))
+    });
+
+    promise.then(function (data) {
+        console.log(data);
+    }).catch(function (err) {
+        console.log(err);
+    });
+
+    var someAsyncThing = function () {
+        return new Promise(function (resolve, reject) {
+            resolve(x+2)
+        })
+    };
+
+    someAsyncThing().catch(function (err) {
+        console.log(err);
+    }).then(function () {
+        console.log("carry");
+    }).then(function () {
+        console.log("on");
+    }).then(function () {
+        console.log("hold");
+    })
+</script>
