@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <title>AngularJS - UI Router - Example 1</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body ng-app="DemoApp">
+
+<div ng-controller="DemoController">
+    <header>
+        <h1>AngularJS && UI.Router</h1>
+        <h2>Example 1: Transition between state</h2>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a 	href="#" title="left"
+                      ng-class="{active:transition=='slide-left'}" 		ng-click="left()">
+                    Left
+                </a>
+            </li>
+            <li>
+                <a 	href="#" title="right"
+                      ng-class="{'active':transition=='slide-right'}" 	ng-click="right()">
+                    Right
+                </a>
+            </li>
+            <li>
+                <a 	href="#" title="top"
+                      ng-class="{'active':transition=='slide-top'}" 		ng-click="top()">
+                    Top
+                </a>
+            </li>
+            <li>
+                <a 	href="#" title="bottom"
+                      ng-class="{'active':transition=='slide-bottom'}" 	ng-click="bottom()">
+                    Bottom
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div ui-view ng-class="transition">
+            default content
+        </div>
+    </div>
+</div>
+
+<script data-require="angular.js@1.2.10" data-semver="1.2.10" src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script data-require="angular-animate@1.2.11" data-semver="1.2.11" src="http://code.angularjs.org/1.2.11/angular-animate.min.js"></script>
+<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+</body>
+</html>
