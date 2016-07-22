@@ -1,0 +1,6 @@
+*.zip
+*.rar
+*.bak
+*.log
+.idea
+node_modules
