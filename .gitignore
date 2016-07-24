@@ -3,4 +3,5 @@
 *.bak
 *.log
 .idea
+dest
 node_modules
