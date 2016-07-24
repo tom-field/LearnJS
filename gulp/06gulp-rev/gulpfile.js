@@ -16,24 +16,21 @@ var gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
     cleancss = require('gulp-clean-css'),
     rev = require('gulp-rev'),
-    revreplace = require('gulp-rev-replace')
-gulp.task('default1', function () {
+    revreplace = require('gulp-rev-replace'),
+    del = require('del'),
+    sourcemaps = require('gulp-sourcemaps')
+gulp.task('newdel',function () {
+    /*return del.sync('./dist/!**')*/
+})
+gulp.task('default1',["newdel"], function () {
     return gulp.src('app/*.html')
+        .pipe(sourcemaps.init())
         .pipe(useref())
         .pipe(gulpif('*.js', uglify()))
         .pipe(gulpif('*.css', cleancss()))
         .pipe(rev())
         .pipe(revreplace())
-        .pipe(gulp.dest('dist'));
-});
-//在合并前修改文件的路径 把路劲中含有01的编程了02 所以01.css和01.js没有合并
-gulp.task('default2', function () {
-    return gulp.src('app/*.html')
-        .pipe(useref({
-            transformPath: function(filePath) {
-                console.log(filePath);
-                return filePath.replace('01','02')
-            }
-        }))
+        .pipe(rev.manifest())
+        .pipe(sourcemaps.write('./map'))
         .pipe(gulp.dest('dist'));
 });
