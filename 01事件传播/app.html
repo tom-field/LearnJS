@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+</head>
+<body ng-app="app">
+<div ng-controller="ParentCtrl">              <!--父级-->
+    <div ng-controller="SelfCtrl">              <!--自己-->
+        <a ng-click="click()">click me</a>
+        <div ng-controller="ChildCtrl"></div>     <!--子级-->
+    </div>
+    <div ng-controller="BroCtrl"></div>         <!--平级-->
+</div>
+</body>
+</html>
+<script>
+    var app = angular.module('app', []);
+    app.controller('SelfCtrl', function($scope) {
+        $scope.click = function () {
+            $scope.$broadcast('to-child', 'child');
+            $scope.$emit('to-parent', 'parent');
+        }
+    });
+
+    app.controller('ParentCtrl', function($scope) {
+        $scope.$on('to-parent', function(event,data) {
+            console.log(event);
+            console.log('ParentCtrl', data);       //父级能得到值
+        });
+        $scope.$on('to-child', function(event,data) {
+            console.log('ParentCtrl', data);       //子级得不到值
+        });
+    });
+
+    app.controller('ChildCtrl', function($scope){
+        $scope.$on('to-child', function(event,data) {
+            console.log(event);
+            console.log('ChildCtrl', data);      //子级能得到值
+        });
+        $scope.$on('to-parent', function(event,data) {
+            console.log('ChildCtrl', data);      //父级得不到值
+        });
+    });
+
+    app.controller('BroCtrl', function($scope){
+        $scope.$on('to-parent', function(event,data) {
+            console.log('BroCtrl', data);         //平级得不到值
+        });
+        $scope.$on('to-child', function(event,data) {
+            console.log('BroCtrl', data);         //平级得不到值
+        });
+    });
+    //$emit只能向parent controller传递event与data( $emit(name, args) )
+    //$broadcast只能向child controller传递event与data( $broadcast(name, args) )
+    //$on用于接收event与data( $on(name, listener) )
+    /*在$on的方法中的event事件参数，其对象的属性和方法如下
+
+    事件属性:	            目的:
+    event.targetScope	    发出或者传播原始事件的作用域
+    event.currentScope	    目前正在处理的事件的作用域
+    event.name	            事件名称
+    event.stopPropagation()	一个防止事件进一步传播(冒泡/捕获)的函数(这只适用于使用`$emit`发出的事件)
+    event.preventDefault()	这个方法实际上不会做什么事，但是会设置`defaultPrevented`为true。直到事件监听器的实现者采取行动之前它才会检查`defaultPrevented`的值。
+    event.defaultPrevented	如果调用了`preventDefault`则为true*/
+</script>
