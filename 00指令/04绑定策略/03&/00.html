@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html  ng-app="MyModule">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+</head>
+<body ng-app="MyModule">
+    <div ng-controller="mycontroller">
+
+    </div>
+    <input type="text" ng-model="username"/>
+    <button ng-click="greet(name)">打招呼</button>
+</body>
+</html>
+<script>
+    var myModule = angular.module("MyModule", []);
+    //为控制器指定了一个sayHello方法，同时为这个方法可以传入一个参数
+    myModule.controller("mycontroller", function ($scope) {
+        $scope.username;
+        $scope.greet= function ($scope.username) {
+            alert($scope.username);
+        }
+    })
+    myModule.directive('greeting', function () {
+        return {
+            restrict:"AE",
+            scope:{
+                hello:"&"
+            },
+            template:'<input type="text" ng-model="username"/><button ng-click="greet(name)">打招呼</button>'
+        }
+    })
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="Controller">
+    <form>
+        Name: <input type="text" ng-model="user.name" /><br />
+        E-mail: <input type="email" ng-model="user.email" /><br />
+        Gender: <input type="radio" ng-model="user.gender" value="male" />male
+        <input type="radio" ng-model="user.gender" value="female" />female<br />
+        <button ng-click="reset()">RESET</button>
+        <button ng-click="update(user)">SAVE</button>
+    </form>
+    <pre>form = {{user | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>
+</body>
+</html>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('Controller', ['$scope', function($scope) {
+
+        var a = 1;
+        var b =[];
+
+        console.log(angular.copy(a)===a);
+        console.log(angular.copy(b));
+        console.log(angular.copy(b) === b);
+
+        var c = [1,2,3];
+        var d = [4,5,6];
+
+        var f = angular.copy(c,d);
+
+        console.log(f);
+        //If a destination is provided,
+        //all of its elements (for arrays) or properties (for objects) are deleted and then all elements/properties from the source are copied to it.
+        console.log(d);
+
+        $scope.master= {};
+
+        $scope.update = function(user) {
+            // Example with 1 argument
+            $scope.master= angular.copy(user);
+        };
+
+        $scope.reset = function() {
+            // Example with 2 arguments
+            angular.copy($scope.master, $scope.user);
+        };
+
+        $scope.reset();
+    }]);
+</script>

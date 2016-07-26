@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html  ng-app="MyModule">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+</head>
+<body ng-app="MyModule">
+<!--控制器MyCtrl下面有指令drink，同时指令drink还有自定义的属性flavor，其值为‘百威’-->
+<div ng-controller="MyCtrl">
+    <drink flavor="{{ctrlFlavor}}"></drink>
+    <drink flavor='{{flavor}}'></drink>
+</div>
+</body>
+</html>
+<script>
+    var myModule = angular.module("MyModule", []);
+    myModule.controller('MyCtrl', ['$scope', function($scope){
+        $scope.ctrlFlavor="百威";
+        $scope.flavor="燕京"
+        //在控制器中$scope中设置了ctrlFlavor属性
+    }])
+    //定义了drink指令
+    myModule.directive("drink", function() {
+        return {
+            /*scope:{},*/       //思考 为什么会这样
+            restrict:'AE',
+            template:"<div>{{flavor}}</div>" ,
+            link:function(scope,element,attrs){
+                scope.flavor=attrs.flavor;
+                //链接的时候把drink指令上的flavor属性放在scope中，然后在template中显示
+            }
+        }
+    });
+</script>
