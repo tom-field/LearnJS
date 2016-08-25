@@ -1,10 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Document</title>
+    <style>
+        .tt-menu {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .tt-menu {
+            width: 120px;
+            margin: 12px 0;
+            padding: 8px 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+        .tt-suggestion:hover {
+            cursor: pointer;
+            color: #fff;
+            background-color: #0097cf;
+        }
+
+        .tt-suggestion.tt-cursor {
+            color: #fff;
+            background-color: #0097cf;
+        }
+    </style>
 </head>
 <body>
-
+<div class="example">
+    <h2>基本示例</h2>
+    <div id="basic-example">afdsasfddas
+        <input class="typeahead" type="text" placeholder="请输入省份">
+    </div>
+</div>
 </body>
 </html>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+<script src="../Assets/typeahead/typeahead.bundle.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        //远程数据源
+        var remote_cities = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('CityName'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // 在文本框输入字符时才发起请求
+            remote: '/ajax/GetCities?q=%QUERY'
+        });
+
+        $('#basic-example .typeahead').typeahead({
+                    minLength:0
+                },
+                {
+                    name: 'provinces',
+                    displayKey: 'value',
+                    source: remote_cities.ttAdapter()
+                });
+
+    });
+
+</script>
