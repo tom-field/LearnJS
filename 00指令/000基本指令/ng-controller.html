@@ -1,10 +1,66 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+    <script src="//cdn.bootcss.com/angular-css/1.0.8/angular-css.js"></script>
+    <script src="//cdn.bootcss.com/angular-messages/1.5.8/angular-messages.js"></script>
 </head>
 <body>
+<div ng-controller="SomeController">
+    {{ someBareValue }}
+    <button ng-click="someAction()">Communicate to child</button>
+    <div ng-controller="ChildController">
+        {{ someBareValue }}
+        <button ng-click="childAction()">Communicate to parent</button>
+    </div>
+</div>
+<script>
+    angular.module('myApp', [])
+            .controller('SomeController', function($scope) {
+// 反模式，裸值
+                $scope.someBareValue = 'hello computer';
+// 设置 $scope 本身的操作，这样没问题
+                $scope.someAction = function() {
+// 在SomeController和ChildController中设置{{ someBareValue }}
+                    $scope.someBareValue = 'hello human, from parent';
+                };
+            })
+            .controller('ChildController', function($scope) {
+                $scope.childAction = function() {
+// 在ChildController中设置{{ someBareValue }}
+                    $scope.someBareValue = 'hello human, from child';
+                };
+            });
+</script>
+<!--<div ng-controller="SomeCtrl">
+    {{ someModel.someValue }}
+    <button ng-click="someAction()">Communicate to child</button>
+    <div ng-controller="ChildCtrl">
+        {{ someModel.someValue }}
+        <button ng-click="childAction()">Communicate to parent</button>
+    </div>
+</div>
+
+<script>
+    angular.module('myApp', [])
+            .controller('SomeCtrl', function($scope) {
+                // best practice, always use a model
+                $scope.someModel = {
+                    someValue: 'hello computer'
+                }
+                $scope.someAction = function() {
+                    $scope.someModel.someValue = 'hello human, from parent';
+                };
+            })
+            .controller('ChildCtrl', function($scope) {
+                $scope.childAction = function() {
+                    $scope.someModel.someValue = 'hello human, from child';
+                };
+            });
+</script>-->
 
 </body>
 </html>

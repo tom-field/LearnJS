@@ -11,7 +11,7 @@
     <script src="//cdn.bootcss.com/angular-messages/1.5.8/angular-messages.js"></script>
 </head>
 <body ng-controller='ctrl'>
-<input type="text" name="requirengmodel" test ng-model=_val>
+<input type="text" test ng-model=_val>
 <script>
     var app = angular.module('app',[]);
     app.controller('ctrl',function ($scope){
@@ -21,8 +21,8 @@
         return{
             restrict: 'AE',
             require: 'ngModel',
-            link: function (scope,iElem,iAttr,ngModel){
-                console.log(ngModel)
+            link: function (scope,iElem,iAttr,ngmodel){
+                console.log(ngmodel)
             }
         }
     })

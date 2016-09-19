@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en" ng-app="app">
+<head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+    <script src="//cdn.bootcss.com/angular-css/1.0.8/angular-css.js"></script>
+    <script src="//cdn.bootcss.com/angular-messages/1.5.8/angular-messages.js"></script>
 </head>
-<body>
-
+<body ng-controller='ctrl'>
+<form action="" name='myform'>
+    <input type="text" test ng-model=_val name='jie'>
+    <div ng-show='myform.jie.$error.empty'>empty!!</div>
+</form>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('ctrl',function ($scope){
+        $scope._val = "leifengshushu";
+    })
+    app.directive('test',function(){
+        return{
+            restrict: 'AE',
+            require: 'ngModel',
+            link: function (scope,iElem,iAttr,ngmodel){
+                scope.$watch(function(){return scope._val},function(){
+                    if(ngmodel.$isEmpty(ngmodel.$viewValue)){
+                        ngmodel.$setValidity('empty',false); //注意到这里设置为false，而$error.empty则会显示为true
+                        console.log(ngmodel.$error);
+                    }
+                })
+                //console.log(ngmodel.$setValidity);
+            }
+        }
+    })
+</script>
 </body>
 </html>

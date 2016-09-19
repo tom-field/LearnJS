@@ -11,28 +11,67 @@
     <script src="//cdn.bootcss.com/angular-messages/1.5.8/angular-messages.js"></script>
 </head>
 <body ng-app="myApp">
-<form style="margin-left: 20px;" name="signup_form" novalidateng-submit="signupForm()">
-    <fieldset>
-        <legend>Signup</legend>
-        <div class="row">
-            <div class="large-12 columns">
-                <label>Your name</label>
-                <input type="text"
-                       placeholder="Name"
-                       name="name"
-                       ng-model="signup.name"
-                       ng-minlength="3"
-                       ng-maxlength="20" required />
-                <div class='error' ng-messages="signup_form.name.$error"
-                ng-messages-include="templates/errors.html">
-            </div>
-            </div>
+<form name="signup_form" novalidate ng-submit="signupForm()" ng-controller="signupController"
+      ensure-unique="/api/checkUsername.json">
+    <label>
+        Your name
+    </label>
+    <input type="text" placeholder="Username" name="username" ng-model="signup.username"
+           ng-minlength=3 ng-maxlength=20 required />
+    <div class="error" ng-messages="signup_form.username.$error">
+        <div ng-message="required">
+            Make sure you enter your username
         </div>
-        <button type="submit" class="button radius">Submit</button>
-    </fieldset>
+        <div ng-message="checkingAvailability">
+            Checking...
+        </div>
+        <div ng-message="usernameAvailablity">
+            The username has already been taken. Please choose another
+        </div>
+    </div>
+    <button type="submit">
+        Submit
+    </button>
 </form>
 </body>
 </html>
 <script>
-    angular.module('myApp', ['ngMessages']);
+    var myApp = angular.module('myApp', ['ngMessages']);
+    myApp.controller("signupController",function($scope){
+
+    })
+    myApp.directive('ensureUnique', function($http) {
+        return {
+            require: 'ngModel',
+            link: function(scope, ele, attrs, ctrl) {
+                var url = attrs.ensureUnique;
+                ctrl.$parsers.push(function(val) {
+                    if (!val || val.length === 0) {
+                        return;
+                    }
+                    console.log(ngModel);
+                    ngModel.$setValidity('checkingAvailability', true);
+                    ngModel.$setValidity('usernameAvailablity', false);
+                    $http({
+                        method: 'GET',
+                        url: url,
+                        params: {
+                            username: val
+                        }
+                    }).success(function() {
+                        ngModel
+                                .$setValidity('checkingAvailability', false);
+                        ngModel
+                                .$setValidity('usernameAvailablity', true);
+                    })['catch'](function() {
+                        ngModel
+                                .$setValidity('checkingAvailability', false);
+                        ngModel
+                                .$setValidity('usernameAvailablity', false);
+                    });
+                    return val;
+                })
+            }
+        }
+    });
 </script>

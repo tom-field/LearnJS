@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+    <script src="//cdn.bootcss.com/angular-css/1.0.8/angular-css.js"></script>
+    <script src="//cdn.bootcss.com/angular-messages/1.5.8/angular-messages.js"></script>
+    <style>
+        input.ng-invalid {
+            border: 1px solid red;
+        }
+        input.ng-valid {
+            border: 1px solid green;
+        }
+    </style>
 </head>
-<body>
+<body ng-app="myApp">
+
+<form name="signup_form" ng-controller="FormController" ng-submit="submitForm()" novalidate>
+    <div ng-repeat="field in fields" ng-form="signup_form_input">
+        <input type="text"
+               name="dynamic_input"
+               ng-required="field.isRequired"
+               ng-model="field.name"
+               placeholder="{{field.placeholder}}" />
+        <div ng-show="signup_form_input.dynamic_input.$dirty && signup_form_input.dynamic_input.$invalid">
+            <span class="error" ng-show="signup_form_input.dynamic_input.$error.required">The field is required.</span>
+        </div>
+    </div>
+    <button type="submit" ng-disabled="signup_form.$invalid">Submit All</button>
+</form>
 
 </body>
 </html>
+<script>
+    angular.module('myApp', [])
+            .controller('FormController', function($scope) {
+                $scope.fields = [
+                    {placeholder: 'Username', isRequired: true},
+                    {placeholder: 'Password', isRequired: true},
+                    {placeholder: 'Email (optional)', isRequired: false}
+                ];
+
+                $scope.submitForm = function() {
+                    alert("it works!");
+                };
+            });
+</script>

@@ -23,11 +23,9 @@
                        ng-model="signup.name"
                        ng-minlength="3"
                        ng-maxlength="20" required />
-                <div class="error" ng-messages="signup_form.name.$error">
-                    <div ng-message="required">Make sure you enter your name</div>
-                    <div ng-message="minlength">Your name must be at least 3 characters</div>
-                    <div ng-message="maxlength">Your name cannot be longer than 20 characters</div>
-                </div>
+                <div class='error' ng-messages="signup_form.name.$error"
+                ng-messages-include="templates/errors.html">
+            </div>
             </div>
         </div>
         <button type="submit" class="button radius">Submit</button>
