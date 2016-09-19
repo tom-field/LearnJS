@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+    <script src="//cdn.bootcss.com/angular-css/1.0.8/angular-css.js"></script>
+    <script src="//cdn.bootcss.com/angular-messages/1.5.8/angular-messages.js"></script>
+</head>
+<body ng-controller='ctrl'>
+<input type="text" name="requirengmodel" test ng-model=_val>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('ctrl',function ($scope){
+        $scope._val = "leifengshushu";
+    })
+    app.directive('test',function(){
+        return{
+            restrict: 'AE',
+            require: 'ngModel',
+            link: function (scope,iElem,iAttr,ngModel){
+                console.log(ngModel)
+            }
+        }
+    })
+</script>
+</body>
+</html>
