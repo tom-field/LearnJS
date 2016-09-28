@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="日程安排,FullCalendar,jquery实例">
+<meta name="description" content="Helloweba，在线演示HTML、CSS、jquery、PHP示例DEMO。">
+<title>演示：日程安排FullCalendar</title>
+<link rel="stylesheet" type="text/css" href="http://www.helloweba.com/demo/css/main.css">
+<link rel="stylesheet" type="text/css" href="css/fullcalendar.css">
+<style type="text/css">
+#calendar{width:960px; margin:20px auto 10px auto}
+</style>
+<script src='js/jquery-1.9.1.min.js'></script>
+<script src='js/jquery-ui-1.10.2.custom.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+<script type="text/javascript">
+    /*http://justcoding.iteye.com/blog/2028252 有详细说明*/
+$(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+            //设置日历头部信息。
+			header: {
+				left: 'prev,next today,prevYear,nextYear',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+            //设置一周中显示的第一天是哪天
+			firstDay:1,
+			editable: true,
+			timeFormat: 'H:mm',
+			axisFormat: 'H:mm',
+			events: [
+				{
+					title: '全天计划\r\n#####\r\n写代码',
+					start: new Date(y, m, 1)
+				},
+				{
+					title: '张家界四日游',
+					start: new Date(y, m, d-5),
+					end: new Date(y, m, d-2)
+				},
+				{
+					id: 999,
+					title: '电话回访客户',
+					start: new Date(y, m, d-6, 16, 0),
+					allDay: false
+				},
+				{
+					id: 999,
+					title: '电话回访客户',
+					start: new Date(y, m, d+4, 16, 0),
+					allDay: false
+				},
+				{
+					title: '视频会议',
+					start: new Date(y, m, d, 10, 30),
+					allDay: false
+				},
+				{
+					title: '中秋放假',
+					start: '2013-09-19',
+					end: '2013-09-21',
+				},
+				{
+					title: '午饭',
+					start: new Date(y, m, d, 12, 0),
+					end: new Date(y, m, d, 14, 0),
+					allDay: false
+				},
+				{
+					title: '生日聚会',
+					start: new Date(y, m, d+1, 19, 0),
+					end: new Date(y, m, d+1, 22, 30),
+					allDay: false
+				},
+				{
+					title: '访问Helloweba主页',
+					start: new Date(y, m, 28),
+					end: new Date(y, m, 29),
+					url: 'http://helloweba.com/'
+				},
+				{
+					title: '实战训练课',
+					start: new Date(y, m, d+23)
+				},
+			]
+		});
+		
+	});
+</script>
+</head>
+
+<body>
+<div id="header">
+   <div id="logo"><h1><a href="http://www.helloweba.com" title="返回helloweba首页">helloweba</a></h1></div>
+</div>
+
+<div id="main" style="width:1060px">
+   <h2 class="top_title"><a href="http://www.helloweba.com/view-blog-230.html">日程安排FullCalendar</a></h2>
+   <div id='calendar'></div>
+   <div class="ad_76090"><script src="/js/ad_js/bd_76090.js" type="text/javascript"></script></div><br/>
+</div>
+<div id="footer">
+    <p>Powered by helloweba.com  允许转载、修改和使用本站的DEMO，但请注明出处：<a href="http://www.helloweba.com">www.helloweba.com</a></p>
+</div>
+
+<p id="stat"><script type="text/javascript" src="/js/tongji.js"></script></p>
+
+</body>
+</html>

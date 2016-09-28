@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="./bootstrap-combobox-master/css/bootstrap-combobox.css"/>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="./bootstrap-combobox-master/js/bootstrap-combobox.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+    <div class="input-group" style="width: 80px">
+        <select id="mySelect" class="combobox" style="width: 80px">
+            <option></option>
+            <option value="PA">Pennsylvania</option>
+            <option value="CT">Connecticut</option>
+            <option value="NY">New York</option>
+            <option value="MD">Maryland</option>
+            <option value="VA">Virginia</option>
+        </select>
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+        $(".combobox").combobox();
+    })
+</script>
