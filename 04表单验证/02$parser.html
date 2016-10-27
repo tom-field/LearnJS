@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        input.ng-invalid {
+            border: 1px solid red;
+        }
+        input.ng-valid {
+            border: 1px solid green;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+<form name="myforms" ng-submit="myFunc()">
+    <input name='inputfieldName' type="text" required ng-minlength="5" ng-maxlength="20" />
+    <input type="submit">
+</form>
+<oneToTen>dfas</oneToTen>
+<p>{{myTxt}}</p>
+
+<p>以下实例演示了表单提交后 AngularJS 执行行。</p>
+
+</body>
+<script>
+    var myApp=angular.module("myApp",[]);
+    myApp.directive('oneToTen', function() {
+                return {
+                    require: '?ngModel',
+                    link: function(scope, ele, attrs, ngModel) {
+                        console.log(scope);
+                        console.log(ele);
+                        console.log(attrs);
+                        console.log(ngModel);
+                        if (!ngModel) return;
+                        ngModel.$parsers.unshift(
+                                function(viewValue) {
+                                    var i = parseInt(viewValue);
+                                    if (i >= 0 && i < 10) {
+                                        ngModel.$setValidity('oneToTen', true);
+                                        return viewValue;
+                                    } else {
+                                        ngModel.$setValidity('oneToTen', false);
+                                        return undefined;
+                                    }
+                                });
+                    }
+                };
+            });
+</script>
