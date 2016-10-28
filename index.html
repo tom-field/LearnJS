@@ -1,13 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        #file{ width:226px; height:25px;  position:relative;}
+        #filetxt{}
+        #filebtn{ position:absolute; right:0px; }
+        #upfile{ width:70px; position:absolute; right:0px; top:0px; opacity:0;}
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
 </head>
 <body>
+<div id="file">
+    <input id="filetxt" type="text" value="未选择文件" />
+    <input id="filebtn" type="button" value="SELECT"/>
+    <input id='upfile' type="file" />
+</div>
 
+<script>
+    $(function(){
+        $('#upfile').change(function(){
+            $('#filetxt').val($('#upfile').val());
+        });
+    });
+</script>
 </body>
 </html>
-<script>
-    
-</script>
