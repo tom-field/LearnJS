@@ -14,9 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //配置模板引擎
 app.set('views','./views');
 app.set('view engine', 'xtpl');
-app.use(function(req, res){
-    res.render('test',{data:1});
-});
 
 //加载路由中间件
 app.use(require("./router"));

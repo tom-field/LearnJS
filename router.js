@@ -5,8 +5,15 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", function (req, res) {
-    res.send("hello")
-})
+const indexController = require("./controllers/index")
+const userController = require("./controllers/user")
+const articalController = require("./controllers/article")
+
+router.get("/",indexController.showIndex);
+router.get("/register",userController.showRegister);
+router.get("/register",userController.doRegister);
+router.get("/login",userController.showLogin);
+router.post("/login",userController.doLogin);
+router.get("/article",articalController.showArticle);
 
 module.exports=router;
