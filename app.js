@@ -7,6 +7,8 @@ const path = require("path");
 
 const cookieParser = require("cookie-parser");
 
+const session = require("express-session");
+
 const app = express();
 
 //配置静态文件服务中间件
@@ -14,6 +16,14 @@ app.use('/www', express.static('www'));
 
 //挂载cookie中间件
 app.use(cookieParser());
+
+//挂载session中间件
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}))
+
 //配置解析post请求体的中间件
 app.use(bodyParser.urlencoded({ extended: false }));
 

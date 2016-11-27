@@ -15,5 +15,6 @@ router.post("/register",userController.doRegister);
 router.get("/login",userController.showLogin);
 router.post("/login",userController.doLogin);
 router.get("/article",articalController.showArticle);
+router.get("/captcha",userController.getCaptcha)
 
 module.exports=router;
