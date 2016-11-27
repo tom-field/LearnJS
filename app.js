@@ -3,11 +3,17 @@ const express = require("express");
 
 const bodyParser = require("body-parser");
 
+const path = require("path");
+
+const cookieParser = require("cookie-parser");
+
 const app = express();
 
 //配置静态文件服务中间件
 app.use('/www', express.static('www'));
 
+//挂载cookie中间件
+app.use(cookieParser());
 //配置解析post请求体的中间件
 app.use(bodyParser.urlencoded({ extended: false }));
 

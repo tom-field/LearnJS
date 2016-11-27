@@ -11,7 +11,7 @@ const articalController = require("./controllers/article")
 
 router.get("/",indexController.showIndex);
 router.get("/register",userController.showRegister);
-router.get("/register",userController.doRegister);
+router.post("/register",userController.doRegister);
 router.get("/login",userController.showLogin);
 router.post("/login",userController.doLogin);
 router.get("/article",articalController.showArticle);

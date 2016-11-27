@@ -57,7 +57,7 @@
 {{/block}}
 
 {{#block ("foot")}}
-<script>
+<!--<script>
 
   var $form = $('#register_form');
 
@@ -89,5 +89,5 @@
     });
 
   });
-</script>
+</script>-->
 {{/block}}
