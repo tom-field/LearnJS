@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
     <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
     <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
@@ -43,6 +44,8 @@
                 <input type="text" id="maxlength" name="maxlength" ng-model="user.maxlength" ng-maxlength="20" class="form-control" />
                         <span class="glyphicon glyphicon-ok form-control-feedback"
                               ng-show="myForm.maxlength.$dirty && myForm.maxlength.$valid"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback"
+                      ng-show="myForm.maxlength.$dirty"></span>
             </div>
         </div>
         <div class="form-group  has-feedback">
@@ -140,7 +143,7 @@
 </html>
 <script type="text/javascript">
     angular.module('myTest', [])
-            .controller('myController', function($scope) {
+            .controller('MyController', function($scope) {
                 $scope.submitForm = function(isValid) {
                     if (!isValid) {
                         alert('验证失败');

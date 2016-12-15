@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+</head>
+<body>
+<input id="submit" type="submit" value="提交"/>
+<div></div>
+<script>
+    $(function () {
+        var str = "您好__________，请问您家____________________的房子什么时候看房方便，我是__________，电话号码____________________fdasfa";
+        var strArr = str.split('_');
+        console.log(strArr);
+        var _length = 0,
+                _arr = [];
+        for (var i = 0; i < strArr.length; i++) {
+            var _strSmall = strArr[i];
+            if(_strSmall!=''){
+                if(i>0){
+                    _arr.push(_length);
+                    _length = 0;
+                }
+                _arr.push(_strSmall);
+            }else{
+                _length++;
+            }
+        }
+        //最后的几个空格没遍历到
+        if(strArr.reverse()[0]==""){
+            _arr.push(_length);
+        }
+
+        console.log(_arr);
+        var _arrhtml= [];
+        var _commitIndex = [];
+        for(var i = 0; i< _arr.length; i++){
+            if(typeof _arr[i] == "number"){
+                _arrhtml[i] = "<input type='text' style='width: "+_arr[i]*5+"px'/>"
+                _commitIndex.push(i);
+            }else{
+                _arrhtml[i]=_arr[i];
+            }
+        }
+        var _html = '';
+        _html = _arrhtml.join("");
+        console.log(_arr);
+        console.log(_html);
+        $("div").html(_html);
+
+        $("#submit").click(function () {
+            var _content = [];
+            for(var i =0;i<$("div input").length;i++){
+                _content[i]=$("div input").eq(i).val();
+            }
+            console.log(_arr);
+            console.log(_content);
+            console.log(_commitIndex);
+            for(var i =0;i<_commitIndex.length;i++){
+                _arr[_commitIndex[i]] = _content[i]
+            }
+            console.log(_arr);
+            console.log(_arr.join(""));
+        })
+    })
+
+</script>
+</body>
+</html>
