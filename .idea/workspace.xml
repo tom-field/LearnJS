@@ -2,18 +2,354 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="640c6b75-47d7-4d58-870e-fa16155c8c9c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/select2/Data sources/loading remote date _练习.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/select2/Data sources/loading remote date.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/select2/自己封装/emp.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/select2/自己封装/fz-select2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/select2/自己封装/fz01.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/select2/自己封装/select.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/fonts/Anorexia.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/backRequiredGray.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/back_green-fade.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/back_nav_blue.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/images/bg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/login/images/bg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/milk/bg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/button-submit.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/images/button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/images/checked.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/images/cmxform-divider.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/images/cmxform-fieldset.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/favicon.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/login/images/header1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/help.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/tinymce/themes/simple/img/icons.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/left-nav-callout-long.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/milk/left_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/images/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/login-sprite.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/logo_marketo.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/milk/milk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/login/images/page.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/cinema/plan_9.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/cinema/refer_madness.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/login/images/required_star.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/milk/right_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/cinema/saucer_men.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/sf.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/step1-24.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/step2-24.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/step3-24.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/tab-sprite.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/tab_green.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/time.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/toggle.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/images/unchecked.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/images/warning.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/accept.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/additional-methods.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/additional-methods.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/additional.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/ajax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/ajaxSubmit-integration-demo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/alphanumeric.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/requirejs/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/aria.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/bankaccountNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/bankorgiroaccountNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/bic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/captcha.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/cifES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/css/cmxform.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/css/cmxformTemplate.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/css/core.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/cpfBR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/creditcard.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/additional/creditcard.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/creditcardtypes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/currency.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/custom-messages-data-demo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/custom-methods-demo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/dateFA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/dateITA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/dateNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/dynamic-totals.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/tinymce/themes/simple/editor_template.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/tinymce/themes/simple/langs/en.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/error-placement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/errorcontainer-demo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/errors-within-labels.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/extension.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/file_input.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/giroaccountNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/iban.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/images/image.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/image_req.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/bootstrap/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/cinema/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/login/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/milk/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/multipart/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/requirejs/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/semantic-ui/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/tinymce/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/tinymce4/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/code1/index1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/integer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/ipv4.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/ipv6.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery-1.11.1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery-1.7.2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery-1.8.3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery-1.9.1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery.form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/jquery.maskedinput.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery.mockjax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery.simulate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/jquery.validate.addMethods.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/jquery.validate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/jquery.validate.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/jquerymobile.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/lettersonly.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/letterswithbasicpunc.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/messages.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ar.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_bg.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_bn_BD.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_bn_BD.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_bn_BD.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ca.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_cs.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_da.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_de.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_el.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_el.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_el.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_es.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_es_AR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_es_AR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_es_AR.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_es_PE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_es_PE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_es_PE.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_et.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_et.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_et.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_eu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_eu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_eu.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_fa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_fa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_fa.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_fi.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_fr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_ge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ge.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_gl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_gl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_gl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_he.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_he.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_he.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_hr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_hu.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_hy_AM.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_hy_AM.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_hy_AM.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_id.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_is.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_is.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_is.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_it.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ja.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_ja.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ja.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ka.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_ka.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ka.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_kk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_kk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_kk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ko.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_ko.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ko.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_lt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_lt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_lt.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_lv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_lv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_lv.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_mk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_mk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_mk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_my.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_my.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_my.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_nl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_no.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_no.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_no.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_pl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_pt_BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_pt_BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_pt_BR.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_pt_PT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_pt_PT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_pt_PT.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ro.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_ru.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_si.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_si.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_si.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_sl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_sr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sr_lat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_sr_lat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sr_lat.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_sv.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_th.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_th.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_th.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_tj.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_tj.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_tj.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_tr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_uk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_uk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_uk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_vi.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_zh.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_zh.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_zh.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_zh_TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/messages_zh_TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_zh_TW.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/methods.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/methods_de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_de.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_es_CL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/methods_es_CL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_es_CL.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/methods_fi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_fi.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/methods_nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_nl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_pt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/localization/methods_pt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/methods_pt.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/milk/milk.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/mktSignup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/mobileNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/mobileUK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/newsession.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/nieES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/nifES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/notEqualTo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/nowhitespace.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/pattern.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/phoneNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/phoneUK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/phoneUS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/phonesUK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/postalCodeCA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/postalcodeBR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/postalcodeIT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/postalcodeNL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/postcodeUK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/process.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/qunit/qunit.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/qunit/qunit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/radio-checkbox-select-demo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/rand.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/require.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/require_from_group.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/css/reset.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/rules.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/css/screen.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/login/screen.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/site-demos.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/skip_or_fill_minimum.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/statesUS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/step2.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/strippedminlength.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/captcha/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/multipart/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/marketo/stylesheet.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/test/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/themerollered.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/time.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/time12h.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/tinymce/tiny_mce.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/demo/tinymce/themes/simple/skins/default/ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/url2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/vinUS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/zipcodeUS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/src/additional/ziprange.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jQuery-Validation-Engine" afterPath="$PROJECT_DIR$/jQuery-Validation-Engine" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Validate/code1/index.html" afterPath="$PROJECT_DIR$/Validate/code1/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jQuery.iml" afterPath="$PROJECT_DIR$/.idea/jQuery.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/select2/Data sources/loading remote date _练习.html" afterPath="$PROJECT_DIR$/select2/Data sources/loading remote date _练习.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jQuery.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,127 +366,76 @@
     <favorites_list name="jQuery" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ueditor.config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UEditor/utf8-jsp/ueditor.config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="474" column="22" selection-start-line="474" selection-start-column="22" selection-end-line="474" selection-end-column="22" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dialogbase.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UEditor/utf8-jsp/themes/default/dialogbase.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/视频/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="01Single select boxes.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/select2/myTest/01Single select boxes.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="82" selection-start-line="5" selection-start-column="4" selection-end-line="7" selection-end-column="82" />
-              <folding>
-                <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fz01.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/select2/自己封装/fz01.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="43" selection-start-line="5" selection-start-column="4" selection-end-line="8" selection-end-column="43" />
-              <folding>
-                <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="select.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/select2/自己封装/select.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fz-select2.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/select2/自己封装/fz-select2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loading remote date.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/select2/Data sources/loading remote date.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-              <folding>
-                <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loading remote date _练习.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/select2/Data sources/loading remote date _练习.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35063437">
-              <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="emp.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/select2/自己封装/emp.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.15286624">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="index1.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Validate/code1/index1.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Validate/code1/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.38062283">
+                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="index1.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Validate/code1/index1.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.35560858">
+                  <caret line="70" column="54" selection-start-line="70" selection-start-column="54" selection-end-line="70" selection-end-column="54" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="jquery.validate.addMethods.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/jquery.validate.addMethods.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="47" column="40" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="40" />
+                  <folding>
+                    <element signature="e#0#58#0" expanded="false" />
+                    <element signature="e#1033#1239#0" expanded="false" />
+                    <element signature="e#1331#1684#0" expanded="false" />
+                    <element signature="e#1777#1934#0" expanded="false" />
+                    <element signature="e#2533#2845#0" expanded="false" />
+                    <element signature="e#2577#2817#0" expanded="false" />
+                    <element signature="e#2728#2816#0" expanded="false" />
+                    <element signature="e#2755#2805#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="SCSS File" />
         <option value="CSS File" />
-        <option value="Html5" />
-        <option value="JavaScript File" />
         <option value="tsconfig.json" />
         <option value="TypeScript File" />
         <option value="HTML File" />
+        <option value="Html5" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -165,7 +450,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/jQuery-File-Upload/我的basic01.html" />
         <option value="$PROJECT_DIR$/jQuery-File-Upload/我的basic.html" />
         <option value="$PROJECT_DIR$/jQuery-File-Upload/index.html" />
         <option value="$PROJECT_DIR$/form.js表单异步提交/01.html" />
@@ -213,6 +497,10 @@
         <option value="$PROJECT_DIR$/select2/自己封装/fz-select2.js" />
         <option value="$PROJECT_DIR$/select2/Data sources/loading remote date.html" />
         <option value="$PROJECT_DIR$/select2/Data sources/loading remote date _练习.html" />
+        <option value="$PROJECT_DIR$/Validate/jquery-validation-1.11.1/demo/index.html" />
+        <option value="$PROJECT_DIR$/Validate/code1/index.html" />
+        <option value="$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/jquery.validate.addMethods.js" />
+        <option value="$PROJECT_DIR$/Validate/code1/index1.html" />
       </list>
     </option>
   </component>
@@ -220,6 +508,9 @@
   <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -234,8 +525,14 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
+    <OptionsSetting value="true" id="添加" />
+    <OptionsSetting value="true" id="移除" />
+    <OptionsSetting value="true" id="签出" />
+    <OptionsSetting value="true" id="更新" />
+    <OptionsSetting value="true" id="状态" />
+    <OptionsSetting value="true" id="编辑" />
+    <ConfirmationsSetting value="0" id="添加" />
+    <ConfirmationsSetting value="0" id="移除" />
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="1" />
@@ -251,11 +548,10 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -274,10 +570,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Validate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Validate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery-validation-1.15.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Validate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery-validation-1.15.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -286,48 +635,86 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="130" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="241" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="137" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="271" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="136" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="270" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="929" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1064" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="130" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="259" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="137" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="265" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="136" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="265" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="929" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1057" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="FullScreen" value="false" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="editor.config.accepted" value="true" />
     <property name="js-jscs-nodeInterpreter" value="D:\dev\Node\node.exe" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path" value="D:\dev\Node\node" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\用户目录\我的文档\jQuery\Validate" />
+      <recent name="D:\用户目录\我的文档\jQuery\select2\Data sources" />
+      <recent name="G:\jQuery\视频" />
+      <recent name="G:\jQuery" />
+      <recent name="G:\jQuery\UEditor" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\jQuery\bootstrap-combobox" />
       <recent name="G:\jQuery\typeahead" />
       <recent name="G:\jQuery\typeahead\typeahead" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\用户目录\我的文档\jQuery\select2\Data sources" />
-      <recent name="G:\jQuery\视频" />
-      <recent name="G:\jQuery" />
-      <recent name="G:\jQuery\UEditor" />
-      <recent name="G:\jQuery\bootstrap-combobox" />
-    </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ChromiumRemoteDebugType" factoryName="Chromium Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JsTestDriver-test-runner" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <pass-parent-env-vars value="true" />
+      <force value="false" />
+      <verbose value="false" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -360,7 +747,20 @@
       <workItem from="1478870574365" duration="82000" />
       <workItem from="1478871609773" duration="22000" />
       <workItem from="1478871963308" duration="90000" />
-      <workItem from="1479299213079" duration="60000" />
+      <workItem from="1479299213079" duration="789000" />
+      <workItem from="1479300050962" duration="13000" />
+      <workItem from="1479300309655" duration="15000" />
+      <workItem from="1479300586108" duration="11000" />
+      <workItem from="1479300603890" duration="138000" />
+      <workItem from="1479300827492" duration="2000" />
+      <workItem from="1479300832729" duration="195000" />
+      <workItem from="1479310653272" duration="56000" />
+      <workItem from="1479310716314" duration="2000" />
+      <workItem from="1479745286868" duration="475000" />
+      <workItem from="1480130499686" duration="100000" />
+      <workItem from="1480130630154" duration="1204000" />
+      <workItem from="1480133041414" duration="181000" />
+      <workItem from="1480426723691" duration="38000" />
     </task>
     <task id="LOCAL-00001" summary="fileupload">
       <created>1467543011235</created>
@@ -374,40 +774,49 @@
       <option name="project" value="LOCAL" />
       <updated>1478003036727</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fileupload">
+      <created>1479299300124</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1479299300124</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14091000" />
+    <option name="totallyTimeSpent" value="19218000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829374" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16666667" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14925373" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17281349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16233766" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16666667" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -428,86 +837,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="fileupload" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/select2/自己封装/fz-select2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/select2/Data sources/loading remote date.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/select2/Data sources/loading remote date _练习.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/select2/自己封装/emp.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/typeahead/js/typeahead.bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/typeahead/00基础demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="19" selection-start-line="70" selection-start-column="8" selection-end-line="78" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/typeahead/typeahead/00基础demo仿ajax.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Multiple Select/multiple-select-master/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Multiple Select/multiple-select-master/multiple-select.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="14" selection-start-line="82" selection-start-column="14" selection-end-line="82" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Multiple Select/multiple-select-master/demos/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/typeahead/typeahead.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -722,9 +1061,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="474" column="22" selection-start-line="474" selection-start-column="22" selection-end-line="474" selection-end-column="22" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -739,7 +1075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -747,7 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -755,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -763,7 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -771,7 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -779,9 +1110,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="43" selection-start-line="5" selection-start-column="4" selection-end-line="8" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -789,9 +1117,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="82" selection-start-line="5" selection-start-column="4" selection-end-line="7" selection-end-column="82" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -799,16 +1124,99 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/select2/Data sources/loading remote date _练习.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35063437">
-          <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
+        <state vertical-scroll-proportion="-0.3448276">
+          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/jquery-validation-1.11.1/demo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.620689">
+          <caret line="116" column="21" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/code1/js/jquery.validate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22863741">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/jquery-validation-1.15.0/lib/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36830357">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/jquery.validate.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/jquery.validate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12276786">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/localization/messages_zh.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19642857">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/code1/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38062283">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/additional-methods.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/jquery-validation-1.15.0/dist/jquery.validate.addMethods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="40" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#58#0" expanded="false" />
+            <element signature="e#1033#1239#0" expanded="false" />
+            <element signature="e#1331#1684#0" expanded="false" />
+            <element signature="e#1777#1934#0" expanded="false" />
+            <element signature="e#2533#2845#0" expanded="false" />
+            <element signature="e#2577#2817#0" expanded="false" />
+            <element signature="e#2728#2816#0" expanded="false" />
+            <element signature="e#2755#2805#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validate/code1/index1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35560858">
+          <caret line="70" column="54" selection-start-line="70" selection-start-column="54" selection-end-line="70" selection-end-column="54" />
           <folding />
         </state>
       </provider>
