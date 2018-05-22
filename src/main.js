@@ -10,7 +10,7 @@ FastClick.attach(document.body)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
+window.vueVm = new Vue({
   router,
   render: h => h(App)
 }).$mount('#app-box')
