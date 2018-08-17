@@ -4,7 +4,8 @@
     <div class="box2"></div>
     <div class="box3"></div>
     <div class="box4"></div>
-    <div class="box5">text</div>
+    <div class="box5 example">text</div>
+    <a href="">hello</a>
   </div>
 </template>
 
@@ -39,4 +40,5 @@
     width: 750px;
     background-color: darkred;
   }
+
 </style>
