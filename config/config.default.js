@@ -17,6 +17,23 @@ module.exports = appInfo => {
         pageSize: 5,
         serverUrl: 'https://news.ycombinator.com/',
     };
+    // database
+    config.redis = {
+        client: {
+            host: process.env.EGG_REDIS_HOST || '127.0.0.1',
+            port: process.env.EGG_REDIS_PORT || 6380,
+            password: process.env.EGG_REDIS_PASSWORD || '',
+            db: process.env.EGG_REDIS_DB || '0',
+        },
+    };
+    config.mongoose = {
+        url: process.env.EGG_MONGODB_URL || 'mongodb://localhost:27018/egg_cnode',
+        options: {
+            server: { poolSize: 20 },
+        },
+    };
+    // 默认主题显示数量
+    config.list_topic_count = 20;
     // add your config here
     config.middleware = ['robot'];
     config.robot = {
