@@ -21,6 +21,7 @@ module.exports = app => {
         githubId: { type: String },
         githubUsername: { type: String },
         githubAccessToken: { type: String },
+        // 账户是否被屏蔽禁用
         is_block: { type: Boolean, default: false },
 
         score: { type: Number, default: 0 },

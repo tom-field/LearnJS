@@ -34,6 +34,10 @@ module.exports = appInfo => {
     };
     // 默认主题显示数量
     config.list_topic_count = 20;
+
+    // 站内搜索
+    config.search = 'local'; // 'google', 'baidu', 'local'
+
     // add your config here
     config.middleware = ['robot'];
     config.robot = {
