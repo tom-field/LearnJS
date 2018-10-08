@@ -27,6 +27,15 @@ class UserService extends Service {
     async getUsersByQuery(query,opt){
         return this.ctx.model.User.find(query, '', opt).exec();
     }
+
+    /**
+     * 获取关键词搜索到的用户数量
+     * @param query
+     * @returns {Promise.<Array|{index: number, input: string}>}
+     */
+    async getCountByQuery(query) {
+        return this.ctx.model.User.count(query).exec();
+    }
 }
 
 module.exports = UserService
