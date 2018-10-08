@@ -1,6 +1,30 @@
+const uuid = require('uuid');
+
 const Service = require('egg').Service;
 
 class UserService extends Service {
+    /**
+     * 新增用户
+     * @param name
+     * @param loginname
+     * @param pass
+     * @param email
+     * @param avatar_url
+     * @param active
+     * @returns {Promise.<void>}
+     */
+    async newAndSave(name, loginname, pass, email, avatar_url, active) {
+        const user = new this.ctx.model.User();
+        user.name = name;
+        user.loginname = loginname;
+        user.pass = pass;
+        user.email = email;
+        user.avatar = avatar_url;
+        user.active = active || false;
+        user.accessToken = uuid.v4();
+
+        return user.save();
+    }
     /*
    * 根据用户ID，查找用户
    * @param {String} id 用户ID

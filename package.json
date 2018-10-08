@@ -4,12 +4,14 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "egg": "^2.2.1",
     "egg-mongoose": "^3.1.0",
     "egg-scripts": "^2.5.0",
     "egg-view-nunjucks": "^2.2.0",
     "moment": "^2.22.2",
     "mongoose": "^5.3.0",
+    "uuid": "^3.3.2",
     "validator": "^10.8.0"
   },
   "devDependencies": {
