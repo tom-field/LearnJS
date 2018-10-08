@@ -46,6 +46,12 @@ module.exports = appInfo => {
         ]
     }
 
+    // 安全控制
+    config.security = {
+        csrf: false,
+        ctoken: false,
+    };
+
     return config;
 }
 ;
