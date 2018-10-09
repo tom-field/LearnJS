@@ -17,6 +17,11 @@ module.exports = appInfo => {
         pageSize: 5,
         serverUrl: 'https://news.ycombinator.com/',
     };
+
+    config.name = 'CNode技术社区';
+
+    config.host = 'http://cnodejs.org';
+
     // database
     config.redis = {
         client: {
@@ -29,7 +34,7 @@ module.exports = appInfo => {
     config.mongoose = {
         url: process.env.EGG_MONGODB_URL || 'mongodb://localhost:27018/egg_cnode',
         options: {
-            server: { poolSize: 20 },
+            server: {poolSize: 20},
         },
     };
     // 默认主题显示数量
@@ -43,13 +48,24 @@ module.exports = appInfo => {
     config.robot = {
         ua: [
             /Baiduspider/i,
-        ]
-    }
+        ],
+    };
 
     // 安全控制
     config.security = {
         csrf: false,
         ctoken: false,
+    };
+
+    // 邮箱配置
+    config.mailOptions = {
+        host: 'smtp.163.com',
+        port: 465,
+        auth: {
+            user: 'xuhui5018@163.com',
+            pass: 'wy294792',
+        },
+        ignoreTLS: true,
     };
 
     return config;

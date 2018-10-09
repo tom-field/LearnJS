@@ -63,6 +63,54 @@ class searchController extends Controller {
         ret.message = '用户注册成功';
         ctx.body = ret;
     }
+
+    /**
+     * 登录
+     * @return {Promise.<void>}
+     */
+    async signin() {
+        const {ctx, service, config} = this;
+
+        const ret = {
+            code: -1,
+            data: [],
+            message: '',
+        };
+
+        const loginname = validator.trim(ctx.request.body.loginname || '').toLowerCase();
+        const pass = validator.trim(ctx.request.body.pass || '');
+        const users = await service.user.getUsersByQuery({loginname});
+        console.log(users);
+        if (!users.length) {
+            ret.message = '用户不存在';
+            ctx.body = ret;
+            return;
+        }
+        if (ctx.helper.bcompare(pass, users[0].pass)) {
+            ret.code = 0;
+            ret.data = users[0];
+            ctx.session.userId = users[0]._id;
+            ctx.body = ret;
+        } else {
+            ret.message = '密码不正确';
+            ctx.body = ret;
+        }
+    }
+
+    /**
+     * 退出登录
+     * @return {Promise.<void>}
+     */
+    async signout() {
+        const {ctx} = this;
+        console.log(ctx.session);
+        ctx.session = null;
+        ctx.body = {
+            code: 0,
+            data: [],
+            message: '',
+        };
+    }
 }
 
 module.exports = searchController;

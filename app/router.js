@@ -6,7 +6,9 @@
 module.exports = app => {
     const {router, controller} = app;
     router.get('/', controller.home.index);
-    router.post('/sign/signup', controller.sign.signup);                   //注册
+    router.post('/sign/signup', controller.sign.signup);                   // 注册
+    router.post('/sign/signin', controller.sign.signin);                   // 登录
+    router.post('/sign/signout', controller.sign.signout);                 // 退出
     router.get('/news', controller.news.list);
     router.get('/user/:name', controller.user.index);                      // 获取用户信息
     router.get('/user/:name/topics', controller.user.listTopics);          // 用户发布的所有话题页
