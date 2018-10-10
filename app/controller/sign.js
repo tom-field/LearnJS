@@ -1,4 +1,5 @@
 const validator = require('validator');
+const utility = require('utility');
 
 const Controller = require('egg').Controller;
 
@@ -57,8 +58,7 @@ class searchController extends Controller {
         // TODO 研究makeGravatar
         const avatarUrl = '';
         await service.user.newAndSave(loginname, loginname, passhash, email, avatarUrl, false);
-        // TODO 发送激活邮件
-
+        await service.mail.sendActiveMail(email, utility.md5(email + passhash + config.session_secrect), loginname);
         ret.code = 0;
         ret.message = '用户注册成功';
         ctx.body = ret;
@@ -68,6 +68,7 @@ class searchController extends Controller {
      * 登录
      * @return {Promise.<void>}
      */
+    // TODO 登录判断用户有没有激活
     async signin() {
         const {ctx, service, config} = this;
 
@@ -110,6 +111,86 @@ class searchController extends Controller {
             data: [],
             message: '',
         };
+    }
+
+    /**
+     * 账户激活
+     * @returns {Promise.<void>}
+     */
+    async activeAccount() {
+        const { ctx, service, config } = this;
+
+        let ret = {
+            code: -1,
+            data: [],
+            message: '',
+        }
+
+        const key = validator.trim(ctx.query.key || '');
+        const name = validator.trim(ctx.query.name || '');
+
+        const user = await service.user.getUserByLoginName(name);
+        if(!user){
+            ret.message = '用户不存在';
+            ctx.body = ret;
+            return;
+        }
+        const passhash = user.pass;
+        if (!user || utility.md5(user.email + passhash + config.session_secret) !== key) {
+            ret.message = '信息有误，帐号无法被激活。';
+            ctx.body = ret;
+            return;
+        }
+        if(user.active){
+            ret.message = '帐号已经是激活状态';
+            ctx.body = ret;
+            return;
+        }
+        user.active = true;
+        await user.save();
+        ret.code = 0;
+        ret.message = '帐号已被激活，请登录';
+        ctx.body = ret;
+    }
+
+    /**
+     * 更新密码
+     * @returns {Promise.<void>}
+     */
+    async updatePass(){
+        const { ctx, service } = this;
+
+        let ret = {
+            code: -1,
+            data: [],
+            message: '',
+        }
+
+        const psw = validator.trim(ctx.request.body.psw) || '';
+        const repsw = validator.trim(ctx.request.body.repsw) || '';
+        const userId = validator.trim(ctx.request.body.userId || '');
+
+        if(psw != repsw){
+            ret.message = '两次输入的密码不一致';
+            ctx.body = ret;
+            return;
+        }
+
+        const user = await service.user.getUserById(userId);
+        if(!user){
+            ret.message = '用户不存在';
+            ctx.body = ret;
+            return;
+        }
+        const passhash = ctx.helper.bhash(psw);
+        user.pass = passhash;
+        user.retrieve_key = null;
+        user.retrieve_time = null;
+        await user.save();
+
+        ret.code = 0;
+        ret.message = '密码更新成功';
+        ctx.body = ret;
     }
 }
 

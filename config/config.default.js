@@ -22,6 +22,8 @@ module.exports = appInfo => {
 
     config.host = 'http://cnodejs.org';
 
+    config.session_secrect = 'node_club_secret';
+
     // database
     config.redis = {
         client: {
