@@ -59,6 +59,13 @@ module.exports = appInfo => {
         ctoken: false,
     };
 
+    // 默认返回形式
+    config.ret = {
+        code: -1,
+        data: [],
+        message: '',
+    }
+
     // 邮箱配置
     config.mailOptions = {
         host: 'smtp.163.com',

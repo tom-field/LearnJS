@@ -1,6 +1,32 @@
 const Service = require('egg').Service;
 
 class TopicService extends Service {
+
+    async getTopicById(id){
+        const topic = await this.ctx.model.Topic.findOne({ _id: id }).exec();
+        if(!topic){
+            return {
+                topic: null,
+                author: null,
+                last_reply: null,
+            };
+        }
+
+        const author = await this.service.user.getUserById(topic.author_id);
+
+        let last_reply = null;
+        if (topic.last_reply) {
+            last_reply = await this.service.reply.getReplyById(topic.last_reply);
+        }
+
+        return {
+            topic,
+            author,
+            last_reply,
+        };
+
+    }
+
     async getTopicsByQuery(query, opt) {
         query.deleted = false;
         const topics = await this.ctx.model.Topic.find(query, {}, opt).exec();
@@ -49,8 +75,20 @@ class TopicService extends Service {
         return [topic, author, replies];
     }
 
-    async getCountByQuery(query){
+    async getCountByQuery(query) {
         return this.ctx.model.Topic.count(query).exec();
+    }
+
+    async updateLastReply(topicId, replyId) {
+        const update = {
+            last_reply: replyId,
+            last_reply_at: new Date(),
+            $inc: {
+                reply_count: 1,
+            },
+        }
+        const opts = {new: true};
+        return this.ctx.model.Topic.findByIdAndUpdate(topicId,update,opts).exec();
     }
 }
 

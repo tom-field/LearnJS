@@ -60,6 +60,12 @@ class UserService extends Service {
     async getCountByQuery(query) {
         return this.ctx.model.User.count(query).exec();
     }
+
+    async incrementScoreAndReplyCount(id,score,replyCount){
+        const query = {_id:id};
+        const update = {$inc:{score,reply_count:replyCount}};
+        return this.ctx.model.User.findByIdAndUpdate(query,update).exec();
+    }
 }
 
 module.exports = UserService

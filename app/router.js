@@ -18,5 +18,6 @@ module.exports = app => {
     router.get('/users/top100', controller.user.top100);                   // 显示积分前一百用户页
     router.get('/list', controller.topic.list);                            // 获取话题列表
     router.get('/list/:tid', controller.topic.index);                      // 显示某个话题
+    router.post('/:topic_id/reply',controller.reply.add);                  // 添加回复
     router.get('/search', controller.search.index);                        // 搜索
 };
