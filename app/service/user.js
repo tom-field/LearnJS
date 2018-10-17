@@ -39,6 +39,19 @@ class UserService extends Service {
     }
 
     /*
+   * 根据用户名列表查找用户列表
+   * @param {Array} names 用户名列表
+   * @return {Promise[users]} 承载用户列表的 Promise 对象
+   */
+    async getUsersByNames(names) {
+        if (names.length === 0) {
+            return [];
+        }
+        const query = { loginname: { $in: names } };
+        return this.ctx.model.User.find(query).exec();
+    }
+
+    /*
    * 根据登录名查找用户
    * @param {String} loginName 登录名
    * @return {Promise[user]} 承载用户的 Promise 对象

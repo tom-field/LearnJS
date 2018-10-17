@@ -16,6 +16,7 @@ module.exports = app => {
     router.get('/user/:name/topics', controller.user.listTopics);          // 用户发布的所有话题页
     router.get('/user/:name/replies', controller.user.listReplies);        // 用户参与的所有回复页
     router.get('/users/top100', controller.user.top100);                   // 显示积分前一百用户页
+    router.post('/topic/create',controller.topic.publish);
     router.get('/list', controller.topic.list);                            // 获取话题列表
     router.get('/list/:tid', controller.topic.index);                      // 显示某个话题
     router.post('/:topic_id/reply',controller.reply.add);                  // 添加回复

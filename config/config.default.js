@@ -22,6 +22,9 @@ module.exports = appInfo => {
 
     config.host = 'http://cnodejs.org';
 
+    // 版块
+    config.tabs = [[ 'share', '分享' ], [ 'ask', '问答' ], [ 'job', '招聘' ]];
+
     config.session_secrect = 'node_club_secret';
 
     // database

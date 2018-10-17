@@ -2,6 +2,16 @@ const Service = require('egg').Service;
 
 class TopicService extends Service {
 
+    newAndSave(title, content, tab, authorId) {
+        const topic = new this.ctx.model.Topic();
+        topic.title = title;
+        topic.content = content;
+        topic.tab = tab;
+        topic.author_id = authorId;
+
+        return topic.save();
+    }
+
     async getTopicById(id){
         const topic = await this.ctx.model.Topic.findOne({ _id: id }).exec();
         if(!topic){
