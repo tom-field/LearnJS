@@ -11,11 +11,7 @@ class searchController extends Controller {
     async signup() {
         const {ctx, service, config} = this;
 
-        let ret = {
-            code: -1,
-            data: [],
-            message: '',
-        }
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
         const loginname = validator.trim(ctx.request.body.loginname || '').toLowerCase();
         const email = validator.trim(ctx.request.body.email || '').toLowerCase();
@@ -120,11 +116,7 @@ class searchController extends Controller {
     async activeAccount() {
         const { ctx, service, config } = this;
 
-        let ret = {
-            code: -1,
-            data: [],
-            message: '',
-        }
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
         const key = validator.trim(ctx.query.key || '');
         const name = validator.trim(ctx.query.name || '');
@@ -160,11 +152,7 @@ class searchController extends Controller {
     async updatePass(){
         const { ctx, service } = this;
 
-        let ret = {
-            code: -1,
-            data: [],
-            message: '',
-        }
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
         const psw = validator.trim(ctx.request.body.psw) || '';
         const repsw = validator.trim(ctx.request.body.repsw) || '';

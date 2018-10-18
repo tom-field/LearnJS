@@ -3,12 +3,8 @@ const Controller = require('egg').Controller;
 
 class topicController extends Controller {
     async index() {
-        let ret = {
-            code: -1,
-            data: [],
-            message: '',
-        }
-        const {ctx, service} = this;
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
         const topic_id = ctx.params.tid;
         const currentUser = ctx.user;
@@ -22,7 +18,7 @@ class topicController extends Controller {
 
         const [topic, author, replies] = await service.topic.getFullTopic(topic_id);
 
-        this.ctx.body = {
+        ctx.body = {
             topic_id: topic_id,
             currentUser: currentUser,
             topic: topic,
@@ -67,16 +63,16 @@ class topicController extends Controller {
 
     async publish() {
         const {ctx, config, service} = this;
-        let ret = config.ret;
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const { tabs } = config;
+        const {tabs} = config;
         const request = ctx.request.body;
 
         // 得到所有的 tab, e.g. ['ask', 'share', ..]
         const allTabs = tabs.map(item => item[0]);
 
         // TODO 完整验证 暂时只验证是否为空
-        if(!request.title||!request.content||!request.tab){
+        if (!request.title || !request.content || !request.tab) {
             ret.message = '请求参数有误';
             ctx.body = ret;
             return;
@@ -84,7 +80,7 @@ class topicController extends Controller {
 
         // 储存新主题帖
         const user_id = ctx.session.userId; //TODO 多种类型帐号如何获取
-        const  topic = await  service.topic.newAndSave(
+        const topic = await  service.topic.newAndSave(
             request.title,
             request.content,
             request.tab,

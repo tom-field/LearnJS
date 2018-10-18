@@ -72,6 +72,17 @@ class ReplyService extends Service {
         )
     }
 
+    /*
+   * 根据topicId查询到最新的一条未删除回复
+   * @param topicId 主题ID
+   * @return {Promise[reply]} 承载 replay 的 Promise 对象
+   */
+    getLastReplyByTopId(topicId) {
+        const query = { topic_id: topicId, deleted: false };
+        const opts = { sort: { create_at: -1 }, limit: 1 };
+        return this.ctx.model.Reply.findOne(query, '_id', opts).exec();
+    }
+
     /**
      * 根据作者id获取回复文章列表
      * @param authorId

@@ -2,12 +2,8 @@ const Controller = require('egg').Controller;
 
 class userController extends Controller {
     async index() {
-        let ret = {
-            code: -1,
-            data: [],
-            message: '',
-        }
         const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
         const user_name = ctx.params.name;
         const user = await service.user.getUserByLoginName(user_name);
@@ -38,12 +34,8 @@ class userController extends Controller {
      * @returns {Promise.<void>}
      */
     async top100() {
-        let ret = {
-            code: -1,
-            data: [],
-            message: '',
-        }
         const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
         const opt = {limit: 100, sort: '-score'};
         ret.data = await service.user.getUsersByQuery({is_block: false}, opt);
         ret.code = 0;
@@ -58,11 +50,7 @@ class userController extends Controller {
     async listTopics() {
         const {ctx, service, config} = this;
 
-        let ret = {
-            code: -1,
-            data: [],
-            message: '',
-        }
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
         const user_name = ctx.params.name;
         const pageNo = Number(ctx.query.pageNo) || 1;
@@ -97,11 +85,7 @@ class userController extends Controller {
     async listReplies(){
         const {ctx, service, config} = this;
 
-        let ret = {
-            code: -1,
-            data: [],
-            message: '',
-        }
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
         const user_name = ctx.params.name;
         const pageNo = Number(ctx.query.pageNo) || 1;

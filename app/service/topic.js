@@ -100,6 +100,28 @@ class TopicService extends Service {
         const opts = {new: true};
         return this.ctx.model.Topic.findByIdAndUpdate(topicId,update,opts).exec();
     }
+
+    /*
+   * 将当前主题的回复计数减1，并且更新最后回复的用户，删除回复时用到
+   * @param {String} id 主题ID
+   */
+    async reduceCount(id) {
+        const update = { $inc: { reply_count: -1 } };
+        const reply = await this.service.reply.getLastReplyByTopId(id);
+        if (reply) {
+            update.last_reply = reply._id;
+        } else {
+            update.last_reply = null;
+        }
+        const opts = { new: true };
+
+        const topic = await this.ctx.model.Topic.findByIdAndUpdate(id, update, opts).exec();
+        if (!topic) {
+            throw new Error('该主题不存在');
+        }
+
+        return topic;
+    }
 }
 
 module.exports = TopicService;

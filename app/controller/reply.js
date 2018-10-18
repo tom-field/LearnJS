@@ -8,12 +8,12 @@ class ReplyController extends Controller {
      */
     async add() {
         const {ctx, config, service} = this;
-        let ret = config.ret;
+        let ret = JSON.parse(JSON.stringify(config.ret));
 
         const content = ctx.request.body.r_content;
         const reply_id = ctx.request.body.reply_id;
 
-        if(content.trim() == '') {
+        if (content.trim() == '') {
             ret.message = '回复内容不能为空!';
             return;
         }
@@ -22,12 +22,12 @@ class ReplyController extends Controller {
         let topic = await service.topic.getTopicById(topic_id);
         topic = topic.topic;
 
-        if(!topic){
+        if (!topic) {
             ret.message = '这个主题不存在';
             return;
         }
 
-        if(topic.lock){
+        if (topic.lock) {
             ret.message = '该主题已锁定';
             return;
         }
@@ -41,15 +41,52 @@ class ReplyController extends Controller {
 
         await Promise.all([
             service.user.incrementScoreAndReplyCount(user_id, 5, 1),
-            service.topic.updateLastReply(topic_id, reply._id),
+            service.topic.updateLastReply(topic_id, reply.id),
         ])
 
-        // TODO 向回复中提及的用户发消息
+        // 通知@到的用户
+        await service.at.sendMessageToMentionUsers(newContent, topic_id, user_id, reply_id);
+        // 如果是非作者回复,提示作者
+        if (topic.author_id.toString() !== user_id) {
+            await service.message.sendReplyMessage(user_id, topic.author_id, topic_id, reply.id);
+        }
 
         ret.code = 0;
         ret.message = '发布成功';
         this.ctx.body = ret;
 
+    }
+
+    /*
+    * 删除回复
+    * */
+    async delete() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const reply_id = ctx.params.reply_id;
+        const reply = await service.reply.getReplyById(reply_id);
+        if (!reply) {
+            ret.message = '没有此条回复,或者此条回复已被删除';
+            ctx.body = ret;
+            return;
+        }
+        // TODO user中间件 判断是否是回复者点击的删除,判断是否管理员
+        if (reply.author_id.toString() === ctx.session.userId) {
+            reply.deleted = true;
+            reply.save();
+            ret.code = 0;
+            ctx.body = ret;
+            reply.author.score -= 5;
+            reply.author.reply_count -= 1;
+            reply.author.save();
+        }else {
+            ret.message = '没有权限';
+            ctx.body = ret;
+            return;
+        }
+        await service.topic.reduceCount(reply.topic_id);
+        return;
     }
 }
 
