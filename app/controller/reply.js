@@ -58,6 +58,77 @@ class ReplyController extends Controller {
     }
 
     /*
+    * 编辑回复
+    * */
+    async edit() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const reply_id = ctx.params.reply_id;
+        const user_id = ctx.session.userId;
+        const content = ctx.request.body.r_content;
+        const reply = await service.reply.getReplyById(reply_id);
+
+        if (!reply) {
+            ret.message = '此回复不存在或已被删除。';
+            return;
+        }
+        if (user_id === reply.author_id.toString()) {
+            if (content.trim() !== '') {
+                reply.content = content;
+                reply.update_at = new Date();
+                await reply.save();
+                ret.code = 0;
+                ret.message = '回复更新成功';
+                ctx.body = ret;
+                return;
+            }
+            ret.message = '回复的字数太少。';
+            ctx.body = ret;
+            return;
+        }
+        ret.message = '对不起，你不能编辑此回复';
+        ctx.body = ret;
+        return;
+    }
+
+    /*
+    * 回复点赞
+    * */
+    async up() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+        const reply_id = ctx.params.reply_id;
+        const user_id = ctx.session.userId;
+        const reply = await service.reply.getReplyById(reply_id);
+
+        if (!reply) {
+            ret.message = '此回复不存在或已被删除。';
+            return;
+        }
+        if(user_id == reply.author_id.toString()){
+            ret.message = '呵呵，不能帮自己点赞。';
+            ctx.body = ret;
+            return;
+        }
+        let action;
+        reply.ups = reply.ups || [];
+        const upIndex = reply.ups.indexOf(user_id);
+        if(upIndex === -1){
+            reply.ups.push(user_id);
+            action = 'up';
+        }else {
+            reply.ups.splice(upIndex,1);
+            action = 'down';
+        }
+        await reply.save();
+        ret.code = 0;
+        ret.data = action;
+        ctx.body = ret;
+    }
+
+
+    /*
     * 删除回复
     * */
     async delete() {
@@ -80,7 +151,7 @@ class ReplyController extends Controller {
             reply.author.score -= 5;
             reply.author.reply_count -= 1;
             reply.author.save();
-        }else {
+        } else {
             ret.message = '没有权限';
             ctx.body = ret;
             return;

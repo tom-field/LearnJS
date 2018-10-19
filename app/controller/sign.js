@@ -150,7 +150,7 @@ class searchController extends Controller {
      * @returns {Promise.<void>}
      */
     async updatePass(){
-        const { ctx, service } = this;
+        const { ctx, config, service } = this;
 
         let ret = JSON.parse(JSON.stringify(config.ret));
 

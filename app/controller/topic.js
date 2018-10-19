@@ -1,4 +1,5 @@
 const moment = require('moment');
+
 const Controller = require('egg').Controller;
 
 class topicController extends Controller {

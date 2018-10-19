@@ -17,10 +17,14 @@ module.exports = app => {
     router.get('/user/:name/replies', controller.user.listReplies);        // 用户参与的所有回复页
     router.get('/users/top100', controller.user.top100);                   // 显示积分前一百用户页
     router.post('/topic/create',controller.topic.publish);                 // 发布话题
+    router.post('/file/upload',controller.file.upload);                   // 单个文件上传
+    router.post('/file/uploads',controller.file.uploads);                 // 多个文件上传
     router.get('/list', controller.topic.list);                            // 获取话题列表
     router.get('/list/:tid', controller.topic.index);                      // 显示某个话题
     router.get('/my/message', controller.message.index);                   // 显示消息
     router.post('/:topic_id/reply',controller.reply.add);                  // 添加回复
-    router.get('/reply/:reply_id/delete',controller.reply.delete);          // 删除回复
+    router.post('/reply/:reply_id/edit',controller.reply.edit);            // 编辑回复
+    router.post('/reply/:reply_id/up', controller.reply.up);                          // 回复点赞
+    router.get('/reply/:reply_id/delete',controller.reply.delete);         // 删除回复
     router.get('/search', controller.search.index);                        // 搜索
 };

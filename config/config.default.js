@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 
 module.exports = appInfo => {
     const config = exports = {};
@@ -42,6 +43,11 @@ module.exports = appInfo => {
             server: {poolSize: 20},
         },
     };
+    // 上传
+    config.upload = {
+        path: path.join(__dirname,'../app/public/upload'),
+        url: '/public/upload/',
+    }
     // 默认主题显示数量
     config.list_topic_count = 20;
 
