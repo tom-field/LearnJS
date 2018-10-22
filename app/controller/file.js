@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const uuidv1 = require('uuid/v1');
+const moment = require('moment');
 const awaitWriteStream = require('await-stream-ready').write;
 const sendToWormhole = require('stream-wormhole');
 const formidable = require('formidable');
@@ -18,30 +19,27 @@ class fileController extends Controller {
         const stream = await ctx.getFileStream();
         const filename = uid + path.extname(stream.filename).toLowerCase();
 
-        const target = path.join(config.upload.path, filename);
+        //生成文件夹
+        const dirname = moment(Date.now()).format('YYYYMMDD');
+        if(!fs.existsSync(dirname)){
+            fs.mkdirSync(path.join(config.upload.path,dirname))
+        }
+        //生成写入路径
+        const target = path.join(config.upload.path,dirname,filename);
+        //const resizeTarget = path.join(config.upload.path,"resize",dirname,filename);
+        //写入流
         const writeStream = fs.createWriteStream(target);
         try {
             await awaitWriteStream(stream.pipe(writeStream));
-            console.log(1);
-            //图片处理
-            /*if (stream.mimeType.indexOf("image/") !== -1) {
-                gm(target).size((err,size) => {
-                    if(err){
-                        console.log(err);
-                    }
-                    console.log(size.width);
-                    console.log(size.height);
-                })
-            }*/
-            gm(target).size((err,size) => {
+            //TODO linux可以 windows需要安裝軟件吧 影响windows开发暂注释
+            /*gm(target).resize(resizeTarget,(err=>{
                 if(err){
-                    console.log(err);
+                    throw err;
                 }
-                console.log(size);
-            })
+            }))*/
             ctx.body = {
                 success: true,
-                url: config.upload.url + filename,
+                url: config.upload.url + '/dirname' + filename,
             };
         } catch (err) {
             // 将上传的文件流消费掉，避免浏览器卡死
