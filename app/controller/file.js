@@ -1,5 +1,6 @@
-const fs = require('fs');
+const fs = require('mz/fs');
 const path = require('path');
+const pump = require('mz-modules/pump');
 const uuidv1 = require('uuid/v1');
 const moment = require('moment');
 const awaitWriteStream = require('await-stream-ready').write;
@@ -12,20 +13,24 @@ const util = require('util');
 const Controller = require('egg').Controller;
 
 class fileController extends Controller {
-    //本地上传单文件
+    //本地上传单文件和其他字段
     async upload() {
-        const {ctx, config, service} = this;
+        const {ctx, config} = this;
         const uid = uuidv1();
         const stream = await ctx.getFileStream();
         const filename = uid + path.extname(stream.filename).toLowerCase();
 
-        //生成文件夹
+        //生成文件夹 ES6 Node
         const dirname = moment(Date.now()).format('YYYYMMDD');
-        if(!fs.existsSync(dirname)){
-            fs.mkdirSync(path.join(config.upload.path,dirname))
+        const dirpath = path.join(config.upload.path, dirname);
+        /*if (!fs.existsSync(dirpath)) {
+            fs.mkdirSync(path.join(config.upload.path, dirname))
+        }*/
+        if (!await fs.exists(dirpath)) {
+            await fs.mkdir(path.join(config.upload.path, dirname))
         }
         //生成写入路径
-        const target = path.join(config.upload.path,dirname,filename);
+        const target = path.join(dirpath, filename);
         //const resizeTarget = path.join(config.upload.path,"resize",dirname,filename);
         //写入流
         const writeStream = fs.createWriteStream(target);
@@ -40,6 +45,7 @@ class fileController extends Controller {
             ctx.body = {
                 success: true,
                 url: config.upload.url + '/dirname' + filename,
+                fields: stream.fields,
             };
         } catch (err) {
             // 将上传的文件流消费掉，避免浏览器卡死
@@ -48,11 +54,44 @@ class fileController extends Controller {
         }
     }
 
-    //TODO 本地上传文件可以加其他字段
-    async uploads(){
-        const { ctx, config, service } = this;
+    //上传多个文件带其他字段
+    async uploads() {
+        const {ctx, config, logger} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
-        const parts = ctx.multipart() // 返回的是Promise
+        //TODO 按照官方文档获取不到文件 config.multipart配置了
+        const files = ctx.request.files;
+        logger.warn('files: %j', files);
+        //生成文件夹
+        const dirname = moment(Date.now()).format('YYYYMMDD');
+        const dirpath = path.join(config.upload.path, dirname);
+        if (!await fs.exists(dirpath)) {
+            await fs.mkdir(path.join(config.upload.path, dirname))
+        }
+        //遍历文件
+        for (const file of files) {
+            const uid = uuidv1();
+            const filename = uid + path.extname(file.filename).toLowerCase();
+            const targetPath = path.join(dirpath, filename);
+            const source = fs.createReadStream(file.filepath);
+            const target = fs.createWriteStream(targetPath);
+            await pump(source, target);
+            logger.warn('save %s to %s', file.filepath, targetPath);
+            //delete tmp file
+            await fs.unlink(file.filepath);
+        }
+
+        const fields = [];
+        for (const key in ctx.request.body) {
+            fields.push({
+                key: key,
+                value: ctx.request.body[key],
+            });
+        }
+
+        ret.code = 0;
+        ret.data = fields;
+        ctx.body = ret;
+        /*const parts = ctx.multipart() // 返回的是Promise
         const stream = await ctx.getFileStream()
         let part;
         while ((part = await parts()) !== null) {
@@ -79,13 +118,13 @@ class fileController extends Controller {
                     ret.code = 0;
                     ret.data = config.upload.url + filename;
                     ctx.body = ret;
-                } catch(err) {
+                } catch (err) {
                     // 将上传的文件流消费掉，避免浏览器卡死
                     await sendToWormhole(stream)
                     throw err
                 }
             }
-        }
+        }*/
     }
 
 }

@@ -47,7 +47,10 @@ module.exports = appInfo => {
     config.upload = {
         path: path.join(__dirname,'../app/public/upload'),
         url: '/public/upload/',
-    }
+    };
+    config.multipart = {
+        mode: 'file',
+    };
     // 默认主题显示数量
     config.list_topic_count = 20;
 
