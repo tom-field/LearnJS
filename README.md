@@ -31,3 +31,5 @@ $ npm stop
 
 
 [egg]: https://eggjs.org# egg_example_test
+
+备注: npm run start 添加--ignore-stderr 忽略fs-promise问题
