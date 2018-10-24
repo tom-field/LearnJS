@@ -39,9 +39,9 @@ module.exports = appInfo => {
     };
     config.mongoose = {
         url: process.env.EGG_MONGODB_URL || 'mongodb://localhost:27018/egg_cnode',
-        options: {
-            server: {poolSize: 20},
-        },
+        poolSize: 20,
+        reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+        reconnectInterval: 500, // Reconnect every 500ms
     };
     // 上传
     config.upload = {

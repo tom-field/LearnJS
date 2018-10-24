@@ -5,8 +5,8 @@ var sftp = require('gulp-sftp')
 const localConfig = {
     host: '192.168.20.202',
     port: 22,
-    user: 'xuhui',
-    pass: 'xh',
+    user: 'root',
+    pass: 'root',
     remotePath: '/home/project/egg_example_test/app'
 }
 

@@ -5,6 +5,7 @@
  */
 module.exports = app => {
     const {router, controller} = app;
+    router.prefix('/cnode');
     router.get('/', controller.home.index);
     router.get('/news', controller.news.list);
     router.post('/sign/signup', controller.sign.signup);                   // 注册
