@@ -2,16 +2,16 @@ module.exports = {
     cluster: {
         listen: {
             port: 8001,
-            hostname: '192.168.20.202',
+            hostname: '127.0.0.1',
         }
     },
     redis: {
         client: {
             host: '127.0.0.1',
-            port: 6379,
+            port: 6380,
         },
     },
     mongoose: {
-        url: 'mongodb://localhost:27017/egg_cnode',
+        url: 'mongodb://localhost:27018/egg_cnode',
     },
 };

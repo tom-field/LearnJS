@@ -1,2 +1,2 @@
 #!/bin/bash
-EGG_SERVER_ENV=local npm run start
+EGG_SERVER_ENV=test npm run start
