@@ -10,15 +10,16 @@ class ReplyController extends Controller {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const content = ctx.request.body.r_content;
-        const reply_id = ctx.request.body.reply_id;
+        const request = ctx.request.body;
+        const topic_id = request.topic_id;
+        const reply_id = request.reply_id;
+        const content = request.content;
 
         if (content.trim() == '') {
             ret.message = '回复内容不能为空!';
             return;
         }
 
-        const topic_id = ctx.params.topic_id;
         let topic = await service.topic.getTopicById(topic_id);
         topic = topic.topic;
 
@@ -64,9 +65,10 @@ class ReplyController extends Controller {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const reply_id = ctx.params.reply_id;
         const user_id = ctx.session.userId;
-        const content = ctx.request.body.r_content;
+        const request = ctx.request.body;
+        const reply_id = request.reply_id;
+        const content = request.content;
         const reply = await service.reply.getReplyById(reply_id);
 
         if (!reply) {
@@ -98,7 +100,7 @@ class ReplyController extends Controller {
     async up() {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
-        const reply_id = ctx.params.reply_id;
+        const reply_id = ctx.request.body.reply_id;
         const user_id = ctx.session.userId;
         const reply = await service.reply.getReplyById(reply_id);
 
@@ -135,7 +137,7 @@ class ReplyController extends Controller {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const reply_id = ctx.params.reply_id;
+        const reply_id = ctx.request.body.reply_id;
         const reply = await service.reply.getReplyById(reply_id);
         if (!reply) {
             ret.message = '没有此条回复,或者此条回复已被删除';

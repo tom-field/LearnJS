@@ -3,35 +3,13 @@ const moment = require('moment');
 const Controller = require('egg').Controller;
 
 class topicController extends Controller {
-    async index() {
-        const {ctx, config, service} = this;
+    async list() {
+        const {ctx, service, config} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const topic_id = ctx.params.tid;
-        const currentUser = ctx.user;
-
-        if (topic_id.length != 24) {
-            ctx.status = 404;
-            ret.message = "此话题不存在或已被删除";
-            ctx.body = ret;
-            return;
-        }
-
-        const [topic, author, replies] = await service.topic.getFullTopic(topic_id);
-
-        ctx.body = {
-            topic_id: topic_id,
-            currentUser: currentUser,
-            topic: topic,
-            author: author,
-            replies: replies,
-        }
-    }
-
-    async list() {
-        let page = parseInt(this.ctx.query.page, 10) || 1;
+        let page = parseInt(ctx.query.page, 10) || 1;
         page = page > 0 ? page : 1;
-        const tab = this.ctx.query.tab || 'all';
+        const tab = ctx.query.tab || 'all';
 
         //取主题
         const query = {};
@@ -56,10 +34,38 @@ class topicController extends Controller {
             sort: '-top -last_reply_at',
         };
         const topics = await this.service.topic.getTopicsByQuery(query, options);
-        this.ctx.body = {
-            query: query,
-            topics: topics
-        };
+
+        ret.code = 0;
+        ret.data = topics;
+        ctx.body = ret;
+    }
+
+    async detail() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const topic_id = ctx.request.body.topic_id;
+        const currentUser = ctx.user;
+
+        if (topic_id.length != 24) {
+            ctx.status = 404;
+            ret.message = "此话题不存在或已被删除";
+            ctx.body = ret;
+            return;
+        }
+
+        const [topic, author, replies] = await service.topic.getFullTopic(topic_id);
+
+        ret.code = 0;
+        ret.data = {
+            topic_id,
+            currentUser,
+            topic,
+            author,
+            replies,
+        }
+
+        ctx.body = ret;
     }
 
     async publish() {
@@ -79,7 +85,7 @@ class topicController extends Controller {
             return;
         }
 
-        // 储存新主题帖
+        // 储存新主题帖 TODO 判断用户是否登录得中间件
         const user_id = ctx.session.userId; //TODO 多种类型帐号如何获取
         const topic = await  service.topic.newAndSave(
             request.title,

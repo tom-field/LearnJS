@@ -4,13 +4,13 @@ class ReplyService extends Service {
     /*
     * 新增回复
     * */
-    async newAndSave(content,topicId,authorId,replyId = null){
+    async newAndSave(content, topicId, authorId, replyId = null) {
         const reply = new this.ctx.model.Reply();
         reply.content = content;
         reply.topic_id = topicId;
         reply.author_id = authorId;
 
-        if(replyId){
+        if (replyId) {
             reply.reply_id = replyId;
         }
 
@@ -18,6 +18,7 @@ class ReplyService extends Service {
 
         return reply;
     }
+
     /*
    * 根据回复ID，获取回复
    * @param {String} id 回复ID
@@ -28,7 +29,7 @@ class ReplyService extends Service {
             return null;
         }
 
-        const reply = await this.ctx.model.Reply.findOne({ _id: id }).exec();
+        const reply = await this.ctx.model.Reply.findOne({_id: id, deleted: false}).exec();
 
         if (!reply) {
             return null;
@@ -56,11 +57,11 @@ class ReplyService extends Service {
    * @param {String} id 主题ID
    * @return {Promise[replies]} 承载 replay 列表的 Promise 对象
    */
-    async getRepliesByTopicId(id){
-        const query = {topic_id: id,deleted: false};
-        let replies = await this.ctx.model.Reply.find(query,'',{sort:'create_at'}).exec();
+    async getRepliesByTopicId(id) {
+        const query = {topic_id: id, deleted: false};
+        let replies = await this.ctx.model.Reply.find(query, '', {sort: 'create_at'}).exec();
 
-        if(replies.length === 0){
+        if (replies.length === 0) {
             return [];
         }
         return Promise.all(
@@ -78,8 +79,8 @@ class ReplyService extends Service {
    * @return {Promise[reply]} 承载 replay 的 Promise 对象
    */
     getLastReplyByTopId(topicId) {
-        const query = { topic_id: topicId, deleted: false };
-        const opts = { sort: { create_at: -1 }, limit: 1 };
+        const query = {topic_id: topicId, deleted: false};
+        const opts = {sort: {create_at: -1}, limit: 1};
         return this.ctx.model.Reply.findOne(query, '_id', opts).exec();
     }
 
@@ -90,7 +91,7 @@ class ReplyService extends Service {
      * @returns {Array|{index: number, input: string}}
      */
     getRepliesByAuthorId(authorId, opt = null) {
-        return this.ctx.model.Reply.find({ author_id: authorId }, {}, opt).exec();
+        return this.ctx.model.Reply.find({author_id: authorId}, {}, opt).exec();
     }
 
 }

@@ -5,7 +5,7 @@ class userController extends Controller {
         const {ctx, service, config} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const user_name = ctx.params.name;
+        const user_name = ctx.request.body.user_name;
         const user = await service.user.getUserByLoginName(user_name);
         if (!user) {
             ctx.status = 404;
@@ -52,7 +52,7 @@ class userController extends Controller {
 
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const user_name = ctx.params.name;
+        const user_name = ctx.request.body.user_name;
         const pageNo = Number(ctx.query.pageNo) || 1;
         const limit = config.list_topic_count;
 
@@ -87,7 +87,7 @@ class userController extends Controller {
 
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const user_name = ctx.params.name;
+        const user_name = ctx.request.body.user_name;
         const pageNo = Number(ctx.query.pageNo) || 1;
         const limit = config.list_topic_count;
 

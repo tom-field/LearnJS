@@ -5,7 +5,6 @@ const uuidv1 = require('uuid/v1');
 const moment = require('moment');
 const awaitWriteStream = require('await-stream-ready').write;
 const sendToWormhole = require('stream-wormhole');
-const formidable = require('formidable');
 const gm = require('gm').subClass({imageMagick: true});
 const util = require('util');
 
@@ -13,7 +12,7 @@ const util = require('util');
 const Controller = require('egg').Controller;
 
 class fileController extends Controller {
-    //本地上传单文件和其他字段
+    //本地上传单文件和其他字段 config.multipart stream形式
     async upload() {
         const {ctx, config} = this;
         const uid = uuidv1();
@@ -54,11 +53,10 @@ class fileController extends Controller {
         }
     }
 
-    //上传多个文件带其他字段
+    //上传多个文件带其他字段 config.multipart file形式
     async uploads() {
         const {ctx, config, logger} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
-        //TODO 按照官方文档获取不到文件 config.multipart配置了
         const files = ctx.request.files;
         logger.warn('files: %j', files);
         //生成文件夹
@@ -91,40 +89,43 @@ class fileController extends Controller {
         ret.code = 0;
         ret.data = fields;
         ctx.body = ret;
-        /*const parts = ctx.multipart() // 返回的是Promise
-        const stream = await ctx.getFileStream()
-        let part;
-        while ((part = await parts()) !== null) {
-            // 如果是数组，是filed
-            if (part.length) {
-                console.log(`field: ${part[0]}`)
-                console.log(`value: ${part[1]}`)
-                console.log(`valueTruncated: ${part[2]}`)
-                console.log(`filedNameTruncated: ${part[3]}`)
-            } else {
-                // 若用户不选择文件就上传，那么part是file stream，但part.filename为空
-                if (!part.filename) {
-                    return;
-                }
-                // 获取信息
-                console.log(`field: ${part.fieldname}`)
-                console.log(`filename: ${part.filename}`)
-                console.log(`encoding: ${part.encoding}`)
-                console.log(`mime: ${part.mime}`)
-                // 文件存储
-                let result
-                try {
-                    //result = await ctx.oss.put(name, stream);
-                    ret.code = 0;
-                    ret.data = config.upload.url + filename;
-                    ctx.body = ret;
-                } catch (err) {
-                    // 将上传的文件流消费掉，避免浏览器卡死
-                    await sendToWormhole(stream)
-                    throw err
-                }
-            }
-        }*/
+    }
+
+    // config.multipart stream 形式上传多文件
+    async uploadStream(){
+        const {ctx, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const parts = ctx.multipart({ autoFields: true });
+        const files = [];
+        //生成文件夹
+        const dirname = moment(Date.now()).format('YYYYMMDD');
+        const dirpath = path.join(config.upload.path, dirname);
+        if (!await fs.exists(dirpath)) {
+            await fs.mkdir(path.join(config.upload.path, dirname))
+        }
+        //文件写入
+        let stream;
+        while ((stream = await parts()) != null) {
+            const uid = uuidv1();
+            const filename =  uid + path.extname(stream.filename).toLowerCase();
+            const target = path.join(dirpath, filename);
+            const writeStream = fs.createWriteStream(target);
+            await pump(stream, writeStream);
+            files.push(filename);
+        }
+        //其他字段
+        const fields = [];
+        for (const key in parts.field) {
+            fields.push({
+                key: key,
+                value: parts.field[key],
+            });
+        }
+
+        ret.code = 0;
+        ret.data = fields;
+        ctx.body = ret;
     }
 
 }

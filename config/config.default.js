@@ -32,13 +32,13 @@ module.exports = appInfo => {
     config.redis = {
         client: {
             host: process.env.EGG_REDIS_HOST || '127.0.0.1',
-            port: process.env.EGG_REDIS_PORT || 6380,
+            port: process.env.EGG_REDIS_PORT || 6379,
             password: process.env.EGG_REDIS_PASSWORD || '',
             db: process.env.EGG_REDIS_DB || '0',
         },
     };
     config.mongoose = {
-        url: process.env.EGG_MONGODB_URL || 'mongodb://localhost:27018/egg_cnode',
+        url: process.env.EGG_MONGODB_URL || 'mongodb://localhost:27017/egg_cnode',
         poolSize: 20,
         reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
         reconnectInterval: 500, // Reconnect every 500ms
@@ -49,7 +49,7 @@ module.exports = appInfo => {
         url: '/public/upload/',
     };
     config.multipart = {
-        mode: 'file',
+        mode: 'stream',    //file stream
     };
     // 默认主题显示数量
     config.list_topic_count = 20;

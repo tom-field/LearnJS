@@ -1,3 +1,4 @@
+/*本地开发环境*/
 module.exports = {
     cluster: {
         listen: {
@@ -8,10 +9,10 @@ module.exports = {
     redis: {
         client: {
             host: '127.0.0.1',
-            port: 6379,
+            port: 6380,
         },
     },
     mongoose: {
-        url: 'mongodb://localhost:27017/egg_cnode',
+        url: 'mongodb://localhost:27018/egg_cnode',
     },
 };
