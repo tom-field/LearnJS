@@ -25,11 +25,13 @@ class searchController extends Controller {
             ret.message = '信息不完整';
             ctx.body = ret;
             return;
-        } else if (loginname.length < 5) {
+        }
+        /*else if (loginname.length < 5) {
             ret.message = '用户名太短';
             ctx.body = ret;
             return;
-        } else if (!validator.isEmail(email)) {
+        }*/
+        else if (!validator.isEmail(email)) {
             ret.message = '邮箱不合法';
             ctx.body = ret;
             return;

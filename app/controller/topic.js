@@ -56,6 +56,13 @@ class topicController extends Controller {
 
         const [topic, author, replies] = await service.topic.getFullTopic(topic_id);
 
+        if (!topic) {
+            ctx.status = 404;
+            ret.message = "此话题不存在或已被删除";
+            ctx.body = ret;
+            return;
+        }
+
         ret.code = 0;
         ret.data = {
             topic_id,

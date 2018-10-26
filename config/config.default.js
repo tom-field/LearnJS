@@ -42,6 +42,7 @@ module.exports = appInfo => {
         poolSize: 20,
         reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
         reconnectInterval: 500, // Reconnect every 500ms
+        useNewUrlParser: true,
     };
     // 上传
     config.upload = {
