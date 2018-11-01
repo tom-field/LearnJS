@@ -1,0 +1,35 @@
+version: '3'
+services:
+  egg_cnode:
+    image: egg_cnode:0.0.2
+    ports:
+      - 8000:8000
+    networks:
+      - docker_cnode
+  redis:
+    image: redis:latest
+    command: redis-server --appendonly yes --requirepass egg_cnode
+    volumes:
+      - ~/redis/data:/data
+    networks:
+      - docker_cnode
+    #ports:
+    #  - 6379:6379
+
+  mongodb:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - ~/db:/data/db
+    networks:
+      - docker_cnode
+    #ports:
+    #  - 27017:27017
+
+volumes:
+  egg-mongo:
+  egg-redis:
+
+networks:
+  docker_cnode:
+    driver: bridge
