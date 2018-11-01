@@ -1,35 +1,52 @@
 version: '3'
 services:
   egg_cnode:
-    image: egg_cnode:0.0.2
+    image: xuhui5018/egg_cnode:0.0.1
+    environment:
+      - NODE_ENV=production
+      - EGG_SERVER_ENV=prod
+      # 此处的redis指的是redis容器的ip
+      - EGG_REDIS_HOST=redis
+      - EGG_REDIS_PORT=6379
+      # 此处的@mongodb指代的是mongodb容器的ip
+      - EGG_MONGODB_URL=mongodb://root:xuhui2014@mongodb:27017/egg_cnode
+    depends_on:
+      - redis
+      - mongodb
     ports:
       - 8000:8000
     networks:
-      - docker_cnode
+      - network_cnode
   redis:
-    image: redis:latest
+    image: redis:5.0
     command: redis-server --appendonly yes --requirepass egg_cnode
     volumes:
       - ~/redis/data:/data
     networks:
-      - docker_cnode
-    #ports:
-    #  - 6379:6379
+      - network_cnode
+    ports:
+      - 6379:6379
 
   mongodb:
-    image: mongo:latest
+    image: mongo:3.6
     restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=xuhui2014
+      - MONGO_INITDB_DATABASE=egg_cnode
     volumes:
-      - ~/db:/data/db
+      - ~/mongodb:/data/db
+      # 怪不得一直提示认证失败,少了初始化数据库
+      - ./init.d/mongo:/docker-entrypoint-initdb.d
     networks:
-      - docker_cnode
-    #ports:
-    #  - 27017:27017
+      - network_cnode
+    ports:
+      - 27017:27017
 
 volumes:
   egg-mongo:
   egg-redis:
 
 networks:
-  docker_cnode:
+  network_cnode:
     driver: bridge

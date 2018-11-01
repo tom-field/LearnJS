@@ -38,7 +38,9 @@ module.exports = appInfo => {
         },
     };
     config.mongoose = {
-        url: process.env.EGG_MONGODB_URL || 'mongodb://localhost:27017/egg_cnode',
+        // mongoose.connect('mongodb://username:password@127.0.0.1:27017/dbname
+        // 如果没有用户名和密码可以去掉
+        url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/egg_cnode',
         poolSize: 20,
         reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
         reconnectInterval: 500, // Reconnect every 500ms
