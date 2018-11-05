@@ -6,7 +6,7 @@
 //路由控制给到前端,后端使用post请求
 module.exports = app => {
     const {router, controller} = app;
-    router.prefix('/cnode');
+    router.prefix('/cnode-ws');
     //router.get('/', controller.home.index);
     router.post('/news', controller.news.list);
 
