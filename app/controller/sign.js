@@ -119,9 +119,9 @@ class searchController extends Controller {
         const { ctx, service, config } = this;
 
         let ret = JSON.parse(JSON.stringify(config.ret));
-
-        const key = validator.trim(ctx.query.key || '');
-        const name = validator.trim(ctx.query.name || '');
+        const request = ctx.request.body;
+        const key = validator.trim(request.key || '');
+        const name = validator.trim(request.name || '');
 
         const user = await service.user.getUserByLoginName(name);
         if(!user){
@@ -130,7 +130,7 @@ class searchController extends Controller {
             return;
         }
         const passhash = user.pass;
-        if (!user || utility.md5(user.email + passhash + config.session_secret) !== key) {
+        if (!user || utility.md5(user.email + passhash + config.session_secrect) !== key) {
             ret.message = '信息有误，帐号无法被激活。';
             ctx.body = ret;
             return;

@@ -21,7 +21,7 @@ module.exports = appInfo => {
 
     config.name = 'CNode技术社区';
 
-    config.host = 'http://cnodejs.org';
+    config.host = process.env.EGG_SERVER_ENV == 'local'? 'http://localhost:8081': 'http://xuhuidev.com';
 
     // 版块
     config.tabs = [[ 'share', '分享' ], [ 'ask', '问答' ], [ 'job', '招聘' ]];

@@ -1,7 +1,7 @@
 module.exports = {
     cluster: {
         listen: {
-            port: 8001,
+            port: 7001,
             hostname: '127.0.0.1',
         }
     },
@@ -12,6 +12,6 @@ module.exports = {
         },
     },
     mongoose: {
-        url: 'mongodb://localhost:27017/egg_cnode',
+        url: 'mongodb://root:xuhui2014@127.0.0.1:27017/egg_cnode',
     },
 };

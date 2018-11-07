@@ -7,9 +7,10 @@ class topicController extends Controller {
         const {ctx, service, config} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        let page = parseInt(ctx.query.page, 10) || 1;
+        const request = ctx.request.body;
+        let page = parseInt(request.page, 10) || 1;
         page = page > 0 ? page : 1;
-        const tab = ctx.query.tab || 'all';
+        const tab = request.tab || 'all';
 
         //取主题
         const query = {};
@@ -34,7 +35,6 @@ class topicController extends Controller {
             sort: '-top -last_reply_at',
         };
         const topics = await this.service.topic.getTopicsByQuery(query, options);
-
         ret.code = 0;
         ret.data = topics;
         ctx.body = ret;

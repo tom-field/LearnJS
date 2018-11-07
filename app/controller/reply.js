@@ -53,7 +53,7 @@ class ReplyController extends Controller {
         }
 
         ret.code = 0;
-        ret.message = '发布成功';
+        ret.message = '回复成功';
         this.ctx.body = ret;
 
     }
