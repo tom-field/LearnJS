@@ -46,6 +46,10 @@ module.exports = appInfo => {
         reconnectInterval: 500, // Reconnect every 500ms
         useNewUrlParser: true,
     };
+    // 静态资源
+    config.assets = {
+        publicPath: '/public/',
+    }
     // 上传
     config.upload = {
         path: path.join(__dirname,'../app/public/upload'),
@@ -53,6 +57,16 @@ module.exports = appInfo => {
     };
     config.multipart = {
         mode: 'stream',    //file stream
+    };
+    // 7牛的access信息，用于文件上传
+    config.qn_access = {
+        accessKey: '4sS6Qxld8jvVKUk4E5NXh-m_irPX90oLfkMy0v_3',
+        secretKey: 'dRjcCy8UB3x3n7c0JCpt_WU07uPKP54NxVS5m4rb',
+        bucket: 'test',
+        origin: 'http://phv27sna5.bkt.clouddn.com',
+        // 如果vps在国外，请使用 http://up.qiniug.com/ ，这是七牛的国际节点
+        // 如果在国内，此项请留空
+        uploadURL: '',
     };
     // 默认主题显示数量
     config.list_topic_count = 20;

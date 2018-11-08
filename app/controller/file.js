@@ -7,6 +7,7 @@ const awaitWriteStream = require('await-stream-ready').write;
 const sendToWormhole = require('stream-wormhole');
 const gm = require('gm').subClass({imageMagick: true});
 const util = require('util');
+const qiniu = require('qiniu');
 
 //文件处理
 const Controller = require('egg').Controller;
@@ -92,11 +93,11 @@ class fileController extends Controller {
     }
 
     // config.multipart stream 形式上传多文件
-    async uploadStream(){
+    async uploadStream() {
         const {ctx, config} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const parts = ctx.multipart({ autoFields: true });
+        const parts = ctx.multipart({autoFields: true});
         const files = [];
         //生成文件夹
         const dirname = moment(Date.now()).format('YYYYMMDD');
@@ -108,7 +109,7 @@ class fileController extends Controller {
         let stream;
         while ((stream = await parts()) != null) {
             const uid = uuidv1();
-            const filename =  uid + path.extname(stream.filename).toLowerCase();
+            const filename = uid + path.extname(stream.filename).toLowerCase();
             const target = path.join(dirpath, filename);
             const writeStream = fs.createWriteStream(target);
             await pump(stream, writeStream);
@@ -126,6 +127,90 @@ class fileController extends Controller {
         ret.code = 0;
         ret.data = fields;
         ctx.body = ret;
+    }
+
+    async qiniuUpload() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const uid = uuidv1();
+        const stream = await  ctx.getFileStream();
+        const filename = uid + path.extname(stream.filename).toLowerCase();
+
+        try {
+            const result = await this.qnUpload(stream, filename);
+            ret.code = 0;
+            ret.data = {
+                url: config.qn_access.origin + '/' + result.key,
+            }
+            ctx.body = ret;
+        } catch (err) {
+            await sendToWormhole(stream);
+            throw err;
+        }
+    }
+
+    async qiniuUploads() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const parts = ctx.multipart({autoFields: true});
+        const files = [];
+        //文件写入
+        let stream;
+        while ((stream = await parts()) != null) {
+            const uid = uuidv1();
+            const filename = uid + path.extname(stream.filename).toLowerCase();
+            try{
+                const result = await this.qnUpload(stream, filename);
+                const url = config.qn_access.origin + '/' + result.key;
+                files.push(url);
+            }catch (err){
+                await sendToWormhole(stream);
+                throw err;
+            }
+        }
+        //其他字段
+        const fields = [];
+        for (const key in parts.field) {
+            fields.push({
+                key: key,
+                value: parts.field[key],
+            });
+        }
+
+        ret.code = 0;
+        ret.data = {
+            files,
+            fields,
+        };
+        ctx.body = ret;
+    }
+
+    async qnUpload(readableStream, key) {
+        const {accessKey, secretKey, bucket} = this.config.qn_access;
+
+        const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+        const putPolicy = new qiniu.rs.PutPolicy({scope: bucket});
+        const uploadToken = putPolicy.uploadToken(mac);
+
+        const config = new qiniu.conf.Config();
+        const formUploader = new qiniu.form_up.FormUploader(config);
+        const putExtra = new qiniu.form_up.PutExtra();
+
+        return new Promise(function (resolve, reject) {
+            formUploader.putStream(uploadToken, key, readableStream, putExtra, function (respErr, respBody, respInfo) {
+                if (respErr) {
+                    reject(respErr);
+                    return;
+                }
+                if (respInfo.statusCode === 200) {
+                    resolve(respBody);
+                } else {
+                    reject(new Error('上传失败:statusCode !== 200'));
+                }
+            });
+        });
     }
 
 }

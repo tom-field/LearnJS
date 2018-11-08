@@ -37,9 +37,11 @@ module.exports = app => {
     //message
     router.post('/message', controller.message.index);                      // 显示消息
 
-    router.post('/file/upload', controller.file.upload);                    // 单个文件上传
+    /*router.post('/file/upload', controller.file.upload);                    // 单个文件上传
     router.post('/file/uploads', controller.file.uploads);                  // 多个文件上传
-    router.post('/file/uploadStream', controller.file.uploadStream);        // stream形式
+    router.post('/file/uploadStream', controller.file.uploadStream);        // stream形式*/
+    router.post('/file/upload',controller.file.qiniuUpload);                // 七牛云存储
+    router.post('/file/uploads',controller.file.qiniuUploads);              // 七牛云存储
 
     //search
     router.get('/search', controller.search.index);                         // 搜索

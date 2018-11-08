@@ -13,6 +13,6 @@ module.exports = {
         },
     },
     mongoose: {
-        url: 'mongodb://root:xuhui2014@127.0.0.1:27017/egg_cnode',
+        url: 'mongodb://root:xuhui2014@192.168.20.230:27017/egg_cnode',
     },
 };
