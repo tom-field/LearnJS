@@ -9,10 +9,9 @@ const gm = require('gm').subClass({imageMagick: true});
 const util = require('util');
 const qiniu = require('qiniu');
 
-//文件处理
-const Controller = require('egg').Controller;
+const Service = require('egg').Service;
 
-class fileController extends Controller {
+class fileService extends Service {
     //本地上传单文件和其他字段 config.multipart stream形式
     async upload() {
         const {ctx, config} = this;
@@ -161,11 +160,11 @@ class fileController extends Controller {
         while ((stream = await parts()) != null) {
             const uid = uuidv1();
             const filename = uid + path.extname(stream.filename).toLowerCase();
-            try{
+            try {
                 const result = await this.qnUpload(stream, filename);
                 const url = config.qn_access.origin + '/' + result.key;
                 files.push(url);
-            }catch (err){
+            } catch (err) {
                 await sendToWormhole(stream);
                 throw err;
             }
@@ -187,6 +186,13 @@ class fileController extends Controller {
         ctx.body = ret;
     }
 
+    /**
+     * 上传操作
+     * @param readableStream
+     * @param key 上传文件名
+     * @param remKey 删除文件名
+     * @returns {Promise}
+     */
     async qnUpload(readableStream, key) {
         const {accessKey, secretKey, bucket} = this.config.qn_access;
 
@@ -213,6 +219,35 @@ class fileController extends Controller {
         });
     }
 
+    /**
+     * 删除操作
+     * @param remKey
+     * @returns {Promise}
+     */
+    async qnDelete(remKey) {
+        const {accessKey, secretKey, bucket} = this.config.qn_access;
+
+        const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+        const config = new qiniu.conf.Config();
+        const bucketManager = new qiniu.rs.BucketManager(mac, config);
+
+        return new Promise(function (resolve, reject) {
+            bucketManager.delete(bucket, remKey, function (respErr, respBody, respInfo) {
+                if (respErr) {
+                    reject(respErr);
+                    return;
+                }
+                console.log('============')
+                console.log(respBody);
+                console.log(respInfo);
+                if (respInfo.statusCode === 200) {
+                    resolve(respBody);
+                } else {
+                    reject(new Error('删除失败:statusCode !== 200'));
+                }
+            });
+        })
+    }
 }
 
-module.exports = fileController;
+module.exports = fileService;

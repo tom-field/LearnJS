@@ -18,6 +18,7 @@ module.exports = app => {
     router.post('/sign/signout', controller.sign.signout);                  // 退出
 
     //user
+    router.post('/user/updateAvatar',controller.user.updateAvatar)          // 更新头像
     router.post('/user/detail', controller.user.index);                     // 获取用户信息
     router.post('/user/topics', controller.user.listTopics);                // 用户发布的所有话题页
     router.post('/user/replies', controller.user.listReplies);              // 用户参与的所有回复页
@@ -37,11 +38,11 @@ module.exports = app => {
     //message
     router.post('/message', controller.message.index);                      // 显示消息
 
-    /*router.post('/file/upload', controller.file.upload);                    // 单个文件上传
+    /*router.post('/file/upload', controller.file.upload);                  // 单个文件上传
     router.post('/file/uploads', controller.file.uploads);                  // 多个文件上传
-    router.post('/file/uploadStream', controller.file.uploadStream);        // stream形式*/
+    router.post('/file/uploadStream', controller.file.uploadStream);        // stream形式
     router.post('/file/upload',controller.file.qiniuUpload);                // 七牛云存储
-    router.post('/file/uploads',controller.file.qiniuUploads);              // 七牛云存储
+    router.post('/file/uploads',controller.file.qiniuUploads);              // 七牛云存储*/
 
     //search
     router.get('/search', controller.search.index);                         // 搜索

@@ -79,6 +79,14 @@ class UserService extends Service {
         const update = {$inc:{score,reply_count:replyCount}};
         return this.ctx.model.User.findByIdAndUpdate(query,update).exec();
     }
+
+    /*
+    * 更新用户信息
+    * */
+    async updateUserInfo(id,info){
+        const query = {_id:id};
+        return this.ctx.model.User.findByIdAndUpdate(query,info).exec();
+    }
 }
 
 module.exports = UserService

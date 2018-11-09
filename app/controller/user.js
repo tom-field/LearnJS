@@ -1,3 +1,6 @@
+const path = require('path');
+const uuidv1 = require('uuid/v1');
+const sendToWormhole = require('stream-wormhole');
 const Controller = require('egg').Controller;
 
 class userController extends Controller {
@@ -82,9 +85,8 @@ class userController extends Controller {
         ctx.body = ret;
     }
 
-    async listReplies(){
+    async listReplies() {
         const {ctx, service, config} = this;
-
         let ret = JSON.parse(JSON.stringify(config.ret));
 
         const user_name = ctx.request.body.user_name;
@@ -108,7 +110,7 @@ class userController extends Controller {
         const topicIds = replies.map(reply => {
             return reply.topic_id.toString();
         })
-        query = { _id: { $in: topicIds } };
+        query = {_id: {$in: topicIds}};
         let topics = await service.topic.getTopicsByQuery(query, {});
         const totalCount = await service.topic.getCountByQuery(query);
 
@@ -122,6 +124,40 @@ class userController extends Controller {
 
         ctx.body = ret;
 
+    }
+
+    /**
+     * 更新用户头像
+     */
+    async updateAvatar() {
+        const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const uid = uuidv1();
+        const parts = ctx.multipart({autoFields: true});
+        const stream = await parts();
+        const user_id = parts.field.user_id;
+        const oldAvatar = parts.field.avatar;
+        const filename = uid + path.extname(stream.filename).toLowerCase();
+
+        try {
+            //上传新头像
+            const uploadRes = await service.file.qnUpload(stream, filename);
+            //删除旧头像
+            if(oldAvatar){
+                await service.file.qnDelete(oldAvatar);
+            }
+            const avatar = config.qn_access.origin + '/' + uploadRes.key;
+            await service.user.updateUserInfo(user_id, {avatar})
+            ret.code = 0;
+            ret.data = {
+                url: config.qn_access.origin + '/' + uploadRes.key,
+            }
+            ctx.body = ret;
+        } catch (err) {
+            await sendToWormhole(stream);
+            throw err;
+        }
     }
 }
 
