@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = appInfo => {
     const config = exports = {};
-
+    config.host = 'http://xuhuidev.com'
     // use for cookie sign key, should change to your own and keep security
     config.keys = appInfo.name + '_1537868411848_2841';
     // 添加 view 配置
@@ -21,10 +21,10 @@ module.exports = appInfo => {
 
     config.name = 'CNode技术社区';
 
-    config.host = process.env.EGG_SERVER_ENV == 'local'? 'http://localhost:8081': 'http://xuhuidev.com';
+    config.host = process.env.EGG_SERVER_ENV == 'local' ? 'http://localhost:8081' : 'http://xuhuidev.com';
 
     // 版块
-    config.tabs = [[ 'share', '分享' ], [ 'ask', '问答' ], [ 'job', '招聘' ]];
+    config.tabs = [['share', '分享'], ['ask', '问答'], ['job', '招聘']];
 
     config.session_secrect = 'node_club_secret';
 
@@ -52,7 +52,7 @@ module.exports = appInfo => {
     }
     // 上传
     config.upload = {
-        path: path.join(__dirname,'../app/public/upload'),
+        path: path.join(__dirname, '../app/public/upload'),
         url: '/public/upload/',
     };
     config.multipart = {
@@ -68,6 +68,12 @@ module.exports = appInfo => {
         // 如果在国内，此项请留空
         uploadURL: '',
     };
+    // 第三方认证
+    config.passportGithub = {
+        key: process.env.EGG_PASSPORT_GITHUB_CLIENT_ID || '2077f6a3dabfbf142af0',
+        secret: process.env.EGG_PASSPORT_GITHUB_CLIENT_SECRET || 'e136c0ef50091c01c89a8cd7db9c42dfd7af7c5f',
+        successRedirect: process.env.EGG_PASSPORT_REDIRECT || "http://127.0.0.1:7001",
+    },
     // 默认主题显示数量
     config.list_topic_count = 20;
 

@@ -85,6 +85,11 @@ class searchController extends Controller {
             ctx.body = ret;
             return;
         }
+        if(!users[0].active){
+            ret.message = '该账户尚未激活,请先激活帐号';
+            ctx.body = ret;
+            return;
+        }
         if (ctx.helper.bcompare(pass, users[0].pass)) {
             ret.code = 0;
             ret.data = users[0];

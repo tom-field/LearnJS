@@ -1,5 +1,6 @@
 const path = require('path');
 const uuidv1 = require('uuid/v1');
+const validator = require('validator');
 const sendToWormhole = require('stream-wormhole');
 const Controller = require('egg').Controller;
 
@@ -144,7 +145,7 @@ class userController extends Controller {
             //上传新头像
             const uploadRes = await service.file.qnUpload(stream, filename);
             //删除旧头像
-            if(oldAvatar){
+            if (oldAvatar) {
                 await service.file.qnDelete(oldAvatar);
             }
             const avatar = config.qn_access.origin + '/' + uploadRes.key;
@@ -158,6 +159,57 @@ class userController extends Controller {
             await sendToWormhole(stream);
             throw err;
         }
+    }
+
+    async updatePassword() {
+        const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const request = ctx.request.body;
+        const userId = request.user_id;
+        const pass = validator.trim(request.pass);
+        const newPass = validator.trim(request.new_pass);
+
+        if(pass === newPass){
+            ret.message = '新密码不能和旧密码相同';
+            ctx.body = ret;
+            return;
+        }
+
+        const user = await service.user.getUserById(userId);
+        const isEqual = ctx.helper.bcompare(pass, user.pass);
+        if (!isEqual) {
+            ret.code = -1;
+            ret.message = '当前密码不正确';
+            ctx.body = ret;
+            return;
+        }
+        const newPassHash = ctx.helper.bhash(newPass);
+        user.pass = newPassHash;
+        await user.save();
+        ret.code = 0;
+        ctx.body = ret;
+    }
+
+    async updateInfo() {
+        const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const request = ctx.request.body;
+        const userId = request.user_id;
+        const url = validator.trim(request.url);
+        const location = validator.trim(request.location);
+        const weibo = validator.trim(request.weibo);
+        const signature = validator.trim(request.signature);
+
+        const user = await service.user.getUserById(userId);
+        user.url = url;
+        user.location = location;
+        user.signature = signature;
+        user.weibo = weibo;
+        await user.save();
+        ret.code = 0;
+        ctx.body = ret;
     }
 }
 

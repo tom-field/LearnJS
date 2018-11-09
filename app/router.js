@@ -18,7 +18,9 @@ module.exports = app => {
     router.post('/sign/signout', controller.sign.signout);                  // 退出
 
     //user
-    router.post('/user/updateAvatar',controller.user.updateAvatar)          // 更新头像
+    router.post('/user/updateAvatar',controller.user.updateAvatar);         // 更新头像
+    router.post('/user/updatePassword',controller.user.updatePassword);     // 更新密码
+    router.post('/user/updateInfo',controller.user.updateInfo);             // 更新信息
     router.post('/user/detail', controller.user.index);                     // 获取用户信息
     router.post('/user/topics', controller.user.listTopics);                // 用户发布的所有话题页
     router.post('/user/replies', controller.user.listReplies);              // 用户参与的所有回复页
