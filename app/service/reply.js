@@ -59,7 +59,7 @@ class ReplyService extends Service {
    */
     async getRepliesByTopicId(id) {
         const query = {topic_id: id, deleted: false};
-        let replies = await this.ctx.model.Reply.find(query, '', {sort: 'create_at'}).exec();
+        let replies = await this.ctx.model.Reply.find(query, '', {sort: 'create_at'}).lean().exec();
 
         if (replies.length === 0) {
             return [];

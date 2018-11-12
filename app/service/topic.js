@@ -39,7 +39,8 @@ class TopicService extends Service {
 
     async getTopicsByQuery(query, opt) {
         query.deleted = false;
-        const topics = await this.ctx.model.Topic.find(query, {}, opt).exec();
+        // TODO: 此处注意查找到的数据修改但是返回到前端不展示,用lean()方法
+        const topics = await this.ctx.model.Topic.find(query, {}, opt).lean().exec();
 
         if (topics.length === 0) {
             return [];
