@@ -85,7 +85,7 @@ class searchController extends Controller {
             ctx.body = ret;
             return;
         }
-        if(!users[0].active){
+        if (!users[0].active) {
             ret.message = '该账户尚未激活,请先激活帐号';
             ctx.body = ret;
             return;
@@ -121,7 +121,7 @@ class searchController extends Controller {
      * @returns {Promise.<void>}
      */
     async activeAccount() {
-        const { ctx, service, config } = this;
+        const {ctx, service, config} = this;
 
         let ret = JSON.parse(JSON.stringify(config.ret));
         const request = ctx.request.body;
@@ -129,7 +129,7 @@ class searchController extends Controller {
         const name = validator.trim(request.name || '');
 
         const user = await service.user.getUserByLoginName(name);
-        if(!user){
+        if (!user) {
             ret.message = '用户不存在';
             ctx.body = ret;
             return;
@@ -140,7 +140,7 @@ class searchController extends Controller {
             ctx.body = ret;
             return;
         }
-        if(user.active){
+        if (user.active) {
             ret.message = '帐号已经是激活状态';
             ctx.body = ret;
             return;
@@ -153,11 +153,11 @@ class searchController extends Controller {
     }
 
     /**
-     * 更新密码
+     * TODO 重置密码
      * @returns {Promise.<void>}
      */
-    async updatePass(){
-        const { ctx, config, service } = this;
+    async updatePass() {
+        const {ctx, config, service} = this;
 
         let ret = JSON.parse(JSON.stringify(config.ret));
 
@@ -165,14 +165,14 @@ class searchController extends Controller {
         const repsw = validator.trim(ctx.request.body.repsw) || '';
         const userId = validator.trim(ctx.request.body.userId || '');
 
-        if(psw != repsw){
+        if (psw != repsw) {
             ret.message = '两次输入的密码不一致';
             ctx.body = ret;
             return;
         }
 
         const user = await service.user.getUserById(userId);
-        if(!user){
+        if (!user) {
             ret.message = '用户不存在';
             ctx.body = ret;
             return;
@@ -185,6 +185,19 @@ class searchController extends Controller {
 
         ret.code = 0;
         ret.message = '密码更新成功';
+        ctx.body = ret;
+    }
+
+    async getUserByToken() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const request = ctx.request.body;
+        const token = request.token;
+        const userInfo = await service.user.getUserByToken(token);
+
+        ret.code = 0;
+        ret.data = userInfo;
         ctx.body = ret;
     }
 }

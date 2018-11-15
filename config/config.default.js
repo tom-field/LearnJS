@@ -21,10 +21,10 @@ module.exports = appInfo => {
 
     config.name = 'CNode技术社区';
 
-    config.host = process.env.EGG_SERVER_ENV == 'local' ? 'http://localhost:8081' : 'http://xuhuidev.com';
+    config.host = process.env.EGG_SERVER_ENV == 'local' ? 'http://localhost:8081' : 'http://xuhuidev.com/my-cnode';
 
     // 版块
-    config.tabs = [['share', '分享'], ['ask', '问答'], ['job', '招聘']];
+    config.tabs = [['share', '分享'], ['ask', '问答'], ['math', '数学'], ['fiance', '理财'], ['friend', '交友'], ['transaction', '交易'], ['server', '服务器'], ['job', '招聘']];
 
     config.session_secrect = 'node_club_secret';
 
@@ -72,8 +72,18 @@ module.exports = appInfo => {
     config.passportGithub = {
         key: process.env.EGG_PASSPORT_GITHUB_CLIENT_ID || '2077f6a3dabfbf142af0',
         secret: process.env.EGG_PASSPORT_GITHUB_CLIENT_SECRET || 'e136c0ef50091c01c89a8cd7db9c42dfd7af7c5f',
-        successRedirect: process.env.EGG_PASSPORT_REDIRECT || "http://127.0.0.1:7001",
-    },
+    };
+    config.passportGoogle = {
+        key: process.env.EGG_PASSPORT_GOOGLE_CLIENT_ID || '558941605894-28l3eu0eg8ldt1q5dq2hkobkdhc33m5g.apps.googleusercontent.com',
+        secret: process.env.EGG_PASSPORT_GOOGLE_CLIENT_SECRET || 'N6TsmBp469blmxnGeokwUDOP',
+    };
+    config.auth_cookie_name = 'node_club';
+
+    // 阿里node性能平台
+    config.alinode = {
+        appid: process.env.EGG_ALINODE_APPID || '',
+        secret: process.env.EGG_ALINODE_SECRET || '',
+    };
     // 默认主题显示数量
     config.list_topic_count = 20;
 
@@ -81,7 +91,7 @@ module.exports = appInfo => {
     config.search = 'local'; // 'google', 'baidu', 'local'
 
     // add your config here
-    config.middleware = ['robot'];
+    config.middleware = ['robot', 'userRequired'];
     config.robot = {
         ua: [
             /Baiduspider/i,

@@ -10,11 +10,19 @@ services:
       - EGG_REDIS_PORT=6379
       # 此处的@mongodb指代的是mongodb容器的ip
       - EGG_MONGODB_URL=mongodb://root:xuhui2014@mongodb:27017/egg_cnode
+      # 第三方Auth登录认证
+      - EGG_PASSPORT_GITHUB_CLIENT_ID=3f2a83ba31e2d2eb9df5
+      - EGG_PASSPORT_GITHUB_CLIENT_SECRET=d253c2bd2ca8cd997b14faf96cd6bedbd9598cc9
+      - EGG_PASSPORT_GOOGLE_CLIENT_ID=558941605894-40dcq6buol6u6mqtpdlblc3k37leg1u6.apps.googleusercontent.com
+      - EGG_PASSPORT_GOOGLE_CLIENT_SECRET=ezlLKbK6N_Axfr0D7aAcHzsC
+      # 阿里node监控品台
+      - EGG_ALINODE_APPID=appid
+      - EGG_ALINODE_SECRET=secret
     depends_on:
       - redis
       - mongodb
     ports:
-      - 8000:8000
+      - 7001:7001
     networks:
       - network_cnode
   redis:

@@ -20,3 +20,7 @@ exports.passportGithub = {
     enable: true,
     package: 'egg-passport-github',
 };
+exports.passportGoogle = {
+    enable: true,
+    package: 'egg-passport-google',
+};

@@ -10,6 +10,6 @@ RUN npm i --production
 
 COPY . /usr/src/app
 
-EXPOSE 8000
+EXPOSE 7001
 
 CMD npm run docker

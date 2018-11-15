@@ -39,6 +39,16 @@ class UserService extends Service {
     }
 
     /*
+   * 根据 token 查找用户
+   * @param {String} token
+   * @return {Promise[user]} 承载用户的 Promise 对象
+   */
+    getUserByToken(accessToken) {
+        const query = { accessToken };
+        return this.ctx.model.User.findOne(query).exec();
+    }
+
+    /*
    * 根据用户名列表查找用户列表
    * @param {Array} names 用户名列表
    * @return {Promise[users]} 承载用户列表的 Promise 对象
@@ -86,6 +96,16 @@ class UserService extends Service {
     async updateUserInfo(id,info){
         const query = {_id:id};
         return this.ctx.model.User.findByIdAndUpdate(query,info).exec();
+    }
+
+    /**
+     * 根据 githubId 查找用户
+     * @param githubId 登录名
+     * @returns {Array|{index: number, input: string}}
+     */
+    getUserByGithubId(githubId) {
+        const query = { githubId };
+        return this.ctx.model.User.findOne(query).exec();
     }
 }
 

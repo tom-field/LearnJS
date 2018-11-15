@@ -162,32 +162,40 @@ class userController extends Controller {
     }
 
     async updatePassword() {
-        const {ctx, service, config} = this;
+        const { ctx, config, service } = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const request = ctx.request.body;
-        const userId = request.user_id;
-        const pass = validator.trim(request.pass);
-        const newPass = validator.trim(request.new_pass);
+        const userId = validator.trim(ctx.request.body.user_id || '');
+        const password = validator.trim(ctx.request.body.password) || '';
+        const newPassword = validator.trim(ctx.request.body.newPassword) || '';
+        const renewPassword = validator.trim(ctx.request.body.renewPassword) || '';
 
-        if(pass === newPass){
-            ret.message = '新密码不能和旧密码相同';
+        if(newPassword != renewPassword){
+            ret.message = '两次输入密码不一致!';
             ctx.body = ret;
             return;
         }
 
         const user = await service.user.getUserById(userId);
-        const isEqual = ctx.helper.bcompare(pass, user.pass);
-        if (!isEqual) {
-            ret.code = -1;
-            ret.message = '当前密码不正确';
+        if(!user){
+            ret.message = '用户不存在';
             ctx.body = ret;
             return;
         }
-        const newPassHash = ctx.helper.bhash(newPass);
-        user.pass = newPassHash;
+        const isCompare = ctx.helper.bcompare(password,user.pass);
+        if(!isCompare){
+            ret.message = '原密码不正确!';
+            ctx.body = ret;
+            return;
+        }
+        const newPasshash = ctx.helper.bhash(newPassword);
+        user.pass = newPasshash;
+        user.retrieve_key = null;
+        user.retrieve_time = null;
         await user.save();
+
         ret.code = 0;
+        ret.message = '密码更新成功';
         ctx.body = ret;
     }
 
@@ -197,10 +205,10 @@ class userController extends Controller {
 
         const request = ctx.request.body;
         const userId = request.user_id;
-        const url = validator.trim(request.url);
-        const location = validator.trim(request.location);
-        const weibo = validator.trim(request.weibo);
-        const signature = validator.trim(request.signature);
+        const url = validator.trim(request.url || '');
+        const location = validator.trim(request.location || '');
+        const weibo = validator.trim(request.weibo || '');
+        const signature = validator.trim(request.signature || '');
 
         const user = await service.user.getUserById(userId);
         user.url = url;
