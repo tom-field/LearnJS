@@ -6,7 +6,11 @@ const Controller = require('egg').Controller;
 class tabController extends Controller {
     async index() {
         const {ctx, config, service} = this;
-        ctx.body = config.tabs;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        ret.code = 0;
+        ret.data = config.tabs;
+        ctx.body = ret;
     }
 }
 

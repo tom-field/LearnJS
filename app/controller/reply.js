@@ -12,7 +12,7 @@ class ReplyController extends Controller {
 
         const request = ctx.request.body;
         const topic_id = request.topic_id;
-        const reply_id = request.reply_id;
+        const reply_id = request.reply_id || "";
         const content = request.content;
 
         if (content.trim() == '') {
@@ -35,7 +35,6 @@ class ReplyController extends Controller {
         //TODO https://github.com/eggjs/egg/blob/master/docs/source/zh-cn/tutorials/passport.md
         // OAuth 2.0 建立权限表 支持多种登录方式
         const user_id = ctx.session.userId;
-        console.log(user_id);
         const topicAuthor = await service.user.getUserById(topic.author_id);
         const newContent = content.replace('@' + topicAuthor.loginname + ' ', '');
         const reply = await service.reply.newAndSave(content, topic_id, user_id, reply_id);
@@ -54,7 +53,7 @@ class ReplyController extends Controller {
 
         ret.code = 0;
         ret.message = '回复成功';
-        this.ctx.body = ret;
+        ctx.body = ret;
 
     }
 

@@ -24,7 +24,41 @@ module.exports = appInfo => {
     config.host = process.env.EGG_SERVER_ENV == 'local' ? 'http://localhost:8081' : 'http://xuhuidev.com/my-cnode';
 
     // 版块
-    config.tabs = [['share', '分享'], ['ask', '问答'], ['math', '数学'], ['fiance', '理财'], ['friend', '交友'], ['transaction', '交易'], ['server', '服务器'], ['job', '招聘']];
+    config.tabsbak = [['share', '分享'], ['ask', '问答'], ['math', '数学'], ['fiance', '理财'], ['friend', '交友'], ['transaction', '交易'], ['server', '服务器'], ['job', '招聘']];
+    config.tabs = [
+        {
+            label:'分享',
+            value: 'share',
+        },
+        {
+            label:'问答',
+            value: 'ask',
+        },
+        {
+            label:'数学',
+            value: 'math',
+        },
+        {
+            label:'理财',
+            value: 'fiance',
+        },
+        {
+            label:'交友',
+            value: 'friend',
+        },
+        {
+            label:'交易',
+            value: 'transaction',
+        },
+        {
+            label:'服务器',
+            value: 'server',
+        },
+        {
+            label:'招聘',
+            value: 'job',
+        },
+    ]
 
     config.session_secrect = 'node_club_secret';
 
@@ -87,11 +121,17 @@ module.exports = appInfo => {
     // 默认主题显示数量
     config.list_topic_count = 20;
 
+    // 分页默认参数
+    config.pager = {
+        pageNo: 1,
+        pageSize: 20,
+    }
+
     // 站内搜索
     config.search = 'local'; // 'google', 'baidu', 'local'
 
     // add your config here
-    config.middleware = ['robot', 'userRequired'];
+    config.middleware = ['robot'];
     config.robot = {
         ua: [
             /Baiduspider/i,

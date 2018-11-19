@@ -6,6 +6,7 @@ class homeController extends Controller {
     async index() {
         const {ctx, config} = this;
         if (ctx.isAuthenticated()) {
+            ctx.session.userId = ctx.user._id;
             ctx.redirect(`${config.host}/#/home?token=${ctx.user.accessToken}`);
         } else {
             ctx.redirect(`${config.host}/#/signup`);

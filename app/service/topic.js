@@ -87,6 +87,7 @@ class TopicService extends Service {
     }
 
     async getCountByQuery(query) {
+        query.deleted = false;
         return this.ctx.model.Topic.count(query).exec();
     }
 
