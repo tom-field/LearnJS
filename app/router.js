@@ -54,6 +54,9 @@ module.exports = app => {
 
     //topic
     router.post(prefix + '/topic/create', controller.topic.publish);                       // 发布话题
+    router.post(prefix + '/topic/up', controller.topic.up);                                // 点赞话题
+    router.post(prefix + '/topic/collect', controller.topic.collect);                      // 收藏话题
+    router.post(prefix + '/topic/cancelCollect', controller.topic.cancelCollect);          // 取消收藏
     router.post(prefix + '/topic/update', controller.topic.update);                        // 更新话题
     router.post(prefix + '/topic/delete', controller.topic.delete);                        // 删除话题
     router.post(prefix + '/topic/list', controller.topic.list);                            // 获取话题列表

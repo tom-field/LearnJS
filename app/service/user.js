@@ -123,6 +123,17 @@ class UserService extends Service {
         const query = { githubId };
         return this.ctx.model.User.findOne(query).exec();
     }
+
+    /**
+     * 收藏数增长
+     * @param id
+     * @returns {Array|{index: number, input: string}}
+     */
+    incrementCollectTopicCount(id) {
+        const query = { _id: id };
+        const update = { $inc: { collect_topic_count: 1 } };
+        return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
+    }
 }
 
 module.exports = UserService

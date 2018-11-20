@@ -7,6 +7,7 @@ class homeController extends Controller {
         const {ctx, config} = this;
         if (ctx.isAuthenticated()) {
             ctx.session.userId = ctx.user._id;
+            ctx.session.loginname = ctx.user.loginname;
             ctx.redirect(`${config.host}/#/home?token=${ctx.user.accessToken}`);
         } else {
             ctx.redirect(`${config.host}/#/signup`);

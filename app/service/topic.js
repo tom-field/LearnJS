@@ -15,11 +15,7 @@ class TopicService extends Service {
     async getTopicById(id) {
         const topic = await this.ctx.model.Topic.findOne({_id: id}).exec();
         if (!topic) {
-            return {
-                topic: null,
-                author: null,
-                last_reply: null,
-            };
+            return [null, null, null];
         }
 
         const author = await this.service.user.getUserById(topic.author_id);
@@ -29,12 +25,11 @@ class TopicService extends Service {
             last_reply = await this.service.reply.getReplyById(topic.last_reply);
         }
 
-        return {
+        return [
             topic,
             author,
             last_reply,
-        };
-
+        ];
     }
 
     async getTopicsByQuery(query, opt) {
@@ -123,6 +118,12 @@ class TopicService extends Service {
         }
 
         return topic;
+    }
+
+    incrementCollectCount(id) {
+        const query = {_id: id};
+        const update = {$inc: {collect_count: 1}};
+        return this.ctx.model.Topic.findByIdAndUpdate(query, update).exec();
     }
 
     async increaseVisitCount(id) {

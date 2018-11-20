@@ -64,7 +64,8 @@ class topicController extends Controller {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const topic_id = ctx.request.body.topic_id;
+        const request = ctx.request.body;
+        const topic_id = request.topic_id;
         const currentUser = ctx.user;
 
         if (topic_id.length != 24) {
@@ -79,7 +80,15 @@ class topicController extends Controller {
         // 增加visit_count
         topic.visit_count += 1;
         // 写入DB
-        await service.topic.increaseVisitCount(topic._id);
+        await service.topic.increaseVisitCount(topic_id);
+
+        // 判断是否收藏
+        let collected = await service.topicCollect.getTopicCollect(currentUser._id, topic_id);
+        if (collected) {
+            collected = true;
+        } else {
+            collected = false;
+        }
 
         if (!topic) {
             ctx.status = 404;
@@ -93,6 +102,7 @@ class topicController extends Controller {
             topic_id,
             currentUser,
             topic,
+            collected,
             author,
             comments,
         }
@@ -140,6 +150,112 @@ class topicController extends Controller {
 
     }
 
+    //点赞
+    async up() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const request = ctx.request.body;
+        const topic_id = request.topic_id;
+        const user_id = request.user_id;
+        const [topic] = await service.topic.getTopicById(topic_id);
+
+        if (!topic) {
+            ret.message = '主题不存在,或已被删除';
+            ctx.body = ret;
+            return;
+        }
+
+        topic.ups = topic.ups || [];
+        const upIndex = topic.ups.indexOf(user_id);
+        if (upIndex === -1) {
+            topic.ups.push(user_id);
+            await topic.save();
+            ret.code = 0;
+            ctx.body = ret;
+            return;
+        } else {
+            ret.message = '不能重复点赞';
+            ctx.body = ret;
+            return;
+        }
+    }
+
+    //收藏主题
+    async collect() {
+        const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const request = ctx.request.body;
+        const user_id = request.user_id;
+        const topic_id = request.topic_id;
+
+        const [topic] = await service.topic.getTopicById(topic_id);
+
+        if (!topic) {
+            ret.message = '主题不存在或已被删除';
+            ctx.body = ret;
+            return;
+        }
+
+        const doc = await service.topicCollect.getTopicCollect(
+            user_id,
+            topic_id,
+        );
+
+        if (doc) {
+            ret.message = '不能重复收藏';
+            ctx.body = ret;
+            return;
+        }
+
+        await service.topicCollect.newAndSave(user_id, topic_id);
+        ret.code = 0;
+        ctx.body = ret;
+
+        await Promise.all([
+            service.user.incrementCollectTopicCount(user_id),
+            service.topic.incrementCollectCount(topic_id),
+        ]);
+    }
+
+    async cancelCollect() {
+        const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const request = ctx.request.body;
+        const user_id = request.user_id;
+        const topic_id = request.topic_id;
+
+        const [topic] = await service.topic.getTopicById(topic_id);
+
+        if (!topic) {
+            ret.message = '主题不存在或已被删除';
+            ctx.body = ret;
+            return;
+        }
+
+        const removeResult = await service.topicCollect.remove(
+            user_id,
+            topic_id
+        );
+
+        if (removeResult.n == 0) {
+            ret.message = '取消收藏失败';
+            ctx.body = ret;
+            return;
+        }
+
+        const user = await service.user.getUserById(user_id);
+        await user.save();
+
+        topic.collect_count -= 1;
+        await topic.save();
+
+        ret.code = 0;
+        ctx.body = ret;
+    }
+
     async update() {
         // TODO 创建和更新标题以及内容字数控制
         const {ctx, config, service} = this;
@@ -147,7 +263,7 @@ class topicController extends Controller {
 
         const {user_id, topic_id, title, tab, content} = ctx.request.body;
 
-        const {topic} = await service.topic.getTopicById(topic_id);
+        const [topic] = await service.topic.getTopicById(topic_id);
         if (!topic) {
             ret.message = '此话题不存在,或已经被删除。';
             ctx.body = ret;
