@@ -1,23 +1,18 @@
 const Service = require('egg').Service;
 
 class ReplyService extends Service {
-    /*
-       * 创建并保存一条回复信息
-       * @param {String} content 回复内容
-       * @param {String} topicId 主题ID
-       * @param {String} authorId 回复作者
-       * @param {String} [replyId] 回复ID，当二级回复时设定该值
-       * @return {Promise} 承载 replay 列表的 Promise 对象
-       */
-    async newAndSave(content, topicId, authorId, replyId = null) {
+    /**
+     * 新增一条回复
+     * @param user_id
+     * @param comment_id
+     * @param content
+     * @returns {Promise.<*>}
+     */
+    async newAndSave(user_id, comment_id, content) {
         const reply = new this.ctx.model.Reply();
+        reply.user_id = user_id;
+        reply.comment_id = comment_id;
         reply.content = content;
-        reply.topic_id = topicId;
-        reply.author_id = authorId;
-
-        if (replyId) {
-            reply.reply_id = replyId;
-        }
 
         await reply.save();
 
@@ -62,30 +57,15 @@ class ReplyService extends Service {
    * @param {String} id 主题ID
    * @return {Promise[replies]} 承载 replay 列表的 Promise 对象
    */
-    async getRepliesByTopicId(id) {
-        // reply_id为null 获取topic的回复
-        const query = {topic_id: id, reply_id: null, deleted: false};
+    async getRepliesByCommentId(id) {
+        const query = {comment_id: id, deleted: false};
         let replies = await this.ctx.model.Reply.find(query, '', {sort: 'create_at'}).lean().exec();
 
-        if (replies.length === 0) {
-            return [];
-        }
-        return Promise.all(
-            replies.map(async item => {
-                const author = await this.service.user.getUserById(item.author_id);
-                item.author = author || {_id: ''};
-                // reply_id为topic回复的reply_id 获取回复的回复
-                const query = {topic_id: id, reply_id: item._id, deleted: false};
-                let replies = await this.ctx.model.Reply.find(query, '', {sort: 'create_at'}).lean().exec();
-
-                if (replies.length === 0) {
-                    item.children = [];
-                } else {
-                    item.children = replies;
-                }
-                return item;
-            })
-        )
+        return Promise.all(replies.map(async item => {
+            const user = await this.service.user.getUserById(item.user_id);
+            item.user = user || {_id:''};
+            return item;
+        }))
     }
 
     /*

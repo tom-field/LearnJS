@@ -60,6 +60,12 @@ module.exports = app => {
     router.post(prefix + '/topic/getRecentTopics', controller.topic.getRecentTopics);      // 获取最近话题列表
     router.post(prefix + '/topic/detail', controller.topic.detail);                        // 显示某个话题
 
+    //comment
+    router.post(prefix + '/comment/add', controller.comment.add);                        // 新增评论
+    router.post(prefix + '/comment/edit', controller.comment.edit);                      // 编辑评论
+    router.post(prefix + '/comment/up', controller.comment.up);                          // 点赞评论
+    router.post(prefix + '/comment/delete', controller.comment.delete);                  // 删除评论
+
     //reply
     router.post(prefix + '/reply/add', controller.reply.add);                        // 新增回复
     router.post(prefix + '/reply/edit', controller.reply.edit);                      // 编辑回复

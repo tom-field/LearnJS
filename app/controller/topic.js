@@ -11,6 +11,7 @@ class topicController extends Controller {
         const tab = request.tab || 'all';
         const keyword = request.keyword || '';
         const author_id = request.user_id;
+        const user_name = request.user_name;
         const pageNo = parseInt(request.pageNo, 10) || config.pager.pageNo;
         const pageSize = parseInt(request.pageSize, 10) || config.pager.pageSize;
 
@@ -30,13 +31,17 @@ class topicController extends Controller {
                 query.tab = tab;
             }
         }
-        if(keyword){
+        if (keyword) {
             query.title = {
-                $regex:new RegExp(keyword,'i'),
+                $regex: new RegExp(keyword, 'i'),
             }
         }
         if (author_id) {
             request.author_id = author_id;
+        }
+        if (user_name) {
+            const user = await service.user.getUserByLoginName(user_name);
+            request.author_id = user._id;
         }
         const options = {
             skip: (pageNo - 1) * pageSize,
@@ -69,7 +74,12 @@ class topicController extends Controller {
             return;
         }
 
-        const [topic, author, replies] = await service.topic.getFullTopic(topic_id);
+        const [topic, author, comments] = await service.topic.getFullTopic(topic_id);
+
+        // 增加visit_count
+        topic.visit_count += 1;
+        // 写入DB
+        await service.topic.increaseVisitCount(topic._id);
 
         if (!topic) {
             ctx.status = 404;
@@ -84,7 +94,7 @@ class topicController extends Controller {
             currentUser,
             topic,
             author,
-            replies,
+            comments,
         }
 
         ctx.body = ret;

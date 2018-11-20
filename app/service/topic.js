@@ -12,9 +12,9 @@ class TopicService extends Service {
         return topic.save();
     }
 
-    async getTopicById(id){
-        const topic = await this.ctx.model.Topic.findOne({ _id: id }).exec();
-        if(!topic){
+    async getTopicById(id) {
+        const topic = await this.ctx.model.Topic.findOne({_id: id}).exec();
+        if (!topic) {
             return {
                 topic: null,
                 author: null,
@@ -81,9 +81,9 @@ class TopicService extends Service {
             return [];
         }
 
-        const replies = await this.service.reply.getRepliesByTopicId(topic._id);
+        const comments = await this.service.comment.getCommentsByTopicId(topic._id);
 
-        return [topic, author, replies];
+        return [topic, author, comments];
     }
 
     async getCountByQuery(query) {
@@ -100,7 +100,7 @@ class TopicService extends Service {
             },
         }
         const opts = {new: true};
-        return this.ctx.model.Topic.findByIdAndUpdate(topicId,update,opts).exec();
+        return this.ctx.model.Topic.findByIdAndUpdate(topicId, update, opts).exec();
     }
 
     /*
@@ -108,14 +108,14 @@ class TopicService extends Service {
    * @param {String} id 主题ID
    */
     async reduceCount(id) {
-        const update = { $inc: { reply_count: -1 } };
+        const update = {$inc: {reply_count: -1}};
         const reply = await this.service.reply.getLastReplyByTopId(id);
         if (reply) {
             update.last_reply = reply._id;
         } else {
             update.last_reply = null;
         }
-        const opts = { new: true };
+        const opts = {new: true};
 
         const topic = await this.ctx.model.Topic.findByIdAndUpdate(id, update, opts).exec();
         if (!topic) {
@@ -123,6 +123,18 @@ class TopicService extends Service {
         }
 
         return topic;
+    }
+
+    async increaseVisitCount(id) {
+        const query = {_id: id};
+        const update = {$inc: {visit_count: 1}};
+        return this.ctx.model.Topic.findByIdAndUpdate(query, update).exec();
+    }
+
+    async increaseCommentCount(id) {
+        const query = {_id: id};
+        const update = {$inc: {comment_count: 1}};
+        return this.ctx.model.Topic.findByIdAndUpdate(query, update).exec();
     }
 }
 

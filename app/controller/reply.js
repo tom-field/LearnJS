@@ -11,8 +11,8 @@ class ReplyController extends Controller {
         let ret = JSON.parse(JSON.stringify(config.ret));
 
         const request = ctx.request.body;
-        const topic_id = request.topic_id;
-        const reply_id = request.reply_id || "";
+        const user_id = request.user_id;
+        const comment_id = request.comment_id || "";
         const content = request.content;
 
         if (content.trim() == '') {
@@ -20,36 +20,19 @@ class ReplyController extends Controller {
             return;
         }
 
-        let topic = await service.topic.getTopicById(topic_id);
-        topic = topic.topic;
+        let comment = await service.comment.getCommentById(comment_id);
 
-        if (!topic) {
+        if (!comment) {
             ret.message = '这个主题不存在';
             return;
         }
 
-        if (topic.lock) {
-            ret.message = '该主题已锁定';
-            return;
-        }
         //TODO https://github.com/eggjs/egg/blob/master/docs/source/zh-cn/tutorials/passport.md
         // OAuth 2.0 建立权限表 支持多种登录方式
-        const user_id = ctx.session.userId;
-        const topicAuthor = await service.user.getUserById(topic.author_id);
-        const newContent = content.replace('@' + topicAuthor.loginname + ' ', '');
-        const reply = await service.reply.newAndSave(content, topic_id, user_id, reply_id);
 
-        await Promise.all([
-            service.user.incrementScoreAndReplyCount(user_id, 5, 1),
-            service.topic.updateLastReply(topic_id, reply.id),
-        ])
+        await service.reply.newAndSave(user_id, comment_id, content);
 
-        // 通知@到的用户
-        await service.at.sendMessageToMentionUsers(newContent, topic_id, user_id, reply_id);
-        // 如果是非作者回复,提示作者
-        if (topic.author_id.toString() !== user_id) {
-            await service.message.sendReplyMessage(user_id, topic.author_id, topic_id, reply.id);
-        }
+        await service.user.incrementScoreAndReplyCount(user_id, 2, 1),
 
         ret.code = 0;
         ret.message = '回复成功';

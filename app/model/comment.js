@@ -5,22 +5,21 @@ module.exports = app => {
     const Schema = mongoose.Schema;
     const ObjectId = Schema.ObjectId;
 
-    const ReplySchema = new Schema({
+    const CommentSchema = new Schema({
         user_id: { type: ObjectId },
-        //topic_id: { type: ObjectId },
-        comment_id: {type: ObjectId},
+        topic_id: { type: ObjectId },
         content: { type: String },
+        reply_count: { type: Number, default: 0 },
+        ups: [ Schema.Types.ObjectId ],
         create_at: { type: Date, default: Date.now },
         update_at: { type: Date, default: Date.now },
-        content_is_html: { type: Boolean },
-        ups: [ Schema.Types.ObjectId ],
         deleted: { type: Boolean, default: false },
     }, {
         usePushEach: true,
     });
 
-    ReplySchema.index({ topic_id: 1 });
-    ReplySchema.index({ user_id: 1, create_at: -1 });
+    CommentSchema.index({ user_id: 1, create_at: -1 });
+    CommentSchema.index({ topic_id: 1 });
 
-    return mongoose.model('Reply', ReplySchema);
+    return mongoose.model('Comment', CommentSchema);
 };

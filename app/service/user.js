@@ -84,6 +84,22 @@ class UserService extends Service {
         return this.ctx.model.User.count(query).exec();
     }
 
+    /**
+     * 评论加5分
+     */
+    async incrementScoreAndCommentCount(id,score,replyCount){
+        const query = {_id:id};
+        const update = {$inc:{score,comment_count:replyCount}};
+        return this.ctx.model.User.findByIdAndUpdate(query,update).exec();
+    }
+
+    /**
+     * 回复加2分
+     * @param id
+     * @param score
+     * @param replyCount
+     * @returns {Promise.<Array|{index: number, input: string}>}
+     */
     async incrementScoreAndReplyCount(id,score,replyCount){
         const query = {_id:id};
         const update = {$inc:{score,reply_count:replyCount}};
