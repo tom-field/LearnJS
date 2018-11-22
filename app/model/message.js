@@ -8,9 +8,10 @@ module.exports = app => {
         master_id: { type: ObjectId },
         author_id: { type: ObjectId },
         topic_id: { type: ObjectId },
-        reply_id: { type: ObjectId },
+        comment_id: { type: ObjectId },
         has_read: { type: Boolean, default: false },
         create_at: { type: Date, default: Date.now },
+        deleted: { type: Boolean, default: false },
     });
 
     MessageSchema.index({ master_id: 1, has_read: -1, create_at: -1 });

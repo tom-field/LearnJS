@@ -71,8 +71,27 @@ class UserService extends Service {
         return this.ctx.model.User.findOne(query).exec();
     }
 
+    /*
+   * 根据邮箱，查找用户
+   * @param {String} email 邮箱地址
+   * @return {Promise[user]} 承载用户的 Promise 对象
+   */
+    getUserByMail(email) {
+        return this.ctx.model.User.findOne({ email }).exec();
+    }
+
     async getUsersByQuery(query, opt) {
         return this.ctx.model.User.find(query, '', opt).exec();
+    }
+
+    /**
+     * 根据 githubId 查找用户
+     * @param githubId 登录名
+     * @returns {Array|{index: number, input: string}}
+     */
+    getUserByGithubId(githubId) {
+        const query = { githubId };
+        return this.ctx.model.User.findOne(query).exec();
     }
 
     /**
@@ -112,16 +131,6 @@ class UserService extends Service {
     async updateUserInfo(id,info){
         const query = {_id:id};
         return this.ctx.model.User.findByIdAndUpdate(query,info).exec();
-    }
-
-    /**
-     * 根据 githubId 查找用户
-     * @param githubId 登录名
-     * @returns {Array|{index: number, input: string}}
-     */
-    getUserByGithubId(githubId) {
-        const query = { githubId };
-        return this.ctx.model.User.findOne(query).exec();
     }
 
     /**

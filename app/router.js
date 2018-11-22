@@ -77,6 +77,7 @@ module.exports = app => {
 
     //message
     router.post(prefix + '/message', controller.message.index);                      // 显示消息
+    router.post(prefix + '/message/unreadCount', controller.message.unreadCount);    // 未读消息
 
     /*router.post('/file/upload', controller.file.upload);                           // 单个文件上传
     router.post('/file/uploads', controller.file.uploads);                           // 多个文件上传

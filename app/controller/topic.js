@@ -66,7 +66,7 @@ class topicController extends Controller {
 
         const request = ctx.request.body;
         const topic_id = request.topic_id;
-        const currentUser = ctx.user;
+        const currentUserId = ctx.session.userId;
 
         if (topic_id.length != 24) {
             ctx.status = 404;
@@ -82,13 +82,16 @@ class topicController extends Controller {
         // 写入DB
         await service.topic.increaseVisitCount(topic_id);
 
-        // 判断是否收藏
-        let collected = await service.topicCollect.getTopicCollect(currentUser._id, topic_id);
-        if (collected) {
-            collected = true;
-        } else {
+        // 判断是否收藏 未登录就是未收藏 如果已经登录进行查询
+        let collected;
+        if (!currentUserId) {
             collected = false;
+        } else {
+            const userCollected = await service.topicCollect.getTopicCollect(currentUserId, topic_id);
+            collected = userCollected ? true : false;
         }
+        // 查询收藏数
+        const collectCount =  await service.topicCollect.getCountByTopicId(topic_id);
 
         if (!topic) {
             ctx.status = 404;
@@ -100,9 +103,9 @@ class topicController extends Controller {
         ret.code = 0;
         ret.data = {
             topic_id,
-            currentUser,
             topic,
             collected,
+            collectCount,
             author,
             comments,
         }
@@ -210,13 +213,12 @@ class topicController extends Controller {
         }
 
         await service.topicCollect.newAndSave(user_id, topic_id);
-        ret.code = 0;
-        ctx.body = ret;
+        // 查询收藏数
+        const collectCount =  await service.topicCollect.getCountByTopicId(topic_id);
 
-        await Promise.all([
-            service.user.incrementCollectTopicCount(user_id),
-            service.topic.incrementCollectCount(topic_id),
-        ]);
+        ret.code = 0;
+        ret.data = collectCount;
+        ctx.body = ret;
     }
 
     async cancelCollect() {
@@ -228,6 +230,7 @@ class topicController extends Controller {
         const topic_id = request.topic_id;
 
         const [topic] = await service.topic.getTopicById(topic_id);
+        const user = await service.user.getUserById(user_id);
 
         if (!topic) {
             ret.message = '主题不存在或已被删除';
@@ -245,14 +248,11 @@ class topicController extends Controller {
             ctx.body = ret;
             return;
         }
-
-        const user = await service.user.getUserById(user_id);
-        await user.save();
-
-        topic.collect_count -= 1;
-        await topic.save();
+        // 查询收藏数
+        const collectCount =  await service.topicCollect.getCountByTopicId(topic_id);
 
         ret.code = 0;
+        ret.data = collectCount;
         ctx.body = ret;
     }
 

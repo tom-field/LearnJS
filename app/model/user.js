@@ -31,7 +31,6 @@ module.exports = app => {
         follower_count: { type: Number, default: 0 },
         following_count: { type: Number, default: 0 },
         collect_tag_count: { type: Number, default: 0 },
-        collect_topic_count: { type: Number, default: 0 },
         create_at: { type: Date, default: Date.now },
         update_at: { type: Date, default: Date.now },
         is_star: { type: Boolean },

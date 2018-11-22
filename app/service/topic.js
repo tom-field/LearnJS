@@ -43,13 +43,16 @@ class TopicService extends Service {
 
         await Promise.all(
             topics.map(async topic => {
-                const [author, reply] = await Promise.all([
+                const [author, reply, collectCount, commentCount] = await Promise.all([
                     this.service.user.getUserById(topic.author_id),
-                    // 获取主题的最后回复
                     this.service.reply.getReplyById(topic.last_reply),
+                    this.service.topicCollect.getCountByTopicId(topic._id),
+                    this.service.comment.getCountByTopicId(topic._id),
                 ]);
                 topic.author = author;
                 topic.reply = reply;
+                topic.collectCount = collectCount;
+                topic.commentCount = commentCount;
             })
         );
 
@@ -120,6 +123,7 @@ class TopicService extends Service {
         return topic;
     }
 
+    // depreated
     incrementCollectCount(id) {
         const query = {_id: id};
         const update = {$inc: {collect_count: 1}};

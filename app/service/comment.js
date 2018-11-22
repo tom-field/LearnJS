@@ -46,6 +46,11 @@ class CommentService extends Service {
         return comment;
     }
 
+    getCountByTopicId(topicId) {
+        const query = {topic_id: topicId, deleted: false};
+        return this.ctx.model.Comment.count(query).exec();
+    }
+
     /*
    * 根据主题ID，获取回复列表
    * Callback:
@@ -57,13 +62,14 @@ class CommentService extends Service {
     async getCommentsByTopicId(id) {
         // reply_id为null 获取topic的回复
         const query = {topic_id: id, deleted: false};
-        let comments = await this.ctx.model.Comment.find(query, '', {sort: 'create_at'}).lean().exec();
-
+        let comments = await this.ctx.model.Comment.find(query, '', {sort: 'create_at'}).exec();
         if (comments.length === 0) {
             return [];
         }
         return Promise.all(
             comments.map(async item => {
+                // 技术点:这步把mongoose对象转为json方便在上面添加属性返回
+                item = item.toJSON({getters: true, virtuals: true});
                 const user = await this.service.user.getUserById(item.user_id);
                 const replies = await this.service.reply.getRepliesByCommentId(item._id);
                 item.user = user || {_id: ''};

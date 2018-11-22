@@ -78,22 +78,30 @@ class searchController extends Controller {
 
         const loginname = validator.trim(ctx.request.body.loginname || '').toLowerCase();
         const pass = validator.trim(ctx.request.body.pass || '');
-        const users = await service.user.getUsersByQuery({loginname});
-        console.log(users);
-        if (!users.length) {
+
+        let user;
+        if (loginname.indexOf('@') > 0) {
+             user = await service.user.getUserByMail(loginname);
+        }else{
+            user = await service.user.getUserByLoginName(loginname);
+        }
+
+        if (!user) {
             ret.message = '用户不存在';
             ctx.body = ret;
             return;
         }
-        if (!users[0].active) {
+        if (!user.active) {
             ret.message = '该账户尚未激活,请先激活帐号';
             ctx.body = ret;
             return;
         }
-        if (ctx.helper.bcompare(pass, users[0].pass)) {
+        if (ctx.helper.bcompare(pass, user.pass)) {
             ret.code = 0;
-            ret.data = users[0];
-            ctx.session.userId = users[0]._id;
+            ctx.currentUser = user;
+            ctx.session.userId = user._id;
+            ctx.session.loginname = user.loginname;
+            ret.data = user;
             ctx.body = ret;
         } else {
             ret.message = '密码不正确';
@@ -196,9 +204,14 @@ class searchController extends Controller {
         const token = request.token;
         const userInfo = await service.user.getUserByToken(token);
 
-        ret.code = 0;
-        ret.data = userInfo;
-        ctx.body = ret;
+        if(userInfo){
+            ret.code = 0;
+            ret.data = userInfo;
+            ctx.body = ret;
+        }else {
+            ret.message = '该token不存在';
+            ctx.body = ret;
+        }
     }
 }
 

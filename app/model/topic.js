@@ -13,9 +13,9 @@ module.exports = app => {
         good: {type: Boolean, default: false}, // 精华帖
         lock: {type: Boolean, default: false}, // 被锁定主题
         visit_count: {type: Number, default: 0},
-        comment_count: {type: Number, default: 0},
+        comment_count: {type: Number, default: 0}, //depreated
         reply_count: {type: Number, default: 0},
-        collect_count: {type: Number, default: 0},
+        collect_count: {type: Number, default: 0},  //depreated
         create_at: {type: Date, default: Date.now},
         update_at: {type: Date, default: Date.now},
         last_reply: {type: ObjectId},

@@ -27,35 +27,35 @@ module.exports = appInfo => {
     config.tabsbak = [['share', '分享'], ['ask', '问答'], ['math', '数学'], ['fiance', '理财'], ['friend', '交友'], ['transaction', '交易'], ['server', '服务器'], ['job', '招聘']];
     config.tabs = [
         {
-            label:'分享',
+            label: '分享',
             value: 'share',
         },
         {
-            label:'问答',
+            label: '问答',
             value: 'ask',
         },
         {
-            label:'数学',
+            label: '数学',
             value: 'math',
         },
         {
-            label:'理财',
+            label: '理财',
             value: 'fiance',
         },
         {
-            label:'交友',
+            label: '交友',
             value: 'friend',
         },
         {
-            label:'交易',
+            label: '交易',
             value: 'transaction',
         },
         {
-            label:'服务器',
+            label: '服务器',
             value: 'server',
         },
         {
-            label:'招聘',
+            label: '招聘',
             value: 'job',
         },
     ]
@@ -102,7 +102,6 @@ module.exports = appInfo => {
         // 如果在国内，此项请留空
         uploadURL: '',
     };
-    // 第三方认证
     config.passportGithub = {
         key: process.env.EGG_PASSPORT_GITHUB_CLIENT_ID || '2077f6a3dabfbf142af0',
         secret: process.env.EGG_PASSPORT_GITHUB_CLIENT_SECRET || 'e136c0ef50091c01c89a8cd7db9c42dfd7af7c5f',

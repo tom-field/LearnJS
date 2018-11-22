@@ -8,6 +8,20 @@ class TopicCollectService extends Service {
         return this.ctx.model.TopicCollect.findOne(query).exec();
     }
 
+    getCountByUserId(userId){
+        const query = {user_id: userId};
+        return this.ctx.model.TopicCollect.count(query).exec();
+    }
+
+    getCountByTopicId(topicId){
+        const query = {topic_id: topicId};
+        return this.ctx.model.TopicCollect.count(query).exec();
+    }
+
+    countTopicCollectedNo(topicId){
+
+    }
+
     getTopicCollectsByUserId(userId, opt) {
         const defaultOpt = { sort: '-create_at' };
         opt = Object.assign(defaultOpt, opt);
