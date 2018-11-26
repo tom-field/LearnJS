@@ -46,9 +46,9 @@ class CommentService extends Service {
         return comment;
     }
 
-    getCountByTopicId(topicId) {
+    getCountByTopicId(topicId,opt) {
         const query = {topic_id: topicId, deleted: false};
-        return this.ctx.model.Comment.count(query).exec();
+        return this.ctx.model.Comment.count(query,opt).exec();
     }
 
     /*
@@ -62,7 +62,7 @@ class CommentService extends Service {
     async getCommentsByTopicId(id) {
         // reply_id为null 获取topic的回复
         const query = {topic_id: id, deleted: false};
-        let comments = await this.ctx.model.Comment.find(query, '', {sort: 'create_at'}).exec();
+        let comments = await this.ctx.model.Comment.find(query, '', {sort: '-create_at'}).exec();
         if (comments.length === 0) {
             return [];
         }

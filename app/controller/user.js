@@ -19,16 +19,15 @@ class userController extends Controller {
 
         const query = {author_id: user._id};
         const opts = [{limit: 5, sort: '-create_at'}, {limit: 5, sort: '-create_at'}];
-        const [recent_topics, recent_replies] = await Promise.all([
+        const [recent_topics, collected_topics, recent_replies] = await Promise.all([
             service.topic.getTopicsByQuery(query, opts[0]),
-            service.reply.getRepliesByAuthorId(user.author_id, opts[1])
+            service.topicCollect.getTopicCollectsByUserId(user._id, opts[0]),
+            service.reply.getRepliesByAuthorId(user._id, opts[1]),
         ])
-
-        // TODO 如果用户没有激活，那么管理员可以帮忙激活
 
         ret.code = 0;
         ret.data = {
-            user, recent_topics, recent_replies
+            user, recent_topics, collected_topics, recent_replies
         };
         ctx.body = ret;
     }
@@ -37,14 +36,19 @@ class userController extends Controller {
      * 获取积分前100用户
      * @returns {Promise.<void>}
      */
-    async top100() {
+    async topUsers() {
         const {ctx, service, config} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
-        const opt = {limit: 100, sort: '-score'};
-        ret.data = await service.user.getUsersByQuery({is_block: false}, opt);
+
+        const request = ctx.request.body;
+        const limit = request.pageSize;
+        const pageNo = request.pageNo;
+
+        const opt = {skip: (pageNo - 1) * limit, limit, sort: '-score'};
+
+        ret.data = await service.user.getUsersDetailByQuery({is_block: false}, opt);
         ret.code = 0;
         ctx.body = ret;
-
     }
 
     /**
@@ -162,7 +166,7 @@ class userController extends Controller {
     }
 
     async updatePassword() {
-        const { ctx, config, service } = this;
+        const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
         const userId = validator.trim(ctx.request.body.user_id || '');
@@ -170,20 +174,20 @@ class userController extends Controller {
         const newPassword = validator.trim(ctx.request.body.newPassword) || '';
         const renewPassword = validator.trim(ctx.request.body.renewPassword) || '';
 
-        if(newPassword != renewPassword){
+        if (newPassword != renewPassword) {
             ret.message = '两次输入密码不一致!';
             ctx.body = ret;
             return;
         }
 
         const user = await service.user.getUserById(userId);
-        if(!user){
+        if (!user) {
             ret.message = '用户不存在';
             ctx.body = ret;
             return;
         }
-        const isCompare = ctx.helper.bcompare(password,user.pass);
-        if(!isCompare){
+        const isCompare = ctx.helper.bcompare(password, user.pass);
+        if (!isCompare) {
             ret.message = '原密码不正确!';
             ctx.body = ret;
             return;

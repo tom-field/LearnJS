@@ -19,9 +19,9 @@ module.exports = appInfo => {
         serverUrl: 'https://news.ycombinator.com/',
     };
 
-    config.name = 'CNode技术社区';
+    config.name = 'dreamIntoReal技术社区';
 
-    config.host = process.env.EGG_SERVER_ENV == 'local' ? 'http://localhost:8081' : 'http://xuhuidev.com/my-cnode';
+    config.host = process.env.EGG_SERVER_ENV == 'local' ? 'http://localhost:8081' : 'http://xuhuidev.com';
 
     // 版块
     config.tabsbak = [['share', '分享'], ['ask', '问答'], ['math', '数学'], ['fiance', '理财'], ['friend', '交友'], ['transaction', '交易'], ['server', '服务器'], ['job', '招聘']];
@@ -74,7 +74,7 @@ module.exports = appInfo => {
     config.mongoose = {
         // mongoose.connect('mongodb://username:password@127.0.0.1:27017/dbname
         // 如果没有用户名和密码可以去掉
-        url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/egg_cnode',
+        url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/egg_dream_into_real',
         poolSize: 20,
         reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
         reconnectInterval: 500, // Reconnect every 500ms
@@ -94,10 +94,10 @@ module.exports = appInfo => {
     };
     // 7牛的access信息，用于文件上传
     config.qn_access = {
-        accessKey: '4sS6Qxld8jvVKUk4E5NXh-m_irPX90oLfkMy0v_3',
-        secretKey: 'dRjcCy8UB3x3n7c0JCpt_WU07uPKP54NxVS5m4rb',
-        bucket: 'test',
-        origin: 'http://phv27sna5.bkt.clouddn.com',
+        accessKey: process.env.EGG_QINIU_ACCESS_KEY || '4sS6Qxld8jvVKUk4E5NXh-m_irPX90oLfkMy0v_3',
+        secretKey: process.env.EGG_QINIU_SECRET_KEY || 'dRjcCy8UB3x3n7c0JCpt_WU07uPKP54NxVS5m4rb',
+        bucket: process.env.EGG_QINIU_BUCKET || 'test',
+        origin: process.env.EGG_QINIU_ORIGIN || 'http://phv27sna5.bkt.clouddn.com',
         // 如果vps在国外，请使用 http://up.qiniug.com/ ，这是七牛的国际节点
         // 如果在国内，此项请留空
         uploadURL: '',
@@ -110,7 +110,7 @@ module.exports = appInfo => {
         key: process.env.EGG_PASSPORT_GOOGLE_CLIENT_ID || '558941605894-28l3eu0eg8ldt1q5dq2hkobkdhc33m5g.apps.googleusercontent.com',
         secret: process.env.EGG_PASSPORT_GOOGLE_CLIENT_SECRET || 'N6TsmBp469blmxnGeokwUDOP',
     };
-    config.auth_cookie_name = 'node_club';
+    config.auth_cookie_name = 'dreamintoreal';
 
     // 阿里node性能平台
     config.alinode = {

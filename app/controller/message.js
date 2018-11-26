@@ -21,7 +21,7 @@ class MessageController extends Controller {
             readMessages,
             unreadMessages,
         }
-        this.ctx.body = ret;
+        ctx.body = ret;
     }
 
     async unreadCount(){

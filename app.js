@@ -3,37 +3,6 @@
 const uuid = require('uuid');
 
 module.exports = app => {
-    const localHandler = async (ctx, { username, password }) => {
-        const getUser = username => {
-            if (username.indexOf('@') > 0) {
-                return ctx.service.user.getUserByMail(username);
-            }
-            return ctx.service.user.getUserByLoginName(username);
-        };
-        const existUser = await getUser(username);
-
-        // 用户不存在
-        if (!existUser) {
-            return null;
-        }
-
-        const passhash = existUser.pass;
-        // TODO: change to async compare
-        const equal = ctx.helper.bcompare(password, passhash);
-        // 密码不匹配
-        if (!equal) {
-            return null;
-        }
-
-        // 用户未激活
-        if (!existUser.active) {
-            // 发送激活邮件
-            return null;
-        }
-
-        // 验证通过
-        return existUser;
-    };
 
     const githubHandler = async (ctx, { profile }) => {
         const email = profile.emails && profile.emails[0] && profile.emails[0].value;
@@ -60,13 +29,13 @@ module.exports = app => {
             if (ex.message.indexOf('duplicate key error') !== -1) {
                 let err;
                 if (ex.message.indexOf('email') !== -1) {
-                    err = new Error('您 GitHub 账号的 Email 与之前在 CNodejs 注册的 Email 重复了');
+                    err = new Error('您 GitHub 账号的 Email 与之前在 dreamIntoReal 注册的 Email 重复了');
                     err.code = 'duplicate_email';
                     throw err;
                 }
 
                 if (ex.message.indexOf('loginname') !== -1) {
-                    err = new Error('您 GitHub 账号的用户名与之前在 CNodejs 注册的用户名重复了');
+                    err = new Error('您 GitHub 账号的用户名与之前在 dreamIntoReal 注册的用户名重复了');
                     err.code = 'duplicate_loginname';
                     throw err;
                 }
@@ -104,13 +73,13 @@ module.exports = app => {
             if (ex.message.indexOf('duplicate key error') !== -1) {
                 let err;
                 if (ex.message.indexOf('email') !== -1) {
-                    err = new Error('您 GitHub 账号的 Email 与之前在 CNodejs 注册的 Email 重复了');
+                    err = new Error('您 GitHub 账号的 Email 与之前在 dreamIntoReal 注册的 Email 重复了');
                     err.code = 'duplicate_email';
                     throw err;
                 }
 
                 if (ex.message.indexOf('loginname') !== -1) {
-                    err = new Error('您 GitHub 账号的用户名与之前在 CNodejs 注册的用户名重复了');
+                    err = new Error('您 GitHub 账号的用户名与之前在 dreamIntoReal 注册的用户名重复了');
                     err.code = 'duplicate_loginname';
                     throw err;
                 }

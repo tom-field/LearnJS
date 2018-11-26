@@ -44,7 +44,7 @@ class UserService extends Service {
    * @return {Promise[user]} 承载用户的 Promise 对象
    */
     getUserByToken(accessToken) {
-        const query = { accessToken };
+        const query = {accessToken};
         return this.ctx.model.User.findOne(query).exec();
     }
 
@@ -57,8 +57,23 @@ class UserService extends Service {
         if (names.length === 0) {
             return [];
         }
-        const query = { loginname: { $in: names } };
+        const query = {loginname: {$in: names}};
         return this.ctx.model.User.find(query).exec();
+    }
+
+    async getUsersDetailByNames(names) {
+        const users = this.ctx.service.user.getUsersByNames(names);
+        if (!users.length) {
+            return [];
+        }
+
+        Promise.all(users.map(async user => {
+            user = user.toJSON();
+            user.topicCount = this.ctx.model.Topic.count({user_id: user._id, deleted: false});
+            user.topicCollectCount = this.ctx.model.topicCollect.count({user_id: user._id});
+            user.commentCount = this.ctx.model.Comment.count({user_id: user._id, deleted: false});
+            return user;
+        }))
     }
 
     /*
@@ -77,11 +92,21 @@ class UserService extends Service {
    * @return {Promise[user]} 承载用户的 Promise 对象
    */
     getUserByMail(email) {
-        return this.ctx.model.User.findOne({ email }).exec();
+        return this.ctx.model.User.findOne({email}).exec();
     }
 
     async getUsersByQuery(query, opt) {
         return this.ctx.model.User.find(query, '', opt).exec();
+    }
+
+    async getUsersDetailByQuery(query, opt) {
+        const users = await this.ctx.model.User.find(query, '', opt).lean().exec();
+        return Promise.all(users.map(async user => {
+            user.topicCount = await this.ctx.model.Topic.count({user_id: user._id, deleted: false}).exec();
+            user.topicCollectCount = await this.ctx.model.TopicCollect.count({user_id: user._id}).exec();
+            user.commentCount = await this.ctx.model.Comment.count({user_id: user._id, deleted: false}).exec();
+            return user;
+        }))
     }
 
     /**
@@ -90,7 +115,7 @@ class UserService extends Service {
      * @returns {Array|{index: number, input: string}}
      */
     getUserByGithubId(githubId) {
-        const query = { githubId };
+        const query = {githubId};
         return this.ctx.model.User.findOne(query).exec();
     }
 
@@ -106,10 +131,10 @@ class UserService extends Service {
     /**
      * 评论加5分
      */
-    async incrementScoreAndCommentCount(id,score,replyCount){
-        const query = {_id:id};
-        const update = {$inc:{score,comment_count:replyCount}};
-        return this.ctx.model.User.findByIdAndUpdate(query,update).exec();
+    async incrementScoreAndCommentCount(id, score, replyCount) {
+        const query = {_id: id};
+        const update = {$inc: {score, comment_count: replyCount}};
+        return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
     }
 
     /**
@@ -119,18 +144,18 @@ class UserService extends Service {
      * @param replyCount
      * @returns {Promise.<Array|{index: number, input: string}>}
      */
-    async incrementScoreAndReplyCount(id,score,replyCount){
-        const query = {_id:id};
-        const update = {$inc:{score,reply_count:replyCount}};
-        return this.ctx.model.User.findByIdAndUpdate(query,update).exec();
+    async incrementScoreAndReplyCount(id, score, replyCount) {
+        const query = {_id: id};
+        const update = {$inc: {score, reply_count: replyCount}};
+        return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
     }
 
     /*
     * 更新用户信息
     * */
-    async updateUserInfo(id,info){
-        const query = {_id:id};
-        return this.ctx.model.User.findByIdAndUpdate(query,info).exec();
+    async updateUserInfo(id, info) {
+        const query = {_id: id};
+        return this.ctx.model.User.findByIdAndUpdate(query, info).exec();
     }
 
     /**
@@ -139,8 +164,8 @@ class UserService extends Service {
      * @returns {Array|{index: number, input: string}}
      */
     incrementCollectTopicCount(id) {
-        const query = { _id: id };
-        const update = { $inc: { collect_topic_count: 1 } };
+        const query = {_id: id};
+        const update = {$inc: {collect_topic_count: 1}};
         return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
     }
 }

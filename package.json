@@ -46,11 +46,11 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg_cnode --ignore-stderr",
-    "stop": "egg-scripts stop --title=egg_cnode",
+    "start": "egg-scripts start --daemon --title=dreamintoreal --ignore-stderr",
+    "stop": "egg-scripts stop --title=dreamintoreal",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
-    "docker": "egg-scripts start --title=egg_cnode --port=7001",
+    "docker": "egg-scripts start --title=dreamintoreal --port=7001",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",

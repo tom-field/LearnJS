@@ -4,32 +4,29 @@ const Service = require('egg').Service;
 
 class TopicCollectService extends Service {
     getTopicCollect(userId, topicId) {
-        const query = { user_id: userId, topic_id: topicId };
+        const query = {user_id: userId, topic_id: topicId};
         return this.ctx.model.TopicCollect.findOne(query).exec();
     }
 
-    getCountByUserId(userId){
+    getCountByUserId(userId) {
         const query = {user_id: userId};
         return this.ctx.model.TopicCollect.count(query).exec();
     }
 
-    getCountByTopicId(topicId){
+    getCountByTopicId(topicId) {
         const query = {topic_id: topicId};
         return this.ctx.model.TopicCollect.count(query).exec();
     }
 
-    countTopicCollectedNo(topicId){
-
-    }
-
-    getTopicCollectsByUserId(userId, opt) {
-        const defaultOpt = { sort: '-create_at' };
+    async getTopicCollectsByUserId(userId, opt) {
+        const defaultOpt = {sort: '-create_at'};
         opt = Object.assign(defaultOpt, opt);
-        return this.ctx.model.TopicCollect.find(
-            { user_id: userId },
-            '',
-            opt
-        ).exec();
+        const collects = await this.ctx.model.TopicCollect.find({user_id: userId}, {topic_id: true}, opt).exec();
+        const ids = collects.map(collect => {
+            return collect.topic_id.toString();
+        })
+        const query = {_id: {$in: ids}};
+        return await this.ctx.service.topic.getTopicsByQuery(query, {})
     }
 
     newAndSave(userId, topicId) {
@@ -40,7 +37,7 @@ class TopicCollectService extends Service {
     }
 
     remove(userId, topicId) {
-        const query = { user_id: userId, topic_id: topicId };
+        const query = {user_id: userId, topic_id: topicId};
         return this.ctx.model.TopicCollect.remove(query).exec();
     }
 }

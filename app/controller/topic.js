@@ -37,11 +37,11 @@ class topicController extends Controller {
             }
         }
         if (author_id) {
-            request.author_id = author_id;
+            query.author_id = author_id;
         }
         if (user_name) {
             const user = await service.user.getUserByLoginName(user_name);
-            request.author_id = user._id;
+            query.author_id = user._id;
         }
         const options = {
             skip: (pageNo - 1) * pageSize,
@@ -91,7 +91,7 @@ class topicController extends Controller {
             collected = userCollected ? true : false;
         }
         // 查询收藏数
-        const collectCount =  await service.topicCollect.getCountByTopicId(topic_id);
+        const collectCount = await service.topicCollect.getCountByTopicId(topic_id);
 
         if (!topic) {
             ctx.status = 404;
@@ -214,7 +214,7 @@ class topicController extends Controller {
 
         await service.topicCollect.newAndSave(user_id, topic_id);
         // 查询收藏数
-        const collectCount =  await service.topicCollect.getCountByTopicId(topic_id);
+        const collectCount = await service.topicCollect.getCountByTopicId(topic_id);
 
         ret.code = 0;
         ret.data = collectCount;
@@ -249,10 +249,45 @@ class topicController extends Controller {
             return;
         }
         // 查询收藏数
-        const collectCount =  await service.topicCollect.getCountByTopicId(topic_id);
+        const collectCount = await service.topicCollect.getCountByTopicId(topic_id);
 
         ret.code = 0;
         ret.data = collectCount;
+        ctx.body = ret;
+    }
+
+    //查询收藏的主题
+    async collectedTopics() {
+        const {ctx, config, service} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const request = ctx.request.body;
+        const user_name = request.user_name;
+        const pageNo = parseInt(request.pageNo, 10) || config.pager.pageNo;
+        const pageSize = parseInt(request.pageSize, 10) || config.pager.pageSize;
+
+        const options = {
+            skip: (pageNo - 1) * pageSize,
+            limit: pageSize,
+            sort: '-creat_at',
+        };
+
+        const user = await service.user.getUserByLoginName(user_name);
+
+        if (!user) {
+            ret.message = '用户不存在';
+            ctx.body = ret;
+            return;
+        }
+
+        const collectedTopics = await service.topicCollect.getTopicCollectsByUserId(user._id, options);
+        const collectedCount = await service.topicCollect.getCountByUserId(user._id);
+
+        ret.code = 0;
+        ret.data = collectedTopics;
+        ret.pageNo = pageNo;
+        ret.pageSize = pageSize;
+        ret.totalCount = collectedCount;
         ctx.body = ret;
     }
 

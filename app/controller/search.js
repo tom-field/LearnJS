@@ -16,9 +16,9 @@ class searchController extends Controller {
 
         switch (config.search) {
             case 'google':
-                return ctx.redirect(`https://www.google.com/#hl=zh-CN&q=site:cnodejs.org+${query}`);
+                return ctx.redirect(`https://www.google.com/#hl=zh-CN&q=site:dreamintoreal.com+${query}`);
             case 'baidu':
-                return ctx.redirect(`https://www.baidu.com/s?wd=site:cnodejs.org+${query}`);
+                return ctx.redirect(`https://www.baidu.com/s?wd=site:dreamintoreal.com+${query}`);
             case 'local':
                 const ret = await this.service.search.searchLocal(this.ctx.query, query);
                 return this.ctx.body = ret;

@@ -32,7 +32,14 @@ class TopicService extends Service {
         ];
     }
 
+    async testPopulate(id) {
+        const topic = await this.ctx.model.Topic.findOne({_id: id}).populate('auhtor').exec();
+        return topic;
+    }
+
     async getTopicsByQuery(query, opt) {
+        const defaultOpt = {sort: '-create_at'};
+        opt = Object.assign(defaultOpt, opt);
         query.deleted = false;
         // TODO: 此处注意查找到的数据修改但是返回到前端不展示,用lean()方法
         const topics = await this.ctx.model.Topic.find(query, {}, opt).lean().exec();
@@ -121,13 +128,6 @@ class TopicService extends Service {
         }
 
         return topic;
-    }
-
-    // depreated
-    incrementCollectCount(id) {
-        const query = {_id: id};
-        const update = {$inc: {collect_count: 1}};
-        return this.ctx.model.Topic.findByIdAndUpdate(query, update).exec();
     }
 
     async increaseVisitCount(id) {

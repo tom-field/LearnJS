@@ -10,11 +10,11 @@ db.createUser({
   roles: [
     {
       role: 'readWrite',
-      db: 'egg_cnode'
+      db: 'egg_dream_into_real'
     }
   ]
 })
 
-db.egg_cnode.insert({
-  egg_cnode: 'egg-cnode'
+db.egg_dream_into_real.insert({
+    egg_dream_into_real: 'egg_dream_into_real'
 })
