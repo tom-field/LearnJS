@@ -69,9 +69,6 @@ class UserService extends Service {
 
         Promise.all(users.map(async user => {
             user = user.toJSON();
-            user.topicCount = this.ctx.model.Topic.count({user_id: user._id, deleted: false});
-            user.topicCollectCount = this.ctx.model.topicCollect.count({user_id: user._id});
-            user.commentCount = this.ctx.model.Comment.count({user_id: user._id, deleted: false});
             return user;
         }))
     }
@@ -99,16 +96,6 @@ class UserService extends Service {
         return this.ctx.model.User.find(query, '', opt).exec();
     }
 
-    async getUsersDetailByQuery(query, opt) {
-        const users = await this.ctx.model.User.find(query, '', opt).lean().exec();
-        return Promise.all(users.map(async user => {
-            user.topicCount = await this.ctx.model.Topic.count({user_id: user._id, deleted: false}).exec();
-            user.topicCollectCount = await this.ctx.model.TopicCollect.count({user_id: user._id}).exec();
-            user.commentCount = await this.ctx.model.Comment.count({user_id: user._id, deleted: false}).exec();
-            return user;
-        }))
-    }
-
     /**
      * 根据 githubId 查找用户
      * @param githubId 登录名
@@ -128,10 +115,59 @@ class UserService extends Service {
         return this.ctx.model.User.count(query).exec();
     }
 
+
+    /*
+    * 更新用户信息
+    * */
+    async updateUserInfo(id, info) {
+        const query = {_id: id};
+        return this.ctx.model.User.findByIdAndUpdate(query, info).exec();
+    }
+
+    /**
+     * 主题数自增
+     */
+    async increaseTopicCount(id, count) {
+        const query = {_id: id};
+        const update = {$inc: {topic_count: count}};
+        const opt = {new: true};
+        return this.ctx.model.User.findByIdAndUpdate(query, update, opt).exec();
+    }
+
+    async increaseCommentCount(id, count) {
+        const query = {_id: id};
+        const update = {$inc: {comment_count: count}};
+        const opt = {new: true};
+        return this.ctx.model.User.findByIdAndUpdate(query, update, opt).exec();
+    }
+
+    /**
+     * TODO
+     * @param id
+     * @returns {Promise.<Array|{index: number, input: string}>}
+     */
+    async increaseTopicCount(id) {
+        const query = {_id: id};
+        const update = {$inc: {topic_count: 1}};
+        return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
+    }
+
+    /**
+     * 收藏数增长
+     * @param id
+     * @returns {Array|{index: number, input: string}}
+     */
+    async increaseCollectTopicCount(id, count) {
+        const query = {_id: id};
+        const update = {$inc: {collect_topic_count: count}};
+        const opt = {new: true};
+        return this.ctx.model.User.findByIdAndUpdate(query, update, opt).exec();
+    }
+
     /**
      * 评论加5分
      */
-    async incrementScoreAndCommentCount(id, score, replyCount) {
+    async increaseScoreAndCommentCount(id, score, replyCount) {
         const query = {_id: id};
         const update = {$inc: {score, comment_count: replyCount}};
         return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
@@ -144,28 +180,9 @@ class UserService extends Service {
      * @param replyCount
      * @returns {Promise.<Array|{index: number, input: string}>}
      */
-    async incrementScoreAndReplyCount(id, score, replyCount) {
+    async increaseScoreAndReplyCount(id, score, replyCount) {
         const query = {_id: id};
         const update = {$inc: {score, reply_count: replyCount}};
-        return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
-    }
-
-    /*
-    * 更新用户信息
-    * */
-    async updateUserInfo(id, info) {
-        const query = {_id: id};
-        return this.ctx.model.User.findByIdAndUpdate(query, info).exec();
-    }
-
-    /**
-     * 收藏数增长
-     * @param id
-     * @returns {Array|{index: number, input: string}}
-     */
-    incrementCollectTopicCount(id) {
-        const query = {_id: id};
-        const update = {$inc: {collect_topic_count: 1}};
         return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
     }
 }

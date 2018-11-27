@@ -79,6 +79,12 @@ class CommentService extends Service {
         )
     }
 
+    async getLastCommentByTopId(topicId) {
+        const query = { topic_id: topicId, deleted: false };
+        const opts = { sort: { create_at: -1 }, limit: 1 };
+        return this.ctx.model.Comment.findOne(query, '_id', opts).exec();
+    }
+
     /*
    * 根据topicId查询到最新的一条未删除回复
    * @param topicId 主题ID

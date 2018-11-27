@@ -18,13 +18,15 @@ module.exports = app => {
         collect_count: {type: Number, default: 0},  //depreated
         create_at: {type: Date, default: Date.now},
         update_at: {type: Date, default: Date.now},
+        last_comment_id: {type: ObjectId},
+        last_comment_at: {type: Date, default: Date.now},
         last_reply: {type: ObjectId},
         last_reply_at: {type: Date, default: Date.now},
         content_is_html: {type: Boolean},
         tab: {type: String},
         ups: [Schema.Types.ObjectId],
         deleted: {type: Boolean, default: false},
-    },{
+    }, {
         toJSON: {virtuals: true}
     });
 

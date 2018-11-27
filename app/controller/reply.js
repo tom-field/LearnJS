@@ -32,7 +32,7 @@ class ReplyController extends Controller {
 
         await service.reply.newAndSave(user_id, comment_id, content);
 
-        await service.user.incrementScoreAndReplyCount(user_id, 2, 1),
+        await service.user.increaseScoreAndReplyCount(user_id, 2, 1),
 
         ret.code = 0;
         ret.message = '回复成功';

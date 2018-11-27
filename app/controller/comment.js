@@ -18,7 +18,9 @@ class CommentController extends Controller {
         const [topic] = await service.topic.getTopicById(topic_id);
         const comment = await service.comment.newAndSave(user_id, topic_id, content);
 
-        await service.topic.increaseCommentCount(topic_id);
+        await service.topic.increaseCommentCount(topic_id, 1);
+        await service.user.increaseCommentCount(user_id, 1);
+
         //TODO 非作者评论通知作者
         if (topic.author_id.toString() !== user_id.toString()) {
             await service.message.sendCommentMessage(topic.author_id, user_id, topic._id, comment._id);
@@ -112,7 +114,6 @@ class CommentController extends Controller {
         const comment_id = request.comment_id;
 
         const comment = await service.comment.getCommentById(comment_id);
-        const message = await service.message.getMessageByCommentId(comment_id);
 
         if (!comment) {
             ret.message = '没有此条评论,或者此条评论已被删除';
@@ -124,10 +125,9 @@ class CommentController extends Controller {
 
             comment.deleted = true;
             comment.save();
-            message.deleted = true;
-            message.save();
-            comment.commentor.score -= 5;
-            comment.commentor.save();
+
+            await service.topic.increaseCommentCount(comment.topic_id, -1);
+            await service.user.increaseCommentCount(comment.user_id, -1);
 
             ret.code = 0;
             ctx.body = ret;
@@ -136,7 +136,6 @@ class CommentController extends Controller {
             ctx.body = ret;
             return;
         }
-        await service.topic.reduceCount(comment.topic_id);
         return;
     }
 }

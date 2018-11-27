@@ -46,7 +46,7 @@ class userController extends Controller {
 
         const opt = {skip: (pageNo - 1) * limit, limit, sort: '-score'};
 
-        ret.data = await service.user.getUsersDetailByQuery({is_block: false}, opt);
+        ret.data = await service.user.getUsersByQuery({is_block: false}, opt);
         ret.code = 0;
         ctx.body = ret;
     }

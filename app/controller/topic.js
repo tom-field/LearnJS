@@ -90,8 +90,6 @@ class topicController extends Controller {
             const userCollected = await service.topicCollect.getTopicCollect(currentUserId, topic_id);
             collected = userCollected ? true : false;
         }
-        // 查询收藏数
-        const collectCount = await service.topicCollect.getCountByTopicId(topic_id);
 
         if (!topic) {
             ctx.status = 404;
@@ -105,7 +103,6 @@ class topicController extends Controller {
             topic_id,
             topic,
             collected,
-            collectCount,
             author,
             comments,
         }
@@ -136,7 +133,8 @@ class topicController extends Controller {
         );
 
         // 发帖用户增加积分,增加发表主题数量
-        await service.user.incrementScoreAndReplyCount(topic.author_id, 5, 1);
+        await service.user.increaseScoreAndReplyCount(topic.author_id, 5, 1);
+        await service.user.increaseTopicCount(topic.author_id, 1);
 
         // 通知被@的用户
         await service.at.sendMessageToMentionUsers(
@@ -193,7 +191,7 @@ class topicController extends Controller {
         const user_id = request.user_id;
         const topic_id = request.topic_id;
 
-        const [topic] = await service.topic.getTopicById(topic_id);
+        let [topic] = await service.topic.getTopicById(topic_id);
 
         if (!topic) {
             ret.message = '主题不存在或已被删除';
@@ -213,11 +211,11 @@ class topicController extends Controller {
         }
 
         await service.topicCollect.newAndSave(user_id, topic_id);
-        // 查询收藏数
-        const collectCount = await service.topicCollect.getCountByTopicId(topic_id);
+        topic = await service.topic.increaseCollectCount(topic_id, 1);
+        await service.user.increaseCollectTopicCount(user_id, 1);
 
         ret.code = 0;
-        ret.data = collectCount;
+        ret.data = topic.collect_count;
         ctx.body = ret;
     }
 
@@ -229,8 +227,7 @@ class topicController extends Controller {
         const user_id = request.user_id;
         const topic_id = request.topic_id;
 
-        const [topic] = await service.topic.getTopicById(topic_id);
-        const user = await service.user.getUserById(user_id);
+        let [topic] = await service.topic.getTopicById(topic_id);
 
         if (!topic) {
             ret.message = '主题不存在或已被删除';
@@ -248,11 +245,12 @@ class topicController extends Controller {
             ctx.body = ret;
             return;
         }
-        // 查询收藏数
-        const collectCount = await service.topicCollect.getCountByTopicId(topic_id);
+        // 更新收藏数
+        topic = await service.topic.increaseCollectCount(topic_id, -1);
+        await service.user.increaseTopicCount(user_id, -1);
 
         ret.code = 0;
-        ret.data = collectCount;
+        ret.data = topic.collect_count;
         ctx.body = ret;
     }
 
@@ -281,13 +279,12 @@ class topicController extends Controller {
         }
 
         const collectedTopics = await service.topicCollect.getTopicCollectsByUserId(user._id, options);
-        const collectedCount = await service.topicCollect.getCountByUserId(user._id);
 
         ret.code = 0;
         ret.data = collectedTopics;
         ret.pageNo = pageNo;
         ret.pageSize = pageSize;
-        ret.totalCount = collectedCount;
+        ret.totalCount = user.collect_topic_count;
         ctx.body = ret;
     }
 
@@ -398,6 +395,15 @@ class topicController extends Controller {
             ret.data = topics;
         }
         ctx.body = ret;
+    }
+
+    //今日热议 TODO
+    async todayHotTopic() {
+        //查詢今日最热的10条主题
+        const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const today = moment().format('L');
     }
 }
 
