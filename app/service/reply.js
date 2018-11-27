@@ -8,10 +8,15 @@ class ReplyService extends Service {
      * @param content
      * @returns {Promise.<*>}
      */
-    async newAndSave(user_id, comment_id, content) {
+    async newAndSave(user_id, comment_id, reply_id, content) {
         const reply = new this.ctx.model.Reply();
         reply.user_id = user_id;
         reply.comment_id = comment_id;
+        if(reply_id){
+            reply.reply_id = reply_id;
+        }else{
+            reply.reply_id = null;
+        }
         reply.content = content;
 
         await reply.save();
@@ -39,7 +44,6 @@ class ReplyService extends Service {
         const author = await this.service.user.getUserById(author_id);
 
         reply.author = author;
-        // TODO: 添加更新方法，有些旧帖子可以转换为markdown格式的内容
         if (reply.content_is_html) {
             return reply;
         }
@@ -63,7 +67,13 @@ class ReplyService extends Service {
 
         return Promise.all(replies.map(async item => {
             const user = await this.service.user.getUserById(item.user_id);
-            item.user = user || {_id:''};
+            let replyTo;
+            if(item.reply_id){
+                const reply = await this.service.reply.getReplyById(item.reply_id);
+                replyTo = await this.service.user.getUserById(reply.user_id);
+            }
+            item.user = user || {_id: ''};
+            item.replyTo = replyTo || null;
             return item;
         }))
     }

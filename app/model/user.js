@@ -24,9 +24,8 @@ module.exports = app => {
         // 账户是否被屏蔽禁用
         is_block: {type: Boolean, default: false},
 
-        score: {type: Number, default: 0},
         topic_count: {type: Number, default: 0},
-        collect_topic_count:  {type: Number, default: 0},
+        collect_topic_count: {type: Number, default: 0},
         comment_count: {type: Number, default: 0},
         reply_count: {type: Number, default: 0},
         follower_count: {type: Number, default: 0},
@@ -78,6 +77,10 @@ module.exports = app => {
 
         return url;
     });
+
+    UserSchema.virtual('score').get(function () {
+        return this.topic_count * 5 + this.comment_count * 3;
+    })
 
     UserSchema.virtual('isAdvanced').get(function () {
         // 积分高于 700 则认为是高级用户

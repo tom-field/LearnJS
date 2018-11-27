@@ -44,10 +44,11 @@ class userController extends Controller {
         const limit = request.pageSize;
         const pageNo = request.pageNo;
 
-        const opt = {skip: (pageNo - 1) * limit, limit, sort: '-score'};
+        const opt = {skip: (pageNo - 1) * limit, limit, sort: {score: -1, create_at: 1}};
 
-        ret.data = await service.user.getUsersByQuery({is_block: false}, opt);
         ret.code = 0;
+        ret.data = await service.user.getUsersByQuery({is_block: false}, opt);
+        ret.totalCount = await service.user.getCountByQuery({is_block: false});
         ctx.body = ret;
     }
 

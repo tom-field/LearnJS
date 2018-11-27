@@ -142,17 +142,6 @@ class UserService extends Service {
     }
 
     /**
-     * TODO
-     * @param id
-     * @returns {Promise.<Array|{index: number, input: string}>}
-     */
-    async increaseTopicCount(id) {
-        const query = {_id: id};
-        const update = {$inc: {topic_count: 1}};
-        return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
-    }
-
-    /**
      * 收藏数增长
      * @param id
      * @returns {Array|{index: number, input: string}}
@@ -162,28 +151,6 @@ class UserService extends Service {
         const update = {$inc: {collect_topic_count: count}};
         const opt = {new: true};
         return this.ctx.model.User.findByIdAndUpdate(query, update, opt).exec();
-    }
-
-    /**
-     * 评论加5分
-     */
-    async increaseScoreAndCommentCount(id, score, replyCount) {
-        const query = {_id: id};
-        const update = {$inc: {score, comment_count: replyCount}};
-        return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
-    }
-
-    /**
-     * 回复加2分
-     * @param id
-     * @param score
-     * @param replyCount
-     * @returns {Promise.<Array|{index: number, input: string}>}
-     */
-    async increaseScoreAndReplyCount(id, score, replyCount) {
-        const query = {_id: id};
-        const update = {$inc: {score, reply_count: replyCount}};
-        return this.ctx.model.User.findByIdAndUpdate(query, update).exec();
     }
 }
 

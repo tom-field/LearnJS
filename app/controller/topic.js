@@ -78,9 +78,9 @@ class topicController extends Controller {
         const [topic, author, comments] = await service.topic.getFullTopic(topic_id);
 
         // 增加visit_count
-        topic.visit_count += 1;
-        // 写入DB
-        await service.topic.increaseVisitCount(topic_id);
+        if(!ctx.cookies.get(`read_${topic_id}`)) {
+            await service.topic.increaseVisitCount(topic_id);
+        }
 
         // 判断是否收藏 未登录就是未收藏 如果已经登录进行查询
         let collected;
@@ -97,6 +97,9 @@ class topicController extends Controller {
             ctx.body = ret;
             return;
         }
+
+        //统计浏览量标记 一天之内同一个客户访问一次记1
+        ctx.cookies.set(`read_${topic_id}`, 'true', {expires: new Date(moment().add(1,'days'))});
 
         ret.code = 0;
         ret.data = {
@@ -133,7 +136,6 @@ class topicController extends Controller {
         );
 
         // 发帖用户增加积分,增加发表主题数量
-        await service.user.increaseScoreAndReplyCount(topic.author_id, 5, 1);
         await service.user.increaseTopicCount(topic.author_id, 1);
 
         // 通知被@的用户
@@ -289,7 +291,6 @@ class topicController extends Controller {
     }
 
     async update() {
-        // TODO 创建和更新标题以及内容字数控制
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
@@ -313,6 +314,8 @@ class topicController extends Controller {
                 editError = '必须选择一个版块。';
             } else if (content === '') {
                 editError = '内容不可为空。';
+            } else if (content.length > 10000) {
+                editError = '内容超出字数限制';
             }
             if (editError) {
                 ret.message = editError;
@@ -355,7 +358,6 @@ class topicController extends Controller {
             return;
         }
 
-        author.score -= 5;
         author.topic_count -= 1;
         await author.save();
         topic.deleted = true;
@@ -397,13 +399,22 @@ class topicController extends Controller {
         ctx.body = ret;
     }
 
-    //今日热议 TODO
-    async todayHotTopic() {
+    //今日热议
+    async todayHotTopics() {
         //查詢今日最热的10条主题
         const {ctx, service, config} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
         const today = moment().format('L');
+        const query = {create_at: {$gt: today}, comment_count: {$gte: 1}};
+        const opt = {limit: 10, sort: '-comment_count'};
+
+        const topics = await service.topic.getTopicsByQuery(query, opt);
+
+        ret.code = 0;
+        ret.data = topics;
+        ctx.body = ret;
+
     }
 }
 

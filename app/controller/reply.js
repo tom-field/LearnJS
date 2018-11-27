@@ -13,6 +13,7 @@ class ReplyController extends Controller {
         const request = ctx.request.body;
         const user_id = request.user_id;
         const comment_id = request.comment_id || "";
+        const reply_id = request.reply_id || "";
         const content = request.content;
 
         if (content.trim() == '') {
@@ -23,19 +24,17 @@ class ReplyController extends Controller {
         let comment = await service.comment.getCommentById(comment_id);
 
         if (!comment) {
-            ret.message = '这个主题不存在';
+            ret.message = '这个评论不存在,或已被评论者删除';
             return;
         }
 
         //TODO https://github.com/eggjs/egg/blob/master/docs/source/zh-cn/tutorials/passport.md
         // OAuth 2.0 建立权限表 支持多种登录方式
 
-        await service.reply.newAndSave(user_id, comment_id, content);
-
-        await service.user.increaseScoreAndReplyCount(user_id, 2, 1),
+        await service.reply.newAndSave(user_id, comment_id, reply_id, content);
 
         ret.code = 0;
-        ret.message = '回复成功';
+        ret.message = '';
         ctx.body = ret;
 
     }
@@ -119,7 +118,10 @@ class ReplyController extends Controller {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const reply_id = ctx.request.body.reply_id;
+        const request = ctx.request.body;
+        const user_id = request.user_id;
+        const reply_id = request.reply_id;
+
         const reply = await service.reply.getReplyById(reply_id);
         if (!reply) {
             ret.message = '没有此条回复,或者此条回复已被删除';
@@ -127,20 +129,16 @@ class ReplyController extends Controller {
             return;
         }
         // TODO user中间件 判断是否是回复者点击的删除,判断是否管理员
-        if (reply.author_id.toString() === ctx.session.userId) {
+        if (reply.user_id.toString() === user_id) {
             reply.deleted = true;
             reply.save();
             ret.code = 0;
             ctx.body = ret;
-            reply.author.score -= 5;
-            reply.author.reply_count -= 1;
-            reply.author.save();
         } else {
             ret.message = '没有权限';
             ctx.body = ret;
             return;
         }
-        await service.topic.reduceCount(reply.topic_id);
         return;
     }
 }

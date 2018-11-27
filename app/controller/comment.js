@@ -21,7 +21,6 @@ class CommentController extends Controller {
         await service.topic.increaseCommentCount(topic_id, 1);
         await service.user.increaseCommentCount(user_id, 1);
 
-        //TODO 非作者评论通知作者
         if (topic.author_id.toString() !== user_id.toString()) {
             await service.message.sendCommentMessage(topic.author_id, user_id, topic._id, comment._id);
         }

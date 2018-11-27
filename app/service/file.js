@@ -35,12 +35,6 @@ class fileService extends Service {
         const writeStream = fs.createWriteStream(target);
         try {
             await awaitWriteStream(stream.pipe(writeStream));
-            //TODO linux可以 windows需要安裝軟件吧 影响windows开发暂注释
-            /*gm(target).resize(resizeTarget,(err=>{
-                if(err){
-                    throw err;
-                }
-            }))*/
             ctx.body = {
                 success: true,
                 url: config.upload.url + '/dirname' + filename,

@@ -9,6 +9,7 @@ module.exports = app => {
         user_id: { type: ObjectId },
         //topic_id: { type: ObjectId },
         comment_id: {type: ObjectId},
+        reply_id: {type: ObjectId},
         content: { type: String },
         create_at: { type: Date, default: Date.now },
         update_at: { type: Date, default: Date.now },

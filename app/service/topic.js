@@ -41,9 +41,8 @@ class TopicService extends Service {
         const defaultOpt = {sort: '-create_at'};
         opt = Object.assign(defaultOpt, opt);
         query.deleted = false;
-        // TODO: 此处注意查找到的数据修改但是返回到前端不展示,用lean()方法
+        // NOTE:调用.lean 不能用save了
         const topics = await this.ctx.model.Topic.find(query, {}, opt).lean().exec();
-
         if (topics.length === 0) {
             return [];
         }

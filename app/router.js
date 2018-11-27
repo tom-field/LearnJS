@@ -61,6 +61,7 @@ module.exports = app => {
     router.post(`${prefix}/topic/delete`, controller.topic.delete);                        // 删除话题
     router.post(`${prefix}/topic/list`, controller.topic.list);                            // 获取话题列表
     router.post(`${prefix}/topic/getRecentTopics`, controller.topic.getRecentTopics);      // 获取最近话题列表
+    router.post(`${prefix}/topic/todayHotTopics`, controller.topic.todayHotTopics);        // 今日热议
     router.post(`${prefix}/topic/detail`, controller.topic.detail);                        // 显示某个话题
 
     //comment
