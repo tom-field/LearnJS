@@ -19,7 +19,7 @@ module.exports = appInfo => {
         serverUrl: 'https://news.ycombinator.com/',
     };
 
-    config.name = 'dreamIntoReal技术社区';
+    config.name = 'dreamIntoReal';
 
     config.host = process.env.EGG_SERVER_ENV == 'local' ? 'http://localhost:8081' : 'http://xuhuidev.com';
 

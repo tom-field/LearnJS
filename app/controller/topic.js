@@ -78,7 +78,7 @@ class topicController extends Controller {
         const [topic, author, comments] = await service.topic.getFullTopic(topic_id);
 
         // 增加visit_count
-        if(!ctx.cookies.get(`read_${topic_id}`)) {
+        if (!ctx.cookies.get(`read_${topic_id}`)) {
             await service.topic.increaseVisitCount(topic_id);
         }
 
@@ -99,7 +99,7 @@ class topicController extends Controller {
         }
 
         //统计浏览量标记 一天之内同一个客户访问一次记1
-        ctx.cookies.set(`read_${topic_id}`, 'true', {expires: new Date(moment().add(1,'days'))});
+        ctx.cookies.set(`read_${topic_id}`, 'true', {expires: new Date(moment().add(1, 'days'))});
 
         ret.code = 0;
         ret.data = {
@@ -406,8 +406,9 @@ class topicController extends Controller {
         let ret = JSON.parse(JSON.stringify(config.ret));
 
         const today = moment().format('L');
-        const query = {create_at: {$gt: today}, comment_count: {$gte: 1}};
-        const opt = {limit: 10, sort: '-comment_count'};
+        console.log(today);
+        const query = {today_comment_count: {$gt: 0}};
+        const opt = {limit: 10, sort: '-today_comment_count'};
 
         const topics = await service.topic.getTopicsByQuery(query, opt);
 

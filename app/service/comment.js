@@ -46,7 +46,7 @@ class CommentService extends Service {
         return comment;
     }
 
-    getCountByTopicId(topicId,opt) {
+    async getCountByTopicId(topicId,opt) {
         const query = {topic_id: topicId, deleted: false};
         return this.ctx.model.Comment.count(query,opt).exec();
     }
@@ -105,7 +105,6 @@ class CommentService extends Service {
     getRepliesByAuthorId(authorId, opt = null) {
         return this.ctx.model.Reply.find({author_id: authorId}, {}, opt).exec();
     }
-
 }
 
 module.exports = CommentService;

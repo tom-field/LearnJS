@@ -64,6 +64,11 @@ class TopicService extends Service {
         });
     }
 
+    async getTodayHotTopics(query, opt) {
+        //1 找到所有今天有新评论的主题并按照今天评论量排序
+        const comments = await this.ctx.service.comment.getCommentsByQue
+    }
+
     async getFullTopic(id) {
         const query = {_id: id, deleted: false};
         const topic = await this.ctx.model.Topic.findOne(query);
@@ -91,24 +96,12 @@ class TopicService extends Service {
         return this.ctx.model.Topic.count(query).exec();
     }
 
-    async updateLastReply(topicId, replyId) {
-        const update = {
-            last_reply: replyId,
-            last_reply_at: new Date(),
-            $inc: {
-                reply_count: 1,
-            },
-        }
-        const opts = {new: true};
-        return this.ctx.model.Topic.findByIdAndUpdate(topicId, update, opts).exec();
-    }
-
     /*
    * 将当前主题的回复计数减1，并且更新最后回复的用户，删除回复时用到
    * @param {String} id 主题ID
    */
-    async increaseCommentCount(id,count) {
-        const update = {$inc: {comment_count: count}};
+    async increaseCommentCount(id, count) {
+        const update = {$inc: {comment_count: count, today_comment_count: count}};
         const comment = await this.service.comment.getLastCommentByTopId(id);
         if (comment) {
             update.last_comment_id = comment._id;
@@ -138,11 +131,10 @@ class TopicService extends Service {
         return this.ctx.model.Topic.findByIdAndUpdate(query, update).exec();
     }
 
-    async increaseCommentCount(id, count) {
-        const query = {_id: id};
-        const update = {$inc: {comment_count: count}};
-        const opt = {new: true};
-        return this.ctx.model.Topic.findByIdAndUpdate(query, update, opt).exec();
+    async zeroTodayTopicCount() {
+        const query = {today_comment_count: {$gt: 0}};
+        const update = {today_comment_count: 0};
+        return this.ctx.model.Topic.updateMany(query, update, '').exec();
     }
 }
 

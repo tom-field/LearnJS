@@ -61,18 +61,6 @@ class UserService extends Service {
         return this.ctx.model.User.find(query).exec();
     }
 
-    async getUsersDetailByNames(names) {
-        const users = this.ctx.service.user.getUsersByNames(names);
-        if (!users.length) {
-            return [];
-        }
-
-        Promise.all(users.map(async user => {
-            user = user.toJSON();
-            return user;
-        }))
-    }
-
     /*
    * 根据登录名查找用户
    * @param {String} loginName 登录名
