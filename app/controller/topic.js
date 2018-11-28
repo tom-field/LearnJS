@@ -405,8 +405,6 @@ class topicController extends Controller {
         const {ctx, service, config} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
-        const today = moment().format('L');
-        console.log(today);
         const query = {today_comment_count: {$gt: 0}};
         const opt = {limit: 10, sort: '-today_comment_count'};
 
