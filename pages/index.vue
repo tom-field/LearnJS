@@ -12,6 +12,13 @@
       {{item.label}}
     </el-tag>
 
+    <el-tag :type="activeTab==item.value?'success':'info'"
+            class="pointer"
+            v-for="(item,index) in testTabs" :key="index"
+            @click.native="changeTab(item.value)">
+      {{item.label}}
+    </el-tag>
+
     <el-card shadow="always">
       <ul class="list-unstyled">
         <b-media tag="li" class="my-4" v-for="(item,index) in list" :key="index">
@@ -67,6 +74,24 @@
         list: [],
       }
     },
+    asyncData(context){
+      return ApiService.tab.index().then(res => {
+        const {code, data, message} = res;
+        if (code == 0) {
+          data.unshift({
+            label: "所有",
+            value: "all",
+          })
+          const testTabs = data;
+          return {
+            testTabs: testTabs,
+          }
+        }
+      }).catch(err=>{
+        console.log(err.message);
+        context.error({ message: 'Not Found', statusCode: 404 })
+      })
+    },
     //数组或对象，用于接收来自父组件的数据
     props: {},
     //计算
@@ -75,20 +100,6 @@
     },
     //方法
     methods: {
-      getTabs() {
-        ApiService.tab.index().then(res => {
-          const {code, data, message} = res;
-          if (code == 0) {
-            data.unshift({
-              label: "所有",
-              value: "all",
-            })
-            this.tabs = data;
-          } else {
-            alert(message)
-          }
-        })
-      },
       search() {
         this.getList();
       },
@@ -143,7 +154,6 @@
     },
     //生命周期函数
     created() {
-      this.getTabs();
       this.getList();
     },
     beforeMount() {
