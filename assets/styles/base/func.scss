@@ -1,0 +1,41 @@
+/* width */
+@for $i from 1 through 50 {
+  .w#{$i} { width: 1px*$i; }
+}
+@for $i from 1 through 50 {
+  .h#{$i} { height: 1px*$i; }
+}
+@for $i from 1 through 50 {
+  .lh#{$i} { line-height: 1px*$i; }
+}
+/* padding */
+@for $i from 1 through 50 {
+  .pt#{$i} { padding-top: 1px*$i; }
+}
+@for $i from 1 through 50 {
+  .pl#{$i} { padding-left: 1px*$i; }
+}
+@for $i from 1 through 50 {
+  .pr#{$i} { padding-right: 1px*$i; }
+}
+
+@for $i from 1 through 50 {
+  .pb#{$i} { padding-bottom: 1px*$i; }
+}
+/* margin */
+@for $i from 1 through 50 {
+  .mt#{$i} { margin-top: 1px*$i; }
+}
+@for $i from 1 through 50 {
+  .ml#{$i} { margin-left: 1px*$i; }
+}
+@for $i from 1 through 50 {
+  .mr#{$i} { margin-right: 1px*$i; }
+}
+@for $i from 1 through 50 {
+  .mb#{$i} { margin-bottom: 1px*$i; }
+}
+/* 字体大小 */
+@for $i from 12 through 30 {
+  .fz#{$i} { font-size: 1px*$i; }
+}

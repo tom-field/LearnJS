@@ -1,6 +1,12 @@
 const pkg = require('./package')
 
 module.exports = {
+  /*环境*/
+  env: {
+    BASEURL: process.env.NODE_ENV === 'production'? 'http://127.0.0.1:3001' : 'http://127.0.0.1:3001/api',
+    API_PREFIX: process.env.API_PREFIX || 'dir-ws',
+    AUTH_ROOT: process.env.AUTH_ROOT || 'http://127.0.0.1',
+  },
   mode: 'universal',
 
   /*
@@ -27,14 +33,23 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '@/assets/styles/index.scss',
   ],
+
+  /*script: [
+    {
+      src: "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+      type: "text/javascript"
+    },
+  ],*/
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '~/plugins/element-ui',
+    '~/plugins/filters',
   ],
 
   /*
@@ -42,7 +57,9 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
+    'bootstrap-vue/nuxt',
   ],
   /*
   ** Axios module configuration
@@ -50,6 +67,16 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
+
+  proxy: [
+    [
+      '/api',
+      {
+        target: 'http://127.0.0.1:7001', // api主机
+        pathRewrite: { '^/api' : '/' }
+      }
+    ]
+  ],
 
   /*
   ** Build configuration
@@ -59,7 +86,7 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+
     }
   }
 }
