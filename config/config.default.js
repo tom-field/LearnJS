@@ -3,7 +3,6 @@ const path = require('path');
 
 module.exports = appInfo => {
     const config = exports = {};
-    config.host = 'http://xuhuidev.com'
     // use for cookie sign key, should change to your own and keep security
     config.keys = appInfo.name + '_1537868411848_2841';
     // 添加 view 配置
@@ -21,7 +20,7 @@ module.exports = appInfo => {
 
     config.name = 'dreamIntoReal';
 
-    config.host = process.env.EGG_SERVER_ENV == 'local' ? 'http://localhost:8081' : 'http://xuhuidev.com';
+    config.host = 'http://xuhuidev.com';
 
     // 版块
     config.tabsbak = [['share', '分享'], ['ask', '问答'], ['math', '数学'], ['fiance', '理财'], ['friend', '交友'], ['transaction', '交易'], ['server', '服务器'], ['job', '招聘']];

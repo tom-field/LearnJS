@@ -1,4 +1,6 @@
+const path = require('path');
 const moment = require('moment');
+const uuidv1 = require('uuid/v1');
 
 const Controller = require('egg').Controller;
 
@@ -113,27 +115,49 @@ class topicController extends Controller {
         ctx.body = ret;
     }
 
+    /**
+     * 更新用户头像
+     */
+    async uploadImg() {
+        const {ctx, service, config} = this;
+        let ret = JSON.parse(JSON.stringify(config.ret));
+
+        const uid = uuidv1();
+        const parts = ctx.multipart({autoFields: true});
+        const stream = await parts();
+        const filename = uid + path.extname(stream.filename).toLowerCase();
+
+        try {
+            //上传新头像
+            const uploadRes = await service.file.qnUpload(stream, filename);
+            const qnUrl = config.qn_access.origin + '/' + uploadRes.key;
+
+            ret.code = 0;
+            ret.data = {
+                url: qnUrl
+            }
+            ctx.body = ret;
+        } catch (err) {
+            await sendToWormhole(stream);
+            throw err;
+        }
+    }
+
     async publish() {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));
 
         const request = ctx.request.body;
+        const {title, content, tab, user_id} = request;
 
-        // TODO 完整验证 暂时只验证是否为空
         if (!request.title || !request.content || !request.tab) {
             ret.message = '请求参数有误';
             ctx.body = ret;
             return;
         }
 
-        // 储存新主题帖 TODO 判断用户是否登录得中间件
-        const user_id = ctx.session.userId; //TODO 多种类型帐号如何获取
-        const topic = await  service.topic.newAndSave(
-            request.title,
-            request.content,
-            request.tab,
-            user_id
-        );
+        // 储存新主题帖
+        const topic = await  service.topic.newAndSave(title, content, tab, user_id);
 
         // 发帖用户增加积分,增加发表主题数量
         await service.user.increaseTopicCount(topic.author_id, 1);

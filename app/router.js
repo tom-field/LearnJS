@@ -52,6 +52,7 @@ module.exports = app => {
     router.post(prefix + '/tab/index', controller.tab.index);                              //获取tab;
 
     //topic
+    router.post(`${prefix}/topic/uploadImg`, controller.topic.uploadImg);                       // 发布话题
     router.post(`${prefix}/topic/create`, controller.topic.publish);                       // 发布话题
     router.post(`${prefix}/topic/up`, controller.topic.up);                                // 点赞话题
     router.post(`${prefix}/topic/collect`, controller.topic.collect);                      // 收藏话题
@@ -80,11 +81,14 @@ module.exports = app => {
     router.post(`${prefix}/message`, controller.message.index);                      // 显示消息
     router.post(`${prefix}/message/unreadCount`, controller.message.unreadCount);    // 未读消息
 
-    /*router.post('/file/upload', controller.file.upload);                           // 单个文件上传
-    router.post('/file/uploads', controller.file.uploads);                           // 多个文件上传
-    router.post('/file/uploadStream', controller.file.uploadStream);                 // stream形式
-    router.post('/file/upload',controller.file.qiniuUpload);                         // 七牛云存储
-    router.post('/file/uploads',controller.file.qiniuUploads);                       // 七牛云存储*/
+    //statistics
+    router.post(`${prefix}/statistics`, controller.statistics.index);                      // 显示消息
+
+    //router.post('/file/upload', controller.file.upload);                           // 单个文件上传
+    //router.post('/file/uploads', controller.file.uploads);                           // 多个文件上传
+    //router.post('/file/uploadStream', controller.file.uploadStream);                 // stream形式
+    //router.post('/file/upload',controller.file.qiniuUpload);                         // 七牛云存储
+    //router.post('/file/uploads',controller.file.qiniuUploads);                       // 七牛云存储
 
     //search
     router.get(`${prefix}//search`, controller.search.index);                         // 搜索
