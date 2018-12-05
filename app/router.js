@@ -40,19 +40,17 @@ module.exports = app => {
     router.post(`${prefix}/sign/getUserByToken`, controller.sign.getUserByToken);    // 根据token获取用户信息
 
     //user
-    router.post(`${prefix}/user/updateAvatar`, controller.user.updateAvatar);         // 更新头像
     router.post(`${prefix}/user/updatePassword`, controller.user.updatePassword);     // 更新密码
     router.post(`${prefix}/user/updateInfo`, controller.user.updateInfo);             // 更新信息
     router.post(`${prefix}/user/detail`, controller.user.index);                      // 获取用户信息
     router.post(`${prefix}/user/topics`, controller.user.listTopics);                 // 用户发布的所有话题页
     router.post(`${prefix}/user/replies`, controller.user.listReplies);               // 用户参与的所有回复页
-    router.post(`${prefix}/user/topUsers`, controller.user.topUsers);                           // 积分排名
+    router.post(`${prefix}/user/topUsers`, controller.user.topUsers);                 // 积分排名
 
     //tab
     router.post(prefix + '/tab/index', controller.tab.index);                              //获取tab;
 
     //topic
-    router.post(`${prefix}/topic/uploadImg`, controller.topic.uploadImg);                       // 发布话题
     router.post(`${prefix}/topic/create`, controller.topic.publish);                       // 发布话题
     router.post(`${prefix}/topic/up`, controller.topic.up);                                // 点赞话题
     router.post(`${prefix}/topic/collect`, controller.topic.collect);                      // 收藏话题
@@ -90,6 +88,9 @@ module.exports = app => {
     //router.post('/file/upload',controller.file.qiniuUpload);                         // 七牛云存储
     //router.post('/file/uploads',controller.file.qiniuUploads);                       // 七牛云存储
 
+    router.post(`${prefix}/upload/avatar`,controller.upload.uploadAvatar);             // 头像上传
+    router.post(`${prefix}/upload/uploadImg`,controller.upload.uploadImg);             // 图片上传
+
     //search
-    router.get(`${prefix}//search`, controller.search.index);                         // 搜索
+    router.get(`${prefix}/search`, controller.search.index);                           // 搜索
 };

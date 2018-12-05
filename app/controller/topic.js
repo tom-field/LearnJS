@@ -115,34 +115,6 @@ class topicController extends Controller {
         ctx.body = ret;
     }
 
-    /**
-     * 更新用户头像
-     */
-    async uploadImg() {
-        const {ctx, service, config} = this;
-        let ret = JSON.parse(JSON.stringify(config.ret));
-
-        const uid = uuidv1();
-        const parts = ctx.multipart({autoFields: true});
-        const stream = await parts();
-        const filename = uid + path.extname(stream.filename).toLowerCase();
-
-        try {
-            //上传新头像
-            const uploadRes = await service.file.qnUpload(stream, filename);
-            const qnUrl = config.qn_access.origin + '/' + uploadRes.key;
-
-            ret.code = 0;
-            ret.data = {
-                url: qnUrl
-            }
-            ctx.body = ret;
-        } catch (err) {
-            await sendToWormhole(stream);
-            throw err;
-        }
-    }
-
     async publish() {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));

@@ -132,40 +132,6 @@ class userController extends Controller {
 
     }
 
-    /**
-     * 更新用户头像
-     */
-    async updateAvatar() {
-        const {ctx, service, config} = this;
-        let ret = JSON.parse(JSON.stringify(config.ret));
-
-        const uid = uuidv1();
-        const parts = ctx.multipart({autoFields: true});
-        const stream = await parts();
-        const user_id = parts.field.user_id;
-        const oldAvatar = parts.field.avatar;
-        const filename = uid + path.extname(stream.filename).toLowerCase();
-
-        try {
-            //上传新头像
-            const uploadRes = await service.file.qnUpload(stream, filename);
-            //删除旧头像
-            if (oldAvatar) {
-                await service.file.qnDelete(oldAvatar);
-            }
-            const avatar = config.qn_access.origin + '/' + uploadRes.key;
-            await service.user.updateUserInfo(user_id, {avatar})
-            ret.code = 0;
-            ret.data = {
-                url: config.qn_access.origin + '/' + uploadRes.key,
-            }
-            ctx.body = ret;
-        } catch (err) {
-            await sendToWormhole(stream);
-            throw err;
-        }
-    }
-
     async updatePassword() {
         const {ctx, config, service} = this;
         let ret = JSON.parse(JSON.stringify(config.ret));

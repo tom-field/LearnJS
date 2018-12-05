@@ -8,7 +8,9 @@ class StatisticsController extends Controller {
         let ret = JSON.parse(JSON.stringify(config.ret));
 
         const statistics = await service.statistics.getStatistics();
-        ctx.body = statistics;
+        ret.code = 0;
+        ret.data = statistics;
+        ctx.body = ret;
     }
 }
 
