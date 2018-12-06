@@ -20,7 +20,7 @@ module.exports = appInfo => {
 
     config.name = 'dreamIntoReal';
 
-    config.host = 'http://xuhuidev.com';
+    config.host = process.env.HOST || 'http://localhost:3001';
 
     // 版块
     config.tabsbak = [['share', '分享'], ['ask', '问答'], ['math', '数学'], ['fiance', '理财'], ['friend', '交友'], ['transaction', '交易'], ['server', '服务器'], ['job', '招聘']];
