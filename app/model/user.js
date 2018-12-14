@@ -51,7 +51,7 @@ module.exports = app => {
 
     UserSchema.index({loginname: 1}, {unique: true});
     UserSchema.index({email: 1}, {unique: true});
-    UserSchema.index({score: -1});
+    UserSchema.index({score: -1}, {create_at: 1});
     UserSchema.index({githubId: 1});
     UserSchema.index({accessToken: 1});
 

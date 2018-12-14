@@ -44,6 +44,7 @@ class userController extends Controller {
         const limit = request.pageSize;
         const pageNo = request.pageNo;
 
+        //const opt = {skip: (pageNo - 1) * limit, limit};
         const opt = {skip: (pageNo - 1) * limit, limit, sort: {score: -1, create_at: 1}};
 
         ret.code = 0;

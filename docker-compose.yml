@@ -11,6 +11,7 @@ services:
       - EGG_REDIS_PORT=6379
       # 此处的@mongodb指代的是mongodb容器的ip
       - EGG_MONGODB_URL=mongodb://root:xuhui2014@mongodb:27017/egg_dream_into_real
+      #- EGG_MONGODB_URL=mongodb://mongodb:27017/egg_dream_into_real
       # 第三方Auth登录认证
       - EGG_PASSPORT_GITHUB_CLIENT_ID=3f2a83ba31e2d2eb9df5
       - EGG_PASSPORT_GITHUB_CLIENT_SECRET=d253c2bd2ca8cd997b14faf96cd6bedbd9598cc9
@@ -20,7 +21,7 @@ services:
       - EGG_QINIU_ACCESS_KEY=4sS6Qxld8jvVKUk4E5NXh-m_irPX90oLfkMy0v_3
       - EGG_QINIU_SECRET_KEY=dRjcCy8UB3x3n7c0JCpt_WU07uPKP54NxVS5m4rb
       - EGG_QINIU_BUCKET=dreamintoreal
-      - EGG_QINIU_ORIGIN=http://phv27sna5.bkt.clouddn.com
+      - EGG_QINIU_ORIGIN=http://pjodbfvcr.bkt.clouddn.com
       # 阿里node监控品台
       - EGG_ALINODE_APPID=appid
       - EGG_ALINODE_SECRET=secret
