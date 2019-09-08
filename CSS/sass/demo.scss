@@ -1,0 +1,26 @@
+$fontsize:18px;
+$fontsize:12px !default;
+$fontsize:20px;
+$fontsize2:1;
+//数组
+$px: 5px 10px 20px 30px;
+.parent-1 {
+  color:#f00;
+  .child {
+    width:100px;
+  }
+}
+body{
+  background:pink
+;
+  color:red;
+line-height:nth($px,2);
+  font-size: #{$fontsize}/#{$fontsize2};
+}
+div{
+  $fontsize:15px;
+  font-size: #{$fontsize}/#{$fontsize2};
+}
+p{
+  font-size: $fontsize;
+}
