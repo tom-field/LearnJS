@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+            <router-link to="/goods">商品</router-link>
+            <router-link to="/sellers">商家</router-link>
+            <router-link to="/ratings">评论</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    const Foo = { template: '<div>foo</div>' }
+    const Bar = { template: '<div>bar</div>' }
+    const Goods = {template:'<div>商品详情页</div>'}
+    const Sellers = {template:'<div>卖家展示页</div>'}
+    const Ratings = {template:'<div>买家评论页</div>'}
+    const router = new VueRouter({
+        routes :[
+            { path: '/foo', component: Foo },
+            { path: '/bar', component: Bar },
+            { path: '/goods', component: Goods },
+            { path: '/sellers', component: Sellers },
+            { path: '/ratings', component: Ratings }
+        ]
+    })
+    const app = new Vue({
+        router
+    }).$mount('#app')
+</script>
+</html>

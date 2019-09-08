@@ -1,0 +1,19 @@
+{
+  "gitbook": "3.x.x",
+  "plugins": ["edit-link", "github", "advanced-emoji@0.2.1"],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/vuejs/vue-validator/tree/master/docs",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/vuejs/vue-validator/"
+    }
+  },
+  "links": {
+    "sharing": {
+      "facebook": false,
+      "twitter": false
+    }
+  }
+}
