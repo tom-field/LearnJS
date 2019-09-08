@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        fieldset{
+            border:none;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="http://malsup.github.io/jquery.form.js"></script>
+</head>
+<body>
+<form name="myform" id="myform" target="_blank" action="www.baidu.com" enctype="multipart/form-data">
+    <fieldset>
+        height: <input type="text" name="haha"/>
+        weight: <input type="text" name="xixi"/>
+    </fieldset>
+    <fieldset>
+        height: <input type="text" name="haha"/>
+        weight: <input type="text" name="xixi"/>
+    </fieldset>
+    <input type="file"/>
+</form>
+</body>
+</html>
+<script>
+    function saveReport() {
+        // jquery 表单提交
+        $("#myform").ajaxSubmit(function(message) {
+        // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
+        });
+        return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+    }
+</script>

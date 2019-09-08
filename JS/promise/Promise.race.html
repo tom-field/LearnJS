@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var p = Promise.race([fetch('/resource-that-may-take-a-while'),new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            reject(new Error("request TimeOut"))
+        },5000)
+    })]);
+
+    p.then(function (val) {
+        console.log(val);
+    }).catch(function (err) {
+        console.log(err);
+    })
+
+    var promise = new Promise(function (resolve,reject) {
+
+    });
+    console.log(promise);
+</script>

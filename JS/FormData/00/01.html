@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="" id="myform">
+    <input type="text" name="haha" id="haha" value="dnf"/>
+    <input type="text" name="xixi" id="xixi" value="cf"/>
+</form>
+</body>
+</html>
+<script>
+    var formData =new FormData()
+    console.log(formData);
+    formData.append("haha",document.querySelector("#haha").value)
+    formData.append("haha",document.querySelector("#xixi").value)
+    console.log(formData);
+</script>
