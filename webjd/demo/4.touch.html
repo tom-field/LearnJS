@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            background: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+    <script src="../js/common.js"></script>
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+
+        /*var startTime = 0,
+         isMove = false;/!*来标记是否移动过*!/
+         div.addEventListener('touchstart',function(){
+         /!*取当前时间*!/
+         startTime = Date.now();
+         console.log('touchstart');
+         },false);
+         div.addEventListener('touchmove',function(){
+         isMove = true;
+         console.log('touchmove');
+         },false);
+         div.addEventListener('touchend',function(){
+         console.log('touchend');
+         /!*响应时间小于200ms
+         * 并且没有滑动过
+         * *!/
+         if(Date.now()-startTime < 200 && isMove == false){
+         console.log('tap');
+         }
+         },false);*/
+
+        tom.tap(div,function(e){
+            console.log('tap');
+        });
+        div.addEventListener('click',function(){
+            console.log('click');
+        },false);
+    </script>
+</body>
+</html>
