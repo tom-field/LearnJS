@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+    <script src="//cdn.bootcss.com/angular-i18n/1.5.8/angular-locale_ii-cn.js"></script>
+    <meta charset=utf-8 />
+    <title>JS Bin</title>
+</head>
+<body ng-app="myApp">
+    <form name="form" novalidate>
+        <label name="email">Your email</label>
+        <input type="email"
+               name="email"
+               ng-model="email" placeholder="Email Address" />
+        <input type="text" ng-minlength="5" />
+        <input type="submit"/>
+    </form>
+</div>
+</body>
+</html>
+<script>
+    angular.module('myApp', [])
+            .controller('MyController',
+            function($scope, $filter) {
+                $scope.name=$filter("uppercase")("dsasdfa")
+                $scope.age=798797
+                $scope.money=798797
+                $scope.today=new Date();
+                $scope.favfood=[{
+                    'name': 'Ari',
+                    'City': 'San Francisco',
+                    'favorite food': 'Pizza'
+                },{
+                    'name': 'Nate',
+                    'City': 'San Francisco',
+                    'favorite food': 'indian food'
+                }]
+            });
+</script>

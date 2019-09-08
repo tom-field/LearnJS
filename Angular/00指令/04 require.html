@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body ng-app="app" >
+<div lay ng-controller="ctrl">fasde</div>
+</body>
+</html>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module('app', []);
+    app.controller("ctrl",["$scope",function($scope){
+        $scope.win = function(){
+            alert("你赢了");
+        }
+    }])
+    app.directive("lay",function(){
+        return{
+            restrict:"AE",
+            scope:true,
+            template:'<div>点击我，有惊喜哦</div>',
+            replace:true,
+            link:function(scope,elment,attr){
+                elment.on("click",function(){
+                    scope.win();
+                })
+            }
+        };
+    });
+</script>

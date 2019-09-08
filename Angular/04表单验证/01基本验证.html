@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        input.ng-invalid {
+            border: 1px solid red;
+        }
+        input.ng-valid {
+            border: 1px solid green;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<form name="formName" ng-submit="myFunc()">
+    <input name='inputfieldName' type="text" required ng-minlength="5" ng-maxlength="20" />
+    <input type="submit">
+</form>
+
+<p>{{myTxt}}</p>
+
+<p>以下实例演示了表单提交后 AngularJS 执行行。</p>
+
+</body>
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope) {
+        $scope.myTxt = "你还没有点击提交!";
+        $scope.myFunc = function () {
+            $scope.myTxt = "你点击了提交!";
+        }
+    });
+</script>

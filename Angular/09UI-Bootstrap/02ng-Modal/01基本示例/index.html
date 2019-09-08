@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://www.w3cschool.cc/try/angularjs/1.2.5/angular.min.js"></script>
+    <script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body ng-app="myApp" style="background:#4A4A4A" class="row">
+<div style="color:#fff; font-size:30px; font-weight:bold; text-shadow:3px 3px 3px #ccc;-webkit-text-shadow:3px 3px 3px #ccc; text-align:center; margin-top:30px;">FE-演示平台</div>
+<section class="row" >
+    <section ng-controller="modalDemo" class="col-md-6" style="margin:40px auto; float:none; background:#fff; padding:30px;">
+        <script type="text/ng-template" id="myModelContent.html">  //创建一个局部视图，需要的时候引用它， 下面会用到
+        <div class="modal-header"> // modal头部 。body  footer 类推
+            <h3 class="modal-title">html5jq模态框</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a ng-click="selected.item = item">{{item}}</a> //显示当前点击的item
+                </li>
+                当前选择： <b>{{selected.item}}</b>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">
+                确认
+            </button>
+            <button class="btn btn-warning" ng-click="cancel()">退出</button>
+        </div>
+        </script>
+        <button class="btn btn-info" ng-click="open()">点我！</button>
+        <button class="btn btn-default" ng-click = "open('lg')">大模态</button>  //lg 大模态，sm小模态
+        <button class="btn btn-default" ng-click = "open('sm')">小模态</button>
+        <hr>
+        <div ng-show="selected">当前选择：{{selected}}</div>
+    </section>
+</section>
+</body>
+</html>

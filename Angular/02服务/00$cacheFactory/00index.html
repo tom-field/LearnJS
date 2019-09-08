@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+</head>
+<body ng-app="Demo" ng-controller="demoCtrl">
+
+</body>
+</html>
+<script>
+    angular.module("Demo", [])
+
+            .controller("demoCtrl", ["$scope", "$cacheFactory", function ($scope, $cacheFactory) {
+
+                var myCache = $cacheFactory("my-cache");
+
+                myCache.put("cache", "This is cache-content");
+
+                myCache.put("another-cache", "This is another cache-content");
+
+                var getCache = myCache.get("cache"); //This is cache-content
+
+                console.log(getCache);
+
+                var getInfo = myCache.info();//{id: "my-cache", size: 2}
+
+                console.log(getInfo);
+
+                myCache.remove("another-cache");
+
+                getInfo = myCache.info();//{id: "my-cache", size: 1}
+
+                console.log(getInfo);
+
+                myCache.removeAll();
+
+                getInfo = myCache.info();//{id: "my-cache", size: 0}
+
+                console.log(getInfo);
+
+                myCache.destroy();
+
+                getInfo = myCache.info();//{size: 0}
+
+                console.log(getInfo);
+
+            }])
+</script>

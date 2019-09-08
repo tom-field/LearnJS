@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-example4-production</title>
+  <link href="01.css" rel="stylesheet" type="text/css">
+  
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.js"></script>
+  <link rel="stylesheet" type="text/css" href="./01.css">
+
+  
+</head>
+<body ng-app>
+<p>
+    <input type="button" value="set" ng-click="myCssVar='css-class'">
+    <input type="button" value="clear" ng-click="myCssVar=''">
+    <br>
+    <span ng-class="myCssVar">CSS-Animated Text</span>
+</p>
+</body>
+</html>
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

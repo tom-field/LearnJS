@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+</head>
+<body ng-app="app" ng-controller="myctrl">
+<input type="text" ng-disabled="isDisabled" ng-disabled='doubleDisabled'/>
+<input type="text" value={{isDisabled}}{{name}} />
+</body>
+</html>
+<script>
+    angular.module("app",[]).controller("myctrl", function ($scope,$timeout) {
+        $scope.isDisabled=true;
+        $scope.doubleDisabled='false';
+         /*$scope.name="xuhui"
+        $timeout(function () {
+            $scope.isDisabled=false;
+        },1000)*/
+    })
+</script>
