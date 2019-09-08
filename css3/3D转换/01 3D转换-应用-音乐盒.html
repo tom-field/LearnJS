@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 3D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #FFF;
+		}
+
+		.music-box {
+			width: 300px;
+			height: 300px;
+			margin: 50px auto;
+			position: relative;
+		}
+		
+		.music-box::after, .music-box::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border-radius: 150px;
+		}
+
+		.music-box::after {
+			background: url(./images/musicb.jpg);
+			border-radius: 150px;
+			border: 1px solid #CCC;
+			transform-origin: center bottom;
+			transition: all 1s;
+			/*backface-visibility: hidden;*/
+		}
+
+		.music-box::before {
+			background: url(./images/musict.jpg);
+		}
+
+		.music-box:hover::after {
+			transform: rotateX(-180deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="music-box"></div>
+</body>
+</html>

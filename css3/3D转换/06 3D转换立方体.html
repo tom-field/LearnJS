@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 3D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 200px;
+			height: 200px;
+			text-align: center;
+			line-height: 200px;
+			font-size: 24px;
+			margin: 100px auto;
+			position: relative;
+			perspective: 1000px;
+			transform-style: preserve-3d;
+			transform: rotateX(-30deg) rotateY(30deg);
+		}
+		
+		.front, .back, .left, .right, .top , .bottom {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			opacity: 0.5;
+		}
+
+		.front {
+			background-color: pink;
+			transform: translateZ(100px);
+		}
+
+		.left {
+			background-color: green;
+			transform: rotateY(90deg) translateZ(-100px);
+		}
+
+		.right {
+			background-color: red;
+			transform: rotateY(-90deg) translateZ(-100px);
+		}
+
+		.top {
+			background-color: blue;
+			transform: rotateX(90deg) translateZ(100px);
+		}
+
+		.bottom {
+			background-color: yellow;
+			transform: rotateX(-90deg) translateZ(100px);
+		}
+
+		.back {
+			background-color: purple;
+			transform: translateZ(-100px);
+		}		
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="front">front</div>
+		<div class="back">back</div>
+		<div class="left">left</div>
+		<div class="right">right</div>
+		<div class="top">top</div>
+		<div class="bottom">bottom</div>
+	</div>
+</body>
+</html>
