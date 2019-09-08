@@ -1,0 +1,40 @@
+/* 常用类名 */
+html,body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.bold{
+  font-weight: bold;
+}
+.center{
+  text-align: center;
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
+.pointer{
+  cursor: pointer;
+}
+.underline{
+  text-decoration: underline;
+}
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}
+.clearfix:before,
+.clearfix:after
+{
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}

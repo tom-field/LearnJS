@@ -1,0 +1,20 @@
+/*
+scss module分为三部分
+1.base 文件夹下为基础样式
+2.cover-el 文件夹下为覆盖element-ui框架的样式
+3.nemo 文件夹下为自定义的样式
+*/
+/*@import "~/assets/styles/base/reset";*/
+@import "./base/variable";
+@import "./base/base";
+@import "./base/common";
+@import "./base/func";
+@import "./base/frame";
+//覆盖element
+@import "./elementUI/el-card";
+//页面样式
+@import "./pages/sign";
+@import "./pages/user_settings";
+@import "./pages/topic_create";
+
+

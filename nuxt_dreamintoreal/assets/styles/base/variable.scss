@@ -1,0 +1,72 @@
+$white:#FFFFFF;
+$black:#000000;
+$dark:#333333;
+$gray: #909399;
+$lightGray: #FBFBFB;
+$lightGreen: #6FCC95;
+$green: #35B467;
+$brightGreen: #00FFC8;
+$blue: #4990E1;
+$brightBlue: #20A0FF;
+/*!* 边框颜色 *!*/
+$border1: #D3DCE6;
+$border2: #E0E6ED;
+$border3: $lightGray;
+
+$iconFont: #C0CCDA;
+
+$red:#ff0000;
+
+.red{
+  color: $red;
+}
+
+.black{
+  color: $black;
+}
+
+.dark{
+  color: $dark;
+}
+
+.gray{
+  color: $gray;
+}
+
+.green{
+  color: $green;
+}
+
+.white{
+  color: $white;
+}
+
+.blue{
+  color: $blue;
+}
+
+.bright-blue{
+  color: $brightBlue;
+}
+
+.bg-blue{
+  background: $blue;
+}
+.bg-white{
+  background: $white;
+}
+.bg-green{
+  background: $green;
+}
+
+.bg-light-green{
+  background: $lightGreen;
+}
+
+.bg-light-gray{
+  background: $lightGray;
+}
+
+.bg-bright-blue{
+  background: $brightBlue;
+}
