@@ -1,0 +1,26 @@
+<!-- extend表示继承一个模板页 -->
+{{extend ("./layout")}}
+
+{{#block ("head")}}
+<style>
+  body{
+    background-color: greenyellow;
+  }
+</style>
+{{/block}}
+
+<!-- 下面这种语法表示要填一个坑，这个坑在哪儿呢？
+ 在 你 extend 的那个文件中
+ -->
+{{#block ("body")}}
+<h1>{{title}}</h1>
+<p>
+  我是登录页面
+</p>
+{{/block}}
+
+{{#block ("foot")}}
+<script>
+  alert('我是登录页面的js代码');
+</script>
+{{/block}}
