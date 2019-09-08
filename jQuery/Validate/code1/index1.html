@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="../jquery-validation-1.15.0/dist/jquery.validate.js"></script>
+    <script src="../jquery-validation-1.15.0/dist/localization/messages_zh.js"></script>
+
+    <!--自定义的验证-->
+    <script src="../jquery-validation-1.15.0/dist/jquery.validate.addMethods.js"></script>
+</head>
+<body>
+<form id="reg" action="123.html">
+    <p>帐号：<input id="user" type="text" name="user" required/></p>
+    <p>邮件：<input type="text" name="email" required/></p>
+    <p>网址：<input type="text" name="url" required/></p>
+    <p>日期：<input type="text" name="dateISO" required/></p>
+    <p>数字：<input type="text" name="number" required/></p>
+    <p>正整数：<input type="text" name="digits" required/></p>
+    <p>信用卡：<input type="text" name="creditcard" required/></p>
+    <p>密码：<input type="password" name="pass" id="pass" required/></p>
+    <p>密码确认：<input type="password" name="notpass" required/></p>
+    <p>小于：<input type="text" name="min" required/></p>
+    <p>大于：<input type="text" name="max" required/></p>
+    <p>5-10之间的数字：<input type="text" name="range" required/></p>
+    <p>5-10位之间的字符串：<input type="text" name="rangelength" required/></p>
+    <p>电话：<input type="text" name="tel" required/></p>
+    <p>手机：<input type="text" name="phone" required/></p>
+    <p>性别：<input type="text" name="sex" required/></p>
+    <p>只能包括中文字、英文字母、数字和下划线：<input type="text" name="addmethod" required/></p>
+
+    <h2>radio 和 checkbox、select 的验证</h2>
+    <!--
+        radio 的 required 表示必须选中一个。
+        checkbox 的 required 表示必须选中。
+        checkbox 的 minlength 表示必须选中的最小个数，maxlength 表示最大的选中个数，rangelength:[2,3] 表示选中个数区间。
+        select 的 required 表示选中的 value 不能为空。
+        select 的 minlength 表示选中的最小个数（可多选的 select），maxlength 表示最大的选中个数，rangelength:[2,3] 表示选中个数区间。
+    -->
+    <p>
+        <input  type="radio" id="gender_male" value="m" name="gender" required />
+        <input  type="radio" id="gender_female" value="f" name="gender"/>
+    </p>
+    <p>
+        <input type="checkbox" class="checkbox" id="agree" name="agree" required />
+    </p>
+    <p>
+        <input type="checkbox" class="checkbox" id="spam_email" value="email" name="spam[]" required minlength="2" />
+        <input type="checkbox" class="checkbox" id="spam_phone" value="phone" name="spam[]" />
+        <input type="checkbox" class="checkbox" id="spam_mail" value="mail" name="spam[]" />
+    </p>
+    <p>
+        <select id="jungle" name="jungle" title="Please select something!" required>
+            <option value=""></option>
+            <option value="1">Buga</option>
+            <option value="2">Baga</option>
+            <option value="3">Oi</option>
+        </select>
+    </p>
+    <p>
+        <select id="fruit" name="fruit" title="Please select at least two fruits" class="{required:true, minlength:2}" required multiple="multiple">
+            <option value="b">Banana</option>
+            <option value="a">Apple</option>
+            <option value="p">Peach</option>
+            <option value="t">Turtle</option>
+        </select>
+    </p>
+
+    <p><input type="submit" value="提交"/></p>
+    <p><input id="reset" type="reset" value="重置"/></p>
+</form>
+<script>
+    $(function(){
+        var validator = $("#reg").validate({
+            //验证的触发方式修改-------------------------------------------------------------------------
+            /*onsubmit onfocusout onkeyup onclick focusInvalid 以上默认为ture focusCleanup 默认为false*/
+            /*失去焦点时验证*/
+            onfocusout: function(element){
+                $(element).valid();
+            },
+            //每个字段验证通过执行函数 success：String,Callback -------------------------------------------------------------------------
+            success:"validate", //在提示标签上加validate类名
+            success: function (label) {
+                label.addClass("validate_next").append("<i>√</i>")
+            },
+            //默认错误放置位置-------------------------------------------------------------------------
+            errorPlacement: function(error, element) {
+                /*error.appendTo(element.parent());*/
+                /*error.insertBefore(element.parent());*/
+                /*error.insertAfter(element.parent());*/
+                $(error).appendTo($(element).parent()).css({color:"red"})
+            },
+            //只验证不提交表单-------------------------------------------------------------------------
+            debug:true,
+            //这一个未成功#############################################################################
+            submitHandler:function(form){
+                alert("提交事件!");
+                //替代默认提交事件
+                form.submit();
+                $(form).ajaxSubmit();
+            },
+            //验证规则 -------------------------------------------------------------------------
+            rules:{
+                user:{
+                    minlength:3
+                },
+                email:{
+                    email:true
+                },
+                url:{
+                    url:true
+                },
+                dateISO:{
+                    dateISO:true
+                },
+                number:{
+                    number:true
+                },
+                digits:{
+                    digits:true
+                },
+                creditcard:{
+                    creditcard:true
+                },
+                pass:{
+                    minlength:6,
+                    maxlength:12
+                },
+                notpass:{
+                    equalTo:"#pass"
+                },
+                min:{
+                    min:5
+                },
+                max:{
+                    max:0
+                },
+                range:{
+                    range:[5,10]
+                },
+                rangelength:{
+                    rangelength:[5,10]
+                },
+                addmethod:{
+                    stringCheck:true
+                },
+                tel:{
+                    //addMethods.js新增的方法
+                    checkTel:true
+                },
+                phone:{
+                    //addMethods.js新增的方法
+                    checkMobile:true
+                },
+                sex:{
+                    accept:"男,女"
+                }
+            },
+            //消息提示 -------------------------------------------------------------------------
+            messages:{
+                pass:{
+                    minlength:"最小6位数",
+                    maxlength:"最大12位数"
+                }
+            }
+        })
+        //重置验证 -------------------------------------------------------------------------
+        $("#reset").click(function() {
+            console.log(validator);
+            //validator 常用的几个方法
+            /*
+            * form()	Boolean	验证 form 返回成功还是失败。
+             element(element)	Boolean	验证单个元素是成功还是失败。
+             resetForm()	undefined	把前面验证的 FORM 恢复到验证前原来的状态。
+             showErrors(errors)	undefined	显示特定的错误信息。
+             Validator 函数
+             setDefaults(defaults)	undefined	改变默认的设置。
+             addMethod(name,method,message)	undefined	添加一个新的验证方法。必须包括一个独一无二的名字，一个 JAVASCRIPT 的方法和一个默认的信息。
+             addClassRules(name,rules)	undefined	增加组合验证类型，在一个类里面用多种验证方法时比较有用。
+             addClassRules(rules)	undefined	增加组合验证类型，在一个类里面用多种验证方法时比较有用。这个是同时加多个验证方法。
+            * */
+            validator.resetForm();
+        });
+    })
+
+</script>
+</body>
+</html>

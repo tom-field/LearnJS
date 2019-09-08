@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="jquery-validation-1.11.1/dist/jquery.validate.js"></script>
+</head>
+<body>
+<div class="con">
+    <form id="form">
+        <p>
+            <span class="tips">*</span>
+            <input type="text" name="username" class="text" placeholder="用户名" minlength="2" maxlength="15" required/>
+        </p>
+        <p>
+            <span class="tips">*</span>
+            <input type="password" name="password1" id="password1" class="text" placeholder="密码" minlength="6" maxlength="16" required /></p>
+        <p>
+            <span class="tips">*</span>
+            <input type="password" name="password2" class="text" placeholder="确认密码" minlength="6" maxlength="16" required data-rule-equalTo="#password1" data-msg-equalTo="两次输入的密码不一致" />
+        </p>
+        <p>
+            <span class="tips">*</span>
+            <input type="text" name="tel" class="text" placeholder="手机" required/>
+        </p>
+        <p>
+            <span class="tips">*</span>
+            <input type="text" name="imagecheckcode" class="text validateText" placeholder="图片验证码" required />
+            <!--<img src="/api/getValidateImage" onclick="changeImage(this)" alt="换一张" class="valid_img">-->
+            <a href="javascript:;" id="changeImage" class="c_valid_img">换一张</a>
+        </p>
+        <p>
+            <span class="tips">*</span>
+            <input type="text" name="code" class="text codeText" placeholder="请输入手机验证码" required />
+            <a href="javascript:;" class="codeBtn" id="validateCodeBtn">获取验证码</a>
+            <label id="tel-countDown" class="hint" style="display:none">60秒后可重新获取验证码</label>
+        </p>
+        <p>
+            <input type="checkbox" name="isRead" />
+            我已阅读<a href="/termAgent.html" target="_blank">大众家园服务协议</a>并同意
+        </p>
+        <p class="btnSubmit">
+            <input type="button" class="submit" id="btnSubmit" value="立即注册" />
+        </p>
+    </form>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        var _validateTimer,
+                _validateCountDown = 60;
+
+        var _telCountDown = $('#tel-countDown');
+        var _validateCodeBtn = $('#validateCodeBtn');
+        var _telInput = $("input[name='tel']");
+        var _telCode = $("input[name='code']");
+        var _userName = $("input[name='username']");
+        var _pwd1 = $("input[name='password1']");
+        var _pwd2 = $("input[name='password2']");
+        var _isRead = $("input[name='isRead']");
+        var _imagecheckcode = $("input[name='imagecheckcode']");
+
+        /*自定义验证规则*/
+        /*this.optional(element) 表单不为空才触发验证 表单为空返回true*/
+        jQuery.validator.addMethod("isMobileFormat", function (val, ele, param) {
+            var _mobileFormat = /^[1][358][0-9]{9}$/
+            var _result = this.optional(ele)||_mobileFormat.test($(ele).val())
+            return this.optional(ele)||_result;
+        },'手机格式不正确')
+        jQuery.validator.addMethod("isMobile", function(value, element,param) {
+            var length = value.length,
+                    _result = this.optional(element) || (value[0] == "1" && length == 11);
+            if (_result) {
+                $.ajax({
+                    url:'/admin/telCheck',
+                    type: 'post',
+                    async: false,
+                    data: {
+                        tel: _telInput.val()
+                    },
+                    success:function(data){
+                        _result = !data;
+                    }
+                });
+            }
+            return this.optional(element) || _result;
+        }, "手机号不正确或已注册");
+
+        var _form = $('#form').validate({
+            rules: {
+                username: {
+                    remote:{
+                        url:'/admin/userNameCheck',
+                        type: 'get',
+                        data: {
+                        }
+                    }
+                },
+                /*tel:"isMobile", 添加一个自定一方法*/
+                tel:{
+                    isMobileFormat:1,
+                    isMobile:1
+                },
+                code: {
+                    remote: {
+                        type:"POST",
+                        url:"/api/validateCode",             //servlet
+                        data:{
+                            tel: function(){return _telInput.val();},
+                            code: function(){return _telCode.val();}
+                        }
+                    }
+                }
+            },
+            messages: {
+                username:{
+                    required:'用户名不能为空',
+                    minlength:'请输入2-15位字符',
+                    maxlength:'请输入2-15位字符',
+                    remote:'该用户名已注册'
+                },
+                code: {
+                    remote: "验证码不正确"
+                },
+                password1: {
+                    minlength: "密码的长度为6-16位",
+                    maxlength: "密码的长度为6-16位"
+                },
+                password2: {
+                    minlength: "密码的长度为6-16位",
+                    maxlength: "密码的长度为6-16位"
+                }
+            }
+        });
+        $('#validateCodeBtn').click(function () {
+            if($(this).hasClass('.btn_disabled')){
+                return;
+            }
+            var _tel = _telInput.val();
+
+            if (_tel == "") {
+                alert("请输入手机号");
+                return ;
+            }
+            if (_tel[0] != "1" || _tel.length != 11) {
+                alert("非法的手机号");
+                return ;
+            }
+            if(!_telInput.valid()){
+                return ;
+            }
+            if (_tel != "" && _validateCountDown == 60) {
+                $.ajax({
+                    method: 'post',
+                    url:'/api/getValidateCode',
+                    data: {
+                        "tel": _tel,
+                        "imagecheckcode": _imagecheckcode.val(),
+                        "username": _userName.val(),
+                        "password1": _pwd1.val()
+                    },
+                    success:function(json){
+                        if (json.status == 0) {
+                            $.notify('验证码已发送','success');
+                            _validateCodeBtn.addClass('btn_disabled');
+                            _validateCountDown = 60;
+                            _telCountDown.show();
+                            _validateTimer = setInterval(function(){
+                                _validateCountDown = _validateCountDown -1;
+                                if (_validateCountDown > 0) {
+                                    _telCountDown.text(_validateCountDown + "秒后可重新获取验证码");
+                                } else {
+                                    clearTimeout(_validateTimer);
+                                    _validateCountDown = 60;
+                                    _telCountDown.text("60秒后可重新获取验证码");
+                                    _telCountDown.hide();
+                                    _validateCodeBtn.removeClass('btn_disabled');
+                                }
+                            }, 1000);
+                        }else{
+                            $.notify(json.message,'error');
+                        }
+                    }
+                });
+            }
+        })
+
+        $('#btnSubmit').click(function(){
+            if (!jQuery('[name=isRead]').is(':checked')) {
+                alert("请先阅读大众家园服务协议！");
+                return;
+            }
+            if(_form.form()){
+                $(this).attr({'disabled':'disabled'}).css('background-color','#DDDDDD');
+                $.ajax({
+                    url:'/api/addUser',
+                    data: {
+                        password1: _pwd1.val(),
+                        password2: _pwd2.val(),
+                        code: _telCode.val(),
+                        username: _userName.val(),
+                        tel: _telInput.val()
+                    },
+                    success:function(json){
+                        if(json.status==0){
+                            $.notify('注册成功','success');
+                            setTimeout(function(){
+                                window.location.href = 'admin/toLogin.html';
+                            },1000);
+                        }else{
+                            $.notify(json.message,'error');
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

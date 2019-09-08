@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery Pager</title>
+		<!-- 分页样式文件 -->
+		<link rel="stylesheet" href="css/pager.css">
+		<script type="text/javascript" src="scripts/jquery-1.5.1.js"></script>
+		<!-- 分页插件的JS，scripts文件加还有另外一个，是中文的 -->
+		<script type="text/javascript" src="scripts/jquery.pager-1.1.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#div-pager-text").pager({
+					currentPage: 1, 				// 当前页
+					pageCount: 56, 					// 总页数
+					select: true,							// 是否显示选择页码的text或select, default: true
+					type: "input",							// 选择页码类型 default: select. options(select, input)
+					choosePageCallBack: chooseTextboxPage	// 页码选择事件
+				});
+				
+				$("#div-pager-select").pager({
+					currentPage: 1, 				// 当前页
+					pageCount: 122, 				// 总页数
+					select: true,					// 是否显示选择页码的text或select, default: true
+					type: "select",					// 选择页码类型 default: select. options(select, input)
+					choosePageCallBack: chooseSelectPage
+				});
+				
+				$("#div-pager").pager({
+					currentPage: 10,
+					pageCount: 74,
+					choosePageCallBack: function(p) {
+						// enter your code here
+						alert("choose page " + p + ", please enter your code here");
+					}
+				});
+			});
+			
+			chooseTextboxPage = function(page) {
+                $("#div-pager-select .pgNext").eq(0).text("第"+page+"耶")
+
+				$("#div-pager-text").pager({ currentPage: page, pageCount: 56, type: "input", choosePageCallBack: chooseTextboxPage});
+				$("#div-text-choose").html("choose Page " + page);
+			}
+			
+			chooseSelectPage = function(page) {
+                $("#div-pager-select .pgNext").eq(0).text("第"+page+"耶")
+
+				$("#div-pager-select").pager({ currentPage: page, pageCount: 122, type: "select", choosePageCallBack: chooseSelectPage});
+				$("#div-select-choose").html("choose Page " + page);
+			}
+		</script>
+		<style type="text/css">
+			div {
+				padding: 20px;
+				margin: 20px;
+			}
+			.div-choose {
+				font-size: 36px;
+				font-family: 'Courier New';
+				font-weight: bold;
+			}
+			#div-pager {
+				padding-top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div-choose" id="div-text-choose"></div>
+		<!-- div 要引用pager样式 -->
+		<div class="pager" id="div-pager-text"></div>
+		<div class="div-choose" id="div-select-choose"></div>
+		<div class="pager" id="div-pager-select"></div>
+		<div class="pager" id="div-pager"></div>
+	</body>
+</html>

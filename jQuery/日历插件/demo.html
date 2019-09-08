@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="//cdn.bootcss.com/jqueryui/1.12.0/jquery-ui.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/fullcalendar/2.1.0-beta2/fullcalendar.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./demo.css"/>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="//cdn.bootcss.com/jqueryui/1.12.0/jquery-ui.js"></script>
+    <script src="//cdn.bootcss.com/fullcalendar/2.1.0-beta2/fullcalendar.js"></script>
+    <script src="//cdn.bootcss.com/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-zh-CN.js"></script>
+    <script src="demo.js"></script>
+</head>
+<body>
+<div id="wrap">
+    <div id='calendar'>
+    </div>
+    <div id="reserveinfo" title="Details">
+        <div id="revtitle">
+        </div>
+        <div id="revdesc">
+        </div>
+    </div>
+    <div style="display: none" id="reservebox" title="Reserve meeting room">
+        <form id="reserveformID" method="post">
+            <div class="sysdesc">
+                &nbsp;</div>
+            <div class="rowElem">
+                <label>
+                    标题:</label>
+                <input id="title" name="start">
+            </div>
+            <div class="rowElem">
+                <label>
+                    重要程度:</label>
+                <input id="chengdu" name="start">
+            </div>
+            <div class="rowElem">
+                <label>
+                    开始时间:</label>
+                <input id="start" name="start">
+            </div>
+            <div class="rowElem">
+                <label>
+                    结束时间:</label>
+                <input id="end" name="end">
+            </div>
+            <div class="rowElem">
+                <label>
+                    备忘内容:</label>
+                <textarea id="details" rows="3" cols="43" name="details"></textarea>
+            </div>
+            <div class="rowElem">
+            </div>
+            <div class="rowElem">
+            </div>
+            <div id="addhelper" class="ui-widget">
+                <div style="padding-bottom: 5px; padding-left: 5px; padding-right: 5px; padding-top: 5px"
+                     class="ui-state-error ui-corner-all">
+                    <div id="addresult">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
