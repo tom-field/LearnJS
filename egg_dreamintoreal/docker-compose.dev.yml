@@ -1,0 +1,66 @@
+version: '3'
+services:
+  egg_dream_into_real:
+    image: xuhui5018/egg_dream_into_real:0.0.1
+    environment:
+      - NODE_ENV=development
+      - EGG_SERVER_ENV=local
+      - HOST=http://localhost:3001
+      # 此处的redis指的是redis容器的ip
+      - EGG_REDIS_HOST=redis
+      - EGG_REDIS_PORT=6379
+      # 此处的@mongodb指代的是mongodb容器的ip
+      - EGG_MONGODB_URL=mongodb://root:xuhui2014@mongodb:27017/egg_dream_into_real
+      # 第三方Auth登录认证
+      - EGG_PASSPORT_GITHUB_CLIENT_ID=2077f6a3dabfbf142af0
+      - EGG_PASSPORT_GITHUB_CLIENT_SECRET=e136c0ef50091c01c89a8cd7db9c42dfd7af7c5f
+      - EGG_PASSPORT_GOOGLE_CLIENT_ID=558941605894-40dcq6buol6u6mqtpdlblc3k37leg1u6.apps.googleusercontent.com
+      - EGG_PASSPORT_GOOGLE_CLIENT_SECRET=ezlLKbK6N_Axfr0D7aAcHzsC
+      # 七牛云存储
+      - EGG_QINIU_ACCESS_KEY=4sS6Qxld8jvVKUk4E5NXh-m_irPX90oLfkMy0v_3
+      - EGG_QINIU_SECRET_KEY=dRjcCy8UB3x3n7c0JCpt_WU07uPKP54NxVS5m4rb
+      - EGG_QINIU_BUCKET=test
+      - EGG_QINIU_ORIGIN=http://phv27sna5.bkt.clouddn.com
+      # 阿里node监控品台
+      - EGG_ALINODE_APPID=appid
+      - EGG_ALINODE_SECRET=secret
+    depends_on:
+      - redis
+      - mongodb
+    ports:
+      - 7001:7001
+    networks:
+      - network_egg_dream_into_real
+  redis:
+    image: redis:5.0
+    command: redis-server --appendonly yes --requirepass egg_dream_into_real
+    volumes:
+      - egg-redis:/data
+    networks:
+      - network_egg_dream_into_real
+    ports:
+      - 6379:6379
+
+  mongodb:
+    image: mongo:3.6
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=xuhui2014
+      - MONGO_INITDB_DATABASE=egg_dream_into_real
+    volumes:
+      - egg-mongo:/data/db
+      # 怪不得一直提示认证失败,少了初始化数据库
+      - ./init.d/mongo:/docker-entrypoint-initdb.d
+    networks:
+      - network_egg_dream_into_real
+    ports:
+      - 27017:27017
+
+volumes:
+  egg-mongo:
+  egg-redis:
+
+networks:
+  network_egg_dream_into_real:
+    driver: bridge
